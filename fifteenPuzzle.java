@@ -23,19 +23,24 @@ public class fifteenPuzzle {
 		}
 	}
 
-	public static void putBlock (int r, int c,Terminal t, int num){
-    String block = "._______.\n|       |\n|   "+ num + "   |\n._______.";
-		t.moveCursor(r,c);
-		for(int i = 0; i < s.length();i++){
-			t.putCharacter(s.charAt(i));
-		}
-	}
-
 	public static void main(String[] args) {
 
 
 		int x = 10;
 		int y = 10;
+
+    Tile space = new Tile (' ', 10,10);
+    Tile one = new Tile ('1', 10,10);
+    Tile two = new Tile ('1', 10,10);
+    Tile three = new Tile ('1', 10,10);
+    Tile four = new Tile ('1', 10,10);
+    Tile five = new Tile ('1', 10,10);
+    Tile six = new Tile ('1', 10,10);
+    Tile seven = new Tile ('1', 10,10);
+    Tile eight = new Tile ('1', 10,10);
+    Tile nine = new Tile ('1', 10,10);
+    Tile ten = new Tile ('1', 10,10);
+
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
