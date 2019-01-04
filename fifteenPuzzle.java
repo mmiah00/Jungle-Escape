@@ -1,5 +1,3 @@
-
-
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.terminal.Terminal.SGR;
 import com.googlecode.lanterna.TerminalFacade;
@@ -16,14 +14,23 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
 
-public class TerminalDemo {
+public class fifteenPuzzle {
 
-	public static void putString(int r, int c,Terminal t, String s){
+  public static void putString(int r, int c,Terminal t, String s){
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
 		}
 	}
+
+	public static void putBlock (int r, int c,Terminal t, int num){
+    String block = "._______.\n|       |\n|   "+ num + "   |\n._______.";
+		t.moveCursor(r,c);
+		for(int i = 0; i < s.length();i++){
+			t.putCharacter(s.charAt(i));
+		}
+	}
+
 	public static void main(String[] args) {
 
 
@@ -119,15 +126,11 @@ public class TerminalDemo {
 			//DO EVEN WHEN NO KEY PRESSED:
 			long tEnd = System.currentTimeMillis();
 			long millis = tEnd - tStart;
-			putString(1,2,terminal,"Milliseconds since start of program: "+millis);
 			if(millis/1000 > lastSecond){
 				lastSecond = millis / 1000;
 				//one second has passed.
 				putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-
 			}
-
-
 		}
 	}
 }
