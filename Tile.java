@@ -1,6 +1,7 @@
 public class Tile {
   char num;
   int x,y;
+
   public Tile (char number, int xcor, int ycor) {
   	num = number;
   	x = xcor;
