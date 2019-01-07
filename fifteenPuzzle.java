@@ -55,21 +55,21 @@ public class FifteenPuzzle {
     nums[7] = new Tile ('1', '5', xcor, ycor);
     xcor += 5;
     nums[15] = new Tile (' ', xcor, ycor);
-    xcor += 5;
 
   }
 
   public String toString () {
   }
 
-  public static void putString(int r, int c,Terminal t, String s){
-   	 t.moveCursor(r,c);
-   	 for(int i = 0; i < s.length();i++){
-   		 t.putCharacter(s.charAt(i));
-   	 }
+  public static void putString (Tile aTile) {
+    t.moveCursor (aTile.x, aTile.y);
+    String s = aTile.toString ();
+    for (int i = 0; i < s.length (); i ++) {
+      t.putCharacter(s.charAt (i));
     }
+  }
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
 
    	 int x = 10;

@@ -1,29 +1,34 @@
 public class Tile {
-  char num;
+  char tens, ones; //num 1 is 0 or 1 for the tens digit and num 2 is the ones digit
   int x,y;
 
-  public Tile (char number, int xcor, int ycor) {
-  	num = number;
+  public Tile (char num1, char num2, int xcor, int ycor) {
+  	tens = num1;
+    ones = num2;
   	x = xcor;
   	y = ycor;
   }
 
   public String toString () {
-	   return "._______.\n|   	|\n|   "+ num + "   |\n._______.";
+	   return "._______.\n|   	|\n|   "+ tens + ones + "   |\n._______.";
   }
 
 
   public void flip (Tile other) {
-  	char theirnum = other.num;
+  	char theirtens = other.tens;
+    char theirones = other.ones;
   	int theirx = other.x;
   	int theiry = other.y;
-  	char mynum = num;
+  	char mytens = tens;
+    char myones = ones;
   	int myx = x;
   	int myy = y;
-  	num = theirnum;
+  	tens = theirtens;
+    ones = theirone;
   	x = theirx;
   	y = teiry;
-  	other.num = mynum;
+  	other.tens = mytens;
+    other.ones = myones; 
   	other.x = myx;
   	other.y = myy;
   }
