@@ -90,6 +90,32 @@ public class NumberPuzzle {
 		}
 	}
 
+  public void moveRight() {
+		for (int r = 1; r < 8; r = r + 2) {
+			for (int c = 8; c > 1; c = c - 3) {
+				int orig = c;
+				if (grid[r][c+3] != ' ' && grid[r][c+3] == grid[r][c]) {
+					int newNum = (grid[r][c] - '0') * 2;
+					grid[r][c+3] = (char)(newNum + '0');
+					grid[r][c] = ' ';
+					c = c+3;
+				}
+				while (c != 11 && grid[r][c+3] == ' ') {
+					grid[r][c+3] = grid[r][c];
+					grid [r][c] = ' ';
+					c = c+3;
+					if (c != 11 && grid[r][c+3] != ' ' && grid[r][c+3] == grid[r][c]) {
+						int newNum = (grid[r][c] - '0') * 2;
+						grid[r][c+3] = (char)(newNum + '0');
+						grid[r][c] = ' ';
+						c = c+3;
+					}
+				}
+				c = orig;
+			}
+		}
+	}
+
 	public String toString() {
 		String s = "";
 		for (int r = 0; r < 9; r++) {
@@ -104,7 +130,7 @@ public class NumberPuzzle {
 	public static void main(String[] args) {
 		NumberPuzzle A = new NumberPuzzle();
 		System.out.println(A.toString());
-		A.moveLeft();
+		A.moveRight();
 		System.out.println(A.toString());
 	}
 
