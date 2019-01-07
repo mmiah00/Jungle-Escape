@@ -116,6 +116,32 @@ public class NumberPuzzle {
 		}
 	}
 
+  public void moveUp() {
+		for (int c = 2; c < 12; c = c + 3) {
+			for (int r = 3; r < 8; r = r + 2) {
+				int orig = r;
+				if (grid[r-2][c] != ' ' && grid[r-2][c] == grid[r][c]) {
+					int newNum = (grid[r][c] - '0') * 2;
+					grid[r-2][c] = (char)(newNum + '0');
+					grid[r][c] = ' ';
+          r = r-2;
+				}
+				while (r != 1 && grid[r-2][c] == ' ') {
+					grid[r-2][c] = grid[r][c];
+					grid [r][c] = ' ';
+					r = r-2;
+					if (r != 1 && grid[r-2][c] != ' ' && grid[r-2][c] == grid[r][c]) {
+						int newNum = (grid[r][c] - '0') * 2;
+						grid[r-2][c] = (char)(newNum + '0');
+						grid[r][c] = ' ';
+						r = r-2;
+					}
+				}
+				r = orig;
+			}
+		}
+	}
+
 	public String toString() {
 		String s = "";
 		for (int r = 0; r < 9; r++) {
@@ -130,7 +156,7 @@ public class NumberPuzzle {
 	public static void main(String[] args) {
 		NumberPuzzle A = new NumberPuzzle();
 		System.out.println(A.toString());
-		A.moveRight();
+		A.moveUp();
 		System.out.println(A.toString());
 	}
 
