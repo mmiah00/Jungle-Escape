@@ -21,34 +21,42 @@ public class FifteenPuzzle {
     nums = new Tile [16];
     int xcor = 10;
     int ycor = 10;
-    for (int x = 1; x - 1 < 16; x ++) {
-      if (x == 5 || x == 9 || x == 13) {
-        xcor = 10;
-        ycor += 5;
-      }
+    nums[8] = new Tile ('1', xcor, ycor);
+    xcor += 5;
+    nums[1] = new Tile ('2', xcor, ycor);
+    xcor += 5;
+    nums[12] = new Tile ('3', xcor, ycor);
+    xcor += 5;
+    nums[3] = new Tile ('4', xcor, ycor);
+    xcor += 5;
+    nums[13] = new Tile ('5', xcor, ycor);
+    xcor = 10;
+    ycor += 5;
+    nums[11] = new Tile ('6', xcor, ycor);
+    xcor += 5;
+    nums[6] = new Tile ('7', xcor, ycor);
+    xcor += 5;
+    nums[14] = new Tile ('8', xcor, ycor);
+    xcor += 5;
+    nums[5] = new Tile ('9', xcor, ycor);
+    xcor = 10;
+    ycor += 5;
+    nums[0] = new Tile ('10', xcor, ycor);
+    xcor += 5;
+    nums[9] = new Tile ('11', xcor, ycor);
+    xcor += 5;
+    nums[4] = new Tile ('12', xcor, ycor);
+    xcor += 5;
+    nums[2] = new Tile ('13', xcor, ycor);
+    xcor = 10;
+    ycor += 5;
+    nums[10] = new Tile ('14', xcor, ycor);
+    xcor += 5;
+    nums[7] = new Tile ('15', xcor, ycor);
+    xcor += 5;
+    nums[15] = new Tile (' ', xcor, ycor);
+    xcor += 5;
 
-      if (x <= 4 && x >= 1) {
-        nums [x] = new Tile ((char) x, xcor, ycor);
-        xcor += 5;
-      }
-
-      if (x <= 5 && x >= 8) {
-        nums [x] = new Tile ((char) x, xcor, ycor);
-        xcor += 5;
-      }
-
-      if (x <= 9 && x >= 12) {
-        nums [x] = new Tile ((char) x, xcor, ycor);
-        xcor += 5;
-      }
-
-      if (x <= 13 && x >= 15) {
-        nums [x] = new Tile ((char) x, xcor, ycor);
-        xcor += 5;
-      }
-
-    }
-    nums [15] = new Tile (' ', xcor, ycor);
   }
 
   public String toString () {
@@ -177,3 +185,35 @@ public class FifteenPuzzle {
    	 }
     }
 }
+
+/*
+for (int x = 1; x - 1 < 16; x ++) {
+  if (x == 5 || x == 9 || x == 13) {
+    xcor = 10;
+    ycor += 5;
+  }
+
+  if (x <= 4 && x >= 1) {
+    nums [x] = new Tile ((char) x, xcor, ycor);
+    xcor += 5;
+  }
+
+  if (x <= 5 && x >= 8) {
+    nums [x] = new Tile ((char) x, xcor, ycor);
+    xcor += 5;
+  }
+
+  if (x <= 9 && x >= 12) {
+    nums [x] = new Tile ((char) x, xcor, ycor);
+    xcor += 5;
+  }
+
+  if (x <= 13 && x >= 15) {
+    nums [x] = new Tile ((char) x, xcor, ycor);
+    xcor += 5;
+  }
+
+}
+nums [15] = new Tile (' ', xcor, ycor);
+}
+*/
