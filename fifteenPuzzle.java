@@ -48,7 +48,10 @@ public class FifteenPuzzle {
       }
 
     }
-    nums [15] = new Tile (' ', xcor, ycor);  
+    nums [15] = new Tile (' ', xcor, ycor);
+  }
+
+  public String toString () {
   }
 
   public static void putString(int r, int c,Terminal t, String s){
