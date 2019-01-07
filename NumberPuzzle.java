@@ -160,6 +160,22 @@ public class NumberPuzzle {
 		}
 	}
 
+  public boolean isComplete() { //checks if there are anymore possible moves
+    boolean complete = true;
+    for (int r = 1; r < 9; r = r+2) {
+      for (int c = 2; c < 13; c = c+3) {
+        if (grid[r][c] == ' ' || //if there is empty space
+            (c != 2 && grid[r][c-3] == grid[r][c]) || //can combine using moveLeft
+            (c != 11 && grid[r][c+3] == grid[r][c]) || //can combine using moveRight
+            (r != 1 && grid[r-2][c] == grid[r][c]) || //can combine using moveUp
+            (r != 7 && grid[r+2][c] == grid[r][c])) { //can combine using moveDown
+          return false; //then not complete
+        }
+      }
+    }
+    return complete;
+  }
+
 	public String toString() {
 		String s = "";
 		for (int r = 0; r < 9; r++) {
@@ -169,13 +185,6 @@ public class NumberPuzzle {
 			s = s + "\n";
 		}
 		return s;
-	}
-
-	public static void main(String[] args) {
-		NumberPuzzle A = new NumberPuzzle();
-		System.out.println(A.toString());
-		A.moveDown();
-		System.out.println(A.toString());
 	}
 
 }
