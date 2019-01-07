@@ -56,6 +56,17 @@ public class NumberPuzzle {
 		grid[randRow][randCol] = '2'; //place second '2'
 	}
 
+	private void inputNewNum() {
+		Random randgen = new Random();
+		int randRow = randgen.nextInt(4) * 2 + 1;
+		int randCol = randgen.nextInt(4) * 3 + 2;
+		while (grid[randRow][randCol] != ' ') { //if the row and col are the same as the first
+			randRow = randgen.nextInt(4) * 2 + 1; //find another random row and col
+			randCol = randgen.nextInt(4) * 3 + 2;
+		}
+		grid[randRow][randCol] = '2'; //place second '2'
+	}
+
 	public void moveLeft() {
 		for (int r = 1; r < 8; r = r + 2) { //for every row
 			for (int c = 5; c < 12; c = c + 3) { //starting from the second col
@@ -80,6 +91,7 @@ public class NumberPuzzle {
 				c = orig;
 			}
 		}
+		inputNewNum();
 	}
 
   public void moveRight() {
@@ -106,6 +118,7 @@ public class NumberPuzzle {
 				c = orig;
 			}
 		}
+		inputNewNum();
 	}
 
   public void moveUp() {
@@ -132,6 +145,7 @@ public class NumberPuzzle {
 				r = orig;
 			}
 		}
+		inputNewNum();
 	}
 
   public void moveDown() {
@@ -139,7 +153,8 @@ public class NumberPuzzle {
 			for (int r = 5; r > 0; r = r - 2) { //starting with third row
 				int orig = r;
 				if (grid[r+2][c] != ' ' && grid[r+2][c] == grid[r][c]) { //if third and last row are the same
-					int newNum = (grid[r][c] - '0') * 2; //combine their numbers
+					int newNum = (int)((grid[r][c] - '0') * 2); //combine their numbers
+					System.out.println("combine in the beginning" + newNum + " " + r);
 					grid[r+2][c] = (char)(newNum + '0');
 					grid[r][c] = ' ';
           r = r+2;
@@ -150,6 +165,7 @@ public class NumberPuzzle {
 					r = r+2;
 					if (r != 7 && grid[r+2][c] != ' ' && grid[r+2][c] == grid[r][c]) { //if row below has the same number
 						int newNum = (grid[r][c] - '0') * 2; //combine their numbers
+						System.out.println("combine while moving" + newNum + " " + r);
 						grid[r+2][c] = (char)(newNum + '0');
 						grid[r][c] = ' ';
 						r = r+2;
@@ -158,6 +174,7 @@ public class NumberPuzzle {
 				r = orig;
 			}
 		}
+		inputNewNum();
 	}
 
   public boolean isComplete() { //checks if there are anymore possible moves
@@ -185,6 +202,15 @@ public class NumberPuzzle {
 			s = s + "\n";
 		}
 		return s;
+	}
+
+	public static void main(String[] args) {
+		NumberPuzzle A = new NumberPuzzle();
+		System.out.println(A.toString());
+		for (int i = 0; i<30; i++) {
+			A.moveDown();
+			System.out.println(A.toString());
+		}
 	}
 
 }
