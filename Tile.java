@@ -24,11 +24,11 @@ public class Tile {
   	int myx = x;
   	int myy = y;
   	tens = theirtens;
-    ones = theirone;
+    ones = theirones;
   	x = theirx;
-  	y = teiry;
+  	y = theiry;
   	other.tens = mytens;
-    other.ones = myones; 
+    other.ones = myones;
   	other.x = myx;
   	other.y = myy;
   }
