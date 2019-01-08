@@ -26,7 +26,7 @@ public class Tile {
   }
 
   public String toString () {
-	   return "._______.\n|   	|\n|   "+ tens + ones + "   |\n._______.";
+	   return ".________.\n|        |\n|   "+ tens + ones + "   |\n.________.";
   }
 
 
