@@ -28,8 +28,11 @@ public class NumberPuzzle {
 				if (c == 0 || c == 12 || (rows == 1 && cols == 0)) { //the first column, last column, and odd rows with columns divisible by 3
 					grid[r][c] = "|";
 				}
-				else if (r == 0 || r == 8 || (rows == 0 && cols != 0)) { //excluding what's already filled in, the first row, last row, and even rows with columns nondivisible by 3
-					grid[r][c] = "-";
+				else if (((r == 0 || r == 8) && (cols != 0)) || (rows == 0 && cols != 0)) { //excluding what's already filled in, the first row, last row, and even rows with columns nondivisible by 3
+					grid[r][c] = "--";
+				}
+				else if ((r == 0 || r == 8) && (cols != 0)) {
+					grid[r][c] = "-"; 
 				}
 				else if (rows == 0 && cols == 0) { //odd rows and columns divisible by 3
 					grid[r][c] = "+";
@@ -152,17 +155,17 @@ public class NumberPuzzle {
 		for (int c = 2; c < 12; c = c + 3) { //for every column
 			for (int r = 5; r > 0; r = r - 2) { //starting with third row
 				int orig = r;
-				if (grid[r+2][c] != " " && grid[r+2][c] == grid[r][c]) { //if third and last row are the same
+				if (grid[r+2][c] != " " && grid[r+2][c].equals(grid[r][c])) { //if third and last row are the same
 					int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 					grid[r+2][c] = "" + newNum;
 					grid[r][c] = " ";
           r = r+2;
 				}
-				while (r != 7 && grid[r+2][c] == " ") { //if not the last row and row below is empty
+				while (r != 7 && grid[r+2][c].equals(" ")) { //if not the last row and row below is empty
 					grid[r+2][c] = grid[r][c]; //move down
 					grid [r][c] = " ";
 					r = r+2;
-					if (r != 7 && grid[r+2][c] != " " && grid[r+2][c] == grid[r][c]) { //if row below has the same number
+					if (r != 7 && grid[r+2][c] != " " && grid[r+2][c].equals(grid[r][c])) { //if row below has the same number
 						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 						grid[r+2][c] = "" + newNum;
 						grid[r][c] = " ";
