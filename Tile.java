@@ -64,4 +64,9 @@ public class Tile {
   public void moveDown () {
     y += 1;
   }
+
+  public static void main (String[] args) {
+    Tile test = new Tile ('1','2', 10,10);
+    System.out.println (test.toString ());
+  }
 }
