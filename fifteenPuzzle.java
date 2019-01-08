@@ -58,36 +58,18 @@ public class FifteenPuzzle {
 
   }
 
-  public String toString () {
-  }
-
   public static void putString (Tile aTile) {
-    t.moveCursor (aTile.x, aTile.y);
+    t.moveCursor (aTile.xcor(), aTile.ycor());
     String s = aTile.toString ();
     for (int i = 0; i < s.length (); i ++) {
       t.putCharacter(s.charAt (i));
     }
   }
 
+  public boolean complete () {
+  }
+
   public static void main(String[] args) {
-
-
-   	 int x = 10;
-   	 int y = 10;
-
-	Tile space = new Tile (' ', 10,10);
-	Tile one = new Tile ('1', 10,10);
-	Tile two = new Tile ('1', 10,10);
-	Tile three = new Tile ('1', 10,10);
-	Tile four = new Tile ('1', 10,10);
-	Tile five = new Tile ('1', 10,10);
-	Tile six = new Tile ('1', 10,10);
-	Tile seven = new Tile ('1', 10,10);
-	Tile eight = new Tile ('1', 10,10);
-	Tile nine = new Tile ('1', 10,10);
-	Tile ten = new Tile ('1', 10,10);
-
-
    	 Terminal terminal = TerminalFacade.createTextTerminal();
    	 terminal.enterPrivateMode();
 
