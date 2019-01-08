@@ -29,7 +29,7 @@ public class Tile {
 	   return ".________.\n|        |\n|   "+ tens + ones + "   |\n.________.";
   }
 
-
+  /*
   public void flip (Tile other) {
   	char theirtens = other.tens;
     char theirones = other.ones;
@@ -48,6 +48,7 @@ public class Tile {
   	other.x = myx;
   	other.y = myy;
   }
+  */
 
   public void moveRight () {
     x += 1;
