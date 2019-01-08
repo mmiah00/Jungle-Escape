@@ -25,14 +25,17 @@ public class NumberPuzzle {
 			int rows = r % 2; //helps determine if row is even or odd
 			for (int c = 0; c < 13; c++) {
 				int cols = c % 3; //helps determine if column is divisible by 3
-				if (c == 0 || c == 12 || (rows == 1 && cols == 0)) { //the first column, last column, and odd rows with columns divisible by 3
+				if (c == 0 || (c == 12 && rows == 0)) {//|| (rows == 1 && cols == 0)) { //the first column, last column, and odd rows with columns divisible by 3
 					grid[r][c] = "|";
+				}
+				else if (rows == 1 && cols == 0 || c == 12) {
+					grid[r][c] = "  |";
 				}
 				else if (((r == 0 || r == 8) && (cols != 0)) || (rows == 0 && cols != 0)) { //excluding what's already filled in, the first row, last row, and even rows with columns nondivisible by 3
 					grid[r][c] = "--";
 				}
-				else if ((r == 0 || r == 8) && (cols != 0)) {
-					grid[r][c] = "-"; 
+				else if ((r == 0 || r == 8) && (cols == 0)) {
+					grid[r][c] = "-";
 				}
 				else if (rows == 0 && cols == 0) { //odd rows and columns divisible by 3
 					grid[r][c] = "+";
@@ -208,10 +211,6 @@ public class NumberPuzzle {
 	public static void main(String[] args) {
 		NumberPuzzle A = new NumberPuzzle();
 		System.out.println(A.toString());
-		for (int i = 0; i<30; i++) {
-			A.moveDown();
-			System.out.println(A.toString());
-		}
 	}
 
 }
