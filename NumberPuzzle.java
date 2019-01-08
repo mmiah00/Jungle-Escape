@@ -75,19 +75,19 @@ public class NumberPuzzle {
 
 	public void moveLeft() {
 		for (int r = 1; r < 8; r = r + 2) { //for every row
-			for (int c = 5; c < 12; c = c + 3) { //starting from the second col
+			for (int c = 4; c < 11; c = c + 3) { //starting from the second col
 				int orig = c;
-				if (grid[r][c-3] != " " && grid[r][c-3] == grid[r][c]) { // if the first and second col are the same (and not empty)
+				if (grid[r][c-3] != " " && grid[r][c-3].equals(grid[r][c])) { // if the first and second col are the same (and not empty)
 					int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 					grid[r][c-3] = "" + newNum;
 					grid[r][c] = " ";
 					c = c -3;
 				}
-				while (c != 2 && grid[r][c-3] == " ") { //if not the first col and space to left is empty
+				while (c != 2 && grid[r][c-3].equals(" ")) { //if not the first col and space to left is empty
 					grid[r][c-3] = grid[r][c]; //move to left
 					grid [r][c] = " ";
 					c = c-3;
-					if (c != 2 && grid[r][c-3] != " " && grid[r][c-3] == grid[r][c]) { //if number to left is the same
+					if (c != 2 && grid[r][c-3] != " " && grid[r][c-3].equals(grid[r][c])) { //if number to left is the same
 						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 						grid[r][c-3] = "" + newNum;
 						grid[r][c] = " ";
