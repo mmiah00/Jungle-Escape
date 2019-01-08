@@ -83,11 +83,11 @@ public class NumberPuzzle {
 					grid[r][c] = " ";
 					c = c -3;
 				}
-				while (c != 2 && grid[r][c-3].equals(" ")) { //if not the first col and space to left is empty
+				while (c != 1 && grid[r][c-3].equals(" ")) { //if not the first col and space to left is empty
 					grid[r][c-3] = grid[r][c]; //move to left
 					grid [r][c] = " ";
 					c = c-3;
-					if (c != 2 && grid[r][c-3] != " " && grid[r][c-3].equals(grid[r][c])) { //if number to left is the same
+					if (c != 1 && grid[r][c-3] != " " && grid[r][c-3].equals(grid[r][c])) { //if number to left is the same
 						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 						grid[r][c-3] = "" + newNum;
 						grid[r][c] = " ";
@@ -102,19 +102,19 @@ public class NumberPuzzle {
 
   public void moveRight() {
 		for (int r = 1; r < 8; r = r + 2) { //for every row
-			for (int c = 8; c > 1; c = c - 3) { //starting from the third col
+			for (int c = 7; c > 0; c = c - 3) { //starting from the third col
 				int orig = c;
-				if (grid[r][c+3] != " " && grid[r][c+3] == grid[r][c]) { //if third and last col are the same
+				if (grid[r][c+3] != " " && grid[r][c+3].equals(grid[r][c])) { //if third and last col are the same
 					int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 					grid[r][c+3] = "" + newNum;
 					grid[r][c] = " ";
 					c = c+3;
 				}
-				while (c != 11 && grid[r][c+3] == " ") { //if not the last col and space to right is empty
+				while (c != 10 && grid[r][c+3].equals(" ")) { //if not the last col and space to right is empty
 					grid[r][c+3] = grid[r][c]; //move to the right
 					grid [r][c] = " ";
 					c = c+3;
-					if (c != 11 && grid[r][c+3] != " " && grid[r][c+3] == grid[r][c]) { //if number to the left is the same
+					if (c != 10 && grid[r][c+3] != " " && grid[r][c+3].equals(grid[r][c])) { //if number to the left is the same
 						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 						grid[r][c+3] = "" + newNum;
 						grid[r][c] = " ";
