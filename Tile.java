@@ -1,6 +1,6 @@
 public class Tile {
-  private char tens, ones; //num 1 is 0 or 1 for the tens digit and num 2 is the ones digit
-  private int x,y;
+  private static char tens, ones; //num 1 is 0 or 1 for the tens digit and num 2 is the ones digit
+  private static int x,y;
 
   public Tile (char num1, char num2, int xcor, int ycor) {
   	tens = num1;
@@ -9,19 +9,19 @@ public class Tile {
   	y = ycor;
   }
 
-  public int xcor () {
+  public static int xcor () {
     return x;
   }
 
-  public int ycor () {
+  public static int ycor () {
     return y;
   }
 
-  public char tens () {
+  public static char tens () {
     return tens;
   }
 
-  public char ones () {
+  public static char ones () {
     return ones;
   }
 
