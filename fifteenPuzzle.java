@@ -1,10 +1,17 @@
-import com.googlecode.lanterna.*;
-import com.googlecode.lanterna.input.*;
-import com.googlecode.lanterna.terminal.*;
-import com.googlecode.lanterna.screen.*;
-import java.io.IOException;
-import java.awt.Color;
-
+//API : http://mabe02.github.io/lanterna/apidocs/2.1/
+import com.googlecode.lanterna.terminal.Terminal.SGR;
+import com.googlecode.lanterna.TerminalFacade;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.Key.Kind;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.Terminal.Color;
+import com.googlecode.lanterna.terminal.TerminalSize;
+import com.googlecode.lanterna.LanternaException;
+import com.googlecode.lanterna.input.CharacterPattern;
+import com.googlecode.lanterna.input.InputDecoder;
+import com.googlecode.lanterna.input.InputProvider;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class FifteenPuzzle {
   private static Tile[] nums;
@@ -45,15 +52,6 @@ public class FifteenPuzzle {
   }
   */
 
-  public static void putString(Tile aTile, Screen screen) {
-    String str = aTile.toString ();
-    int x = aTile.xcor ();
-    int y = aTile.ycor ();
-		for (int i = 0; i < str.length(); ++i) {
-			screen.setCharacter(x+i, y, new TextCharacter(str.charAt(i)));
-		}
-	}
-
   public void complete () {
     String actual = "0102030405060708091011131415  ";
     String ans = "";
@@ -63,76 +61,7 @@ public class FifteenPuzzle {
     done = (actual == ans);
   }
 
-  public static void main(String[] args) throws IOException {
-    FifteenPuzzle board = new FifteenPuzzle ();
-
-    int x = board.nums[15].xcor();
-    int y = board.nums[15].ycor();
-
-     Screen screen = new DefaultTerminalFactory().createScreen();
-     screen.startScreen();
-
-     long tStart = System.currentTimeMillis();
-     long lastSecond = 0;
-
-   	 while(!done){
-       for (int i = 0; i < board.nums.length; i ++) {
-         putString (board.nums[i], screen);
-       }
-
-       /*KeyStroke key = screen.pollInput();
-
-   		 if (key != null)
-   		 {
-
-   			 if (key.getKind() == Key.Kind.Escape) {
-
-   				 terminal.exitPrivateMode();
-   			 }
-
-   			 if (key.getKind() == Key.Kind.ArrowLeft) {
-   				 terminal.moveCursor(x,y);
-   				 terminal.putCharacter(' ');
-   				 x--;
-   			 }
-
-   			 if (key.getKind() == Key.Kind.ArrowRight) {
-   				 terminal.moveCursor(x,y);
-   				 terminal.putCharacter(' ');
-   				 x++;
-   			 }
-
-   			 if (key.getKind() == Key.Kind.ArrowUp) {
-   				 terminal.moveCursor(x,y);
-   				 terminal.putCharacter(' ');
-   				 y--;
-   			 }
-
-   			 if (key.getKind() == Key.Kind.ArrowDown) {
-   				 terminal.moveCursor(x,y);
-   				 terminal.putCharacter(' ');
-   				 y++;
-   			 }
-   			 //space moves it diagonally
-   			 if (key.getCharacter() == ' ') {
-   				 terminal.moveCursor(x,y);
-   				 terminal.putCharacter(' ');
-   				 y++;
-   				 x++;
-   			 }
-   			 putString(1,4,terminal,"["+key.getCharacter() +"]");
-   			 putString(1,1,terminal,key+"    	");//to clear leftover letters pad withspaces
-   		 }
-
-   		 //DO EVEN WHEN NO KEY PRESSED:
-   		 long tEnd = System.currentTimeMillis();
-   		 long millis = tEnd - tStart;
-   		 if(millis/1000 > lastSecond){
-   			 lastSecond = millis / 1000;
-   			 //one second has passed.
-   			 putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-   		 }*/
-   	 }
-
-   }
+  public static void main(String[] args) {
+    
+  }
 }
