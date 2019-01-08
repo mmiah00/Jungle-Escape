@@ -21,73 +21,55 @@ public class FifteenPuzzle {
     nums = new Tile [16];
     int xcor = 10;
     int ycor = 10;
-    nums[8] = new Tile ('1', xcor, ycor);
+    nums[8] = new Tile ('0', '1', xcor, ycor);
     xcor += 5;
-    nums[1] = new Tile ('2', xcor, ycor);
+    nums[1] = new Tile ('0', '2', xcor, ycor);
     xcor += 5;
-    nums[12] = new Tile ('3', xcor, ycor);
+    nums[12] = new Tile ('0', '3', xcor, ycor);
     xcor += 5;
-    nums[3] = new Tile ('4', xcor, ycor);
+    nums[3] = new Tile ('0', '4', xcor, ycor);
     xcor += 5;
-    nums[13] = new Tile ('5', xcor, ycor);
+    nums[13] = new Tile ('0', '5', xcor, ycor);
     xcor = 10;
     ycor += 5;
-    nums[11] = new Tile ('6', xcor, ycor);
+    nums[11] = new Tile ('0', '6', xcor, ycor);
     xcor += 5;
-    nums[6] = new Tile ('7', xcor, ycor);
+    nums[6] = new Tile ('0', '7', xcor, ycor);
     xcor += 5;
-    nums[14] = new Tile ('8', xcor, ycor);
+    nums[14] = new Tile ('0', '8', xcor, ycor);
     xcor += 5;
-    nums[5] = new Tile ('9', xcor, ycor);
+    nums[5] = new Tile ('0', '9', xcor, ycor);
     xcor = 10;
     ycor += 5;
-    nums[0] = new Tile ('10', xcor, ycor);
+    nums[0] = new Tile ('1', '0', xcor, ycor);
     xcor += 5;
-    nums[9] = new Tile ('11', xcor, ycor);
+    nums[9] = new Tile ('1', '1', xcor, ycor);
     xcor += 5;
-    nums[4] = new Tile ('12', xcor, ycor);
+    nums[4] = new Tile ('1', '2', xcor, ycor);
     xcor += 5;
-    nums[2] = new Tile ('13', xcor, ycor);
+    nums[2] = new Tile ('1', '3', xcor, ycor);
     xcor = 10;
     ycor += 5;
-    nums[10] = new Tile ('14', xcor, ycor);
+    nums[10] = new Tile ('1', '4', xcor, ycor);
     xcor += 5;
-    nums[7] = new Tile ('15', xcor, ycor);
+    nums[7] = new Tile ('1', '5', xcor, ycor);
     xcor += 5;
     nums[15] = new Tile (' ', xcor, ycor);
-    xcor += 5;
 
   }
 
-  public String toString () {
-  }
-
-  public static void putString(int r, int c,Terminal t, String s){
-   	 t.moveCursor(r,c);
-   	 for(int i = 0; i < s.length();i++){
-   		 t.putCharacter(s.charAt(i));
-   	 }
+  public static void putString (Tile aTile) {
+    t.moveCursor (aTile.xcor(), aTile.ycor());
+    String s = aTile.toString ();
+    for (int i = 0; i < s.length (); i ++) {
+      t.putCharacter(s.charAt (i));
     }
+  }
 
-    public static void main(String[] args) {
+  public boolean complete () {
+  }
 
-
-   	 int x = 10;
-   	 int y = 10;
-
-	Tile space = new Tile (' ', 10,10);
-	Tile one = new Tile ('1', 10,10);
-	Tile two = new Tile ('1', 10,10);
-	Tile three = new Tile ('1', 10,10);
-	Tile four = new Tile ('1', 10,10);
-	Tile five = new Tile ('1', 10,10);
-	Tile six = new Tile ('1', 10,10);
-	Tile seven = new Tile ('1', 10,10);
-	Tile eight = new Tile ('1', 10,10);
-	Tile nine = new Tile ('1', 10,10);
-	Tile ten = new Tile ('1', 10,10);
-
-
+  public static void main(String[] args) {
    	 Terminal terminal = TerminalFacade.createTextTerminal();
    	 terminal.enterPrivateMode();
 
