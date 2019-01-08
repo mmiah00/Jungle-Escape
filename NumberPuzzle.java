@@ -25,14 +25,14 @@ public class NumberPuzzle {
 			int rows = r % 2; //helps determine if row is even or odd
 			for (int c = 0; c < 13; c++) {
 				int cols = c % 3; //helps determine if column is divisible by 3
-				if (c == 0 || (c == 12 && rows == 0)) {//|| (rows == 1 && cols == 0)) { //the first column, last column, and odd rows with columns divisible by 3
+				if (c == 0 || (c == 12 && rows == 0)) { //the first column, last column in even rows
 					grid[r][c] = "|";
 				}
-				else if (rows == 1 && cols == 0 || c == 12) {
-					grid[r][c] = "  |";
+				else if (rows == 1 && cols == 0 || c == 12) { //odd rows with columns divisible by 3 and rest of last column
+					grid[r][c] = "  |"; //to make spaces larger
 				}
 				else if (((r == 0 || r == 8) && (cols != 0)) || (rows == 0 && cols != 0)) { //excluding what's already filled in, the first row, last row, and even rows with columns nondivisible by 3
-					grid[r][c] = "--";
+					grid[r][c] = "--"; //to make spaces larger
 				}
 				else if ((r == 0 || r == 8) && (cols == 0)) {
 					grid[r][c] = "-";
@@ -128,20 +128,20 @@ public class NumberPuzzle {
 	}
 
   public void moveUp() {
-		for (int c = 2; c < 12; c = c + 3) { //for every column
+		for (int c = 1; c < 11; c = c + 3) { //for every column
 			for (int r = 3; r < 8; r = r + 2) { //starting with second row
 				int orig = r;
-				if (grid[r-2][c] != " " && grid[r-2][c] == grid[r][c]) { //if first and second row are equal
+				if (grid[r-2][c] != " " && grid[r-2][c].equals(grid[r][c])) { //if first and second row are equal
 					int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 					grid[r-2][c] = "" + newNum;
 					grid[r][c] = " ";
           r = r-2;
 				}
-				while (r != 1 && grid[r-2][c] == " ") { //if not the first row and row above is empty
+				while (r != 1 && grid[r-2][c].equals(" ")) { //if not the first row and row above is empty
 					grid[r-2][c] = grid[r][c]; //move up
 					grid [r][c] = " ";
 					r = r-2;
-					if (r != 1 && grid[r-2][c] != " " && grid[r-2][c] == grid[r][c]) { //if row above is the same number
+					if (r != 1 && grid[r-2][c] != " " && grid[r-2][c].equals(grid[r][c])) { //if row above is the same number
 						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 						grid[r-2][c] = "" + newNum;
 						grid[r][c] = " ";
@@ -155,7 +155,7 @@ public class NumberPuzzle {
 	}
 
   public void moveDown() {
-		for (int c = 2; c < 12; c = c + 3) { //for every column
+		for (int c = 1; c < 11; c = c + 3) { //for every column
 			for (int r = 5; r > 0; r = r - 2) { //starting with third row
 				int orig = r;
 				if (grid[r+2][c] != " " && grid[r+2][c].equals(grid[r][c])) { //if third and last row are the same
