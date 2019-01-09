@@ -1,4 +1,3 @@
-/*
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.TerminalFacade;
 import com.googlecode.lanterna.input.Key;
@@ -12,7 +11,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-*/
+
 import java.util.*;
 
 public class NumberPuzzle {
@@ -168,7 +167,7 @@ public class NumberPuzzle {
 					grid[r+2][c] = grid[r][c]; //move down
 					grid [r][c] = " ";
 					r = r+2;
-					if (r != 7 && grid[r+2][c] != " " && grid[r+2][c].equals(grid[r][c])) { //if row below has the same number
+					if (r != 7 && grid[r+2][c ] != " " && grid[r+2][c].equals(grid[r][c])) { //if row below has the same number
 						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
 						grid[r+2][c] = "" + newNum;
 						grid[r][c] = " ";
@@ -208,9 +207,35 @@ public class NumberPuzzle {
 		return s;
 	}
 
+	public static void putString(int r, int c,Terminal t, String s){
+		t.moveCursor(r,c);
+		for(int i = 0; i < s.length();i++){
+			t.putCharacter(s.charAt(i));
+		}
+	}
+
 	public static void main(String[] args) {
+		Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
+
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
 		NumberPuzzle A = new NumberPuzzle();
-		System.out.println(A.toString());
+		putString(0, 1, terminal, A.toString());
+		while (!(A.isComplete())) {
+			Key key = terminal.readInput();
+			if (key != null){
+				if (key.getKind() == Key.Kind.Escape) {
+					terminal.exitPrivateMode();
+				}
+				if (key.getKind() == Key.Kind.ArrowLeft) {
+					A.moveLeft();
+					putString(0, 1, terminal, A.toString());
+				}
+			}
+		}
+		terminal.exitPrivateMode();
 	}
 
 }
