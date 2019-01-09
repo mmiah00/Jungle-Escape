@@ -54,20 +54,21 @@ public class JungleEscape {
     terminal.setCursorVisible(false);
 
     boolean running = true;
-    int mode = 0;
-    long lastTime =  System.currentTimeMillis();
-    long currentTime = lastTime;
-    long timer = 0;
 
 
-    while(running){
       NumberPuzzle A = new NumberPuzzle();
       putString(0, 1, terminal, A.toString());
-      while (!(A.isComplete())) {
+
+      //while (!(A.)) {
+        //putString(0,1, terminal, A.toString());
+      while(running){
+        running = (!(A.isComplete()));
+        putString(0, 1, terminal, A.toString());
         Key key = terminal.readInput();
         if (key != null){
           if (key.getKind() == Key.Kind.Escape) {
             terminal.exitPrivateMode();
+            running = false;
           }
           if (key.getKind() == Key.Kind.ArrowLeft) {
             A.moveLeft();
@@ -82,8 +83,8 @@ public class JungleEscape {
             A.moveDown();
           }
         }
-      }
-      running = false;
+      //}
+      //running = false;
     }
   }
 }
