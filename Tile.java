@@ -1,11 +1,6 @@
 public class Tile {
-<<<<<<< HEAD
   private char tens, ones; //num 1 is 0 or 1 for the tens digit and num 2 is the ones digit
   private int x,y;
-=======
-  private static char tens, ones; //num 1 is 0 or 1 for the tens digit and num 2 is the ones digit
-  private static int x,y;
->>>>>>> fifteenPuzzle
 
   public Tile (char num1, char num2, int xcor, int ycor) {
   	tens = num1;
@@ -13,8 +8,6 @@ public class Tile {
   	x = xcor;
   	y = ycor;
   }
-
-<<<<<<< HEAD
   public int xcor () {
     return x;
   }
@@ -31,16 +24,12 @@ public class Tile {
     return ones;
   }
 
-  public String toString () {
-	   return "._______.\n|   	|\n|   "+ tens + ones + "   |\n._______.";
-=======
   public static int xcor () {
     return x;
   }
 
   public static int ycor () {
     return y;
->>>>>>> fifteenPuzzle
   }
 
   public static char tens () {
