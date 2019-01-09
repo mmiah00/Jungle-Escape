@@ -21,13 +21,30 @@ public class JungleEscape {
       t.putCharacter(s.charAt(i));
     }
   }
-
+  /*
   public static void play2028(Terminal t) {
     NumberPuzzle A = new NumberPuzzle();
-    putString(1, 1, t, A.toString());
-    running = false;
-  }
+    putString(0, 1, t, A.toString());
+    while (!(A.isComplete())) {
+      if (key.getKind() == Key.Kind.Escape) {
+        terminal.exitPrivateMode();
+      }
+      if (key.getKind() == Key.Kind.ArrowLeft) {
+        A.moveLeft();
+      }
+      if (key.getKind() == Key.Kind.ArrowRight) {
+        A.moveRight();
+      }
+      if (key.getKind() == Key.Kind.ArrowUp) {
+        A.moveUp();
+      }
+      if (key.getKind() == Key.Kind.ArrowDown) {
+        A.moveDown();
+      }
+    }
 
+  }
+*/
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -44,10 +61,31 @@ public class JungleEscape {
 
 
     while(running){
-      play2028();
+      NumberPuzzle A = new NumberPuzzle();
+      putString(0, 1, terminal, A.toString());
+      while (!(A.isComplete())) {
+        Key key = terminal.readInput();
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+          }
+          if (key.getKind() == Key.Kind.ArrowLeft) {
+            A.moveLeft();
+          }
+          if (key.getKind() == Key.Kind.ArrowRight) {
+            A.moveRight();
+          }
+          if (key.getKind() == Key.Kind.ArrowUp) {
+            A.moveUp();
+          }
+          if (key.getKind() == Key.Kind.ArrowDown) {
+            A.moveDown();
+          }
+        }
+      }
+      running = false;
     }
   }
-
 }
   /*
   create terminal
