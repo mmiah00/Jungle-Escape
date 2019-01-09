@@ -45,6 +45,20 @@ public class FifteenPuzzle {
     nums[15] = new Tile (' ', ' ', 43, 25);
   }
 
+  public void flip (Tile one, Tile another) {
+    nums[getIndex (one)] = another;
+    nums[getIndex (another)] = one; 
+  }
+
+  public int getIndex (Tile aTile) {
+    for (int x = 0; x < nums.length; x ++) {
+      if (nums[x] == aTile) {
+        return x;
+      }
+    }
+    return -1;
+  }
+
   /*
   public static void putString (Tile aTile, Terminal t) {
     t.moveCursor (aTile.xcor(), aTile.ycor());
@@ -56,12 +70,12 @@ public class FifteenPuzzle {
   */
 
   public void complete () {
-    String actual = "0102030405060708091011131415  ";
+    String actual = "0102030405060708091011131415  "; //the order it should be
     String ans = "";
     for (int i = 0; i < nums.length; i ++) {
-      ans += nums[i].tens () + nums[i].ones ();
+      ans += nums[i].tens () + nums[i].ones (); //going through each tile to find their nums and add them to the string
     }
-    done = (actual == ans);
+    done = (actual == ans); //update done variable, if done that means its complete
   }
 
   public String toString() {
