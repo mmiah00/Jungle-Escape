@@ -14,3 +14,4 @@ Maisha: I finished writing the Tile class and used the Terminal Demo code to wri
 
 1/8/2019
 Maisha: Vivien and I talked about the necesities of the terminal code and we have yet to decide if we are just going to keep all the key controls in our main JungleEscape game or keep them in the game. I spent most of the class trying to figure out how to merge and deal with branches to gitHub. 
+Vivien: I focused on trying to get 2048 to work with terminal input. I got the grid and beginning numbers to show up on a terminal in private mode. However, when I use the keystrokes, I'm not sure if 2048 is slow or just not moving at all. I need to test that and see if I need to use the Screen class intead. 
