@@ -112,23 +112,14 @@ public class FifteenPuzzle {
     while(!done){
       int x = board.nums[15].xcor ();
       int y = board.nums[15].ycor ();
-      putString (board.nums[0], terminal);
-      putString (board.nums[1], terminal);
-      terminal.moveCursor(size.getColumns()-5,5);
-      terminal.applyBackgroundColor(Terminal.Color.RED);
-      terminal.applyForegroundColor(Terminal.Color.YELLOW);
-      terminal.applySGR(Terminal.SGR.ENTER_BOLD);
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.putCharacter('\u262d');
-      terminal.putCharacter(' ');
-      terminal.moveCursor(size.getColumns()-5,6);
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-      terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			
+			for (int i = 0; i < board.nums.length; i ++) {
+        putString (board.nums[i], terminal);
+      }
+			//terminal.putCharacter(' ');
+			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			terminal.applySGR(Terminal.SGR.RESET_ALL);
 
       Key key = terminal.readInput();
 
