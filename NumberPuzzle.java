@@ -1,3 +1,4 @@
+/*
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.TerminalFacade;
 import com.googlecode.lanterna.input.Key;
@@ -11,7 +12,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-
+*/
 import java.util.*;
 
 public class NumberPuzzle {
@@ -207,6 +208,7 @@ public class NumberPuzzle {
 		return s;
 	}
 
+/*
 	public static void putString(int r, int c,Terminal t, String s){
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
@@ -214,7 +216,42 @@ public class NumberPuzzle {
 		}
 	}
 
+	public void putPuzzle(Terminal terminal){
+
+		String[] parts = toString().split("\n");
+		String row1 = parts[0];
+		String row2 = parts[1];
+		String row3 = parts[2];
+		String row4 = parts[3];
+		String row5 = parts[4];
+		String row6 = parts[5];
+		String row7 = parts[6];
+		String row8 = parts[7];
+		String row9 = parts[8];
+		putString(0, 1, terminal, row1);
+		putString(0, 2, terminal, row2);
+		putString(0, 3, terminal, row3);
+		putString(0, 4, terminal, row4);
+		putString(0, 5, terminal, row5);
+		putString(0, 6, terminal, row6);
+		putString(0, 7, terminal, row7);
+		putString(0, 8, terminal, row8);
+		putString(0, 9, terminal, row9);
+	}
+
+
+*/
 	public static void main(String[] args) {
+		NumberPuzzle A = new NumberPuzzle();
+		for (int i = 0; i < 5; i++) {
+			A.moveLeft();
+			System.out.println(A.toString());
+		}
+
+
+
+
+		/*
 		Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
@@ -222,7 +259,7 @@ public class NumberPuzzle {
     terminal.setCursorVisible(false);
 
 		NumberPuzzle A = new NumberPuzzle();
-		putString(0, 1, terminal, A.toString());
+		A.putPuzzle(terminal);
 		while (!(A.isComplete())) {
 			Key key = terminal.readInput();
 			if (key != null){
@@ -231,11 +268,13 @@ public class NumberPuzzle {
 				}
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
-					putString(0, 1, terminal, A.toString());
+					terminal.clearScreen();
+					A.putPuzzle(terminal);
 				}
 			}
 		}
 		terminal.exitPrivateMode();
 	}
-
+*/
+}
 }
