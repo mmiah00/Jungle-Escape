@@ -110,25 +110,16 @@ public class FifteenPuzzle {
     //terminal.moveCursor(x,y);
 
     while(!done){
-      putString (board.nums[0], terminal);
-      putString (board.nums[1], terminal);
-    }
-/*
-      terminal.moveCursor(size.getColumns()-5,5);
-      terminal.applyBackgroundColor(Terminal.Color.RED);
-      terminal.applyForegroundColor(Terminal.Color.YELLOW);
-      terminal.applySGR(Terminal.SGR.ENTER_BOLD);
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.putCharacter('\u262d');
-      terminal.putCharacter(' ');
-      terminal.moveCursor(size.getColumns()-5,6);
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.putCharacter(' ');
-      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-      terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+      int x = board.nums[15].xcor ();
+      int y = board.nums[15].ycor ();
+			
+			for (int i = 0; i < board.nums.length; i ++) {
+        putString (board.nums[i], terminal);
+      }
+			//terminal.putCharacter(' ');
+			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			terminal.applySGR(Terminal.SGR.RESET_ALL);
 
       Key key = terminal.readInput();
 
@@ -138,7 +129,7 @@ public class FifteenPuzzle {
         if (key.getKind() == Key.Kind.Escape) {
 
           terminal.exitPrivateMode();
-          running = false;
+          //running = false;
         }
 
         if (key.getKind() == Key.Kind.ArrowLeft) {
@@ -165,16 +156,6 @@ public class FifteenPuzzle {
           y++;
         }
         //space moves it diagonally
-        if (key.getCharacter() == ' ') {
-          terminal.moveCursor(x,y);
-          terminal.putCharacter(' ');
-          y++;
-          x++;
-        }
-        putString(1,4,terminal,"["+key.getCharacter() +"]");
-        putString(1,1,terminal,key+"        ");//to clear leftover letters pad withspaces
-      }
-      */
 
       //DO EVEN WHEN NO KEY PRESSED:
       long tEnd = System.currentTimeMillis();
@@ -188,6 +169,8 @@ public class FifteenPuzzle {
       }
 
     }
+  }
+}
 }
 
 //javac -cp "lanterna.jar;." FifteenPuzzle.java
