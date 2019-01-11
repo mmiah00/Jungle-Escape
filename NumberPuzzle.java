@@ -8,7 +8,7 @@ public class NumberPuzzle {
 		grid = new String[4][4];
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
-				grid[r][c] = " ";
+				grid[r][c] = "    ";
 			}
 		}
 	addStartNums();
@@ -18,25 +18,25 @@ public class NumberPuzzle {
 		Random randgen = new Random();
 		int randRow = randgen.nextInt(4);
 		int randCol = randgen.nextInt(4);
-		grid[randRow][randCol] = "2"; //first '2' is placed randomly
+		grid[randRow][randCol] = "2   "; //first '2' is placed randomly
 		randRow = randgen.nextInt(4); //another random row and col
 		randCol = randgen.nextInt(4);
-		while (!(grid[randRow][randCol].equals(" "))) { //if the row and col are the same as the first
+		while (!(grid[randRow][randCol].equals("    "))) { //if the row and col are the same as the first
 			randRow = randgen.nextInt(4); //find another random row and col
 			randCol = randgen.nextInt(4);
 		}
-		grid[randRow][randCol] = "2"; //place second '2'
+		grid[randRow][randCol] = "2   "; //place second '2'
 	}
 
 	private void inputNewNum() {
 		Random randgen = new Random();
 		int randRow = randgen.nextInt(4);
 		int randCol = randgen.nextInt(4);
-		while (!(grid[randRow][randCol].equals(" "))) { //if the row and col are the same as the first
+		while (!(grid[randRow][randCol].equals("    "))) { //if the row and col are the same as the first
 			randRow = randgen.nextInt(4); //find another random row and col
 			randCol = randgen.nextInt(4);
 		}
-		grid[randRow][randCol] = "2"; //place second '2'
+		grid[randRow][randCol] = "2   "; //place second '2'
 	}
 
 	public String addSpaces(String s) {
@@ -49,23 +49,23 @@ public class NumberPuzzle {
 	}
 
 	public void moveLeft() {
-		for (int r = 1; r < 4; r++) { //for every row
+		for (int r = 0; r < 4; r++) { //for every row
 			for (int c = 1; c < 4; c++) { //starting from the second col
 				int orig = c;
-				if (!(grid[r][c-1].equals(" ")) && grid[r][c-1].equals(grid[r][c])) { // if the first and second col are the same (and not empty)
+				if (!(grid[r][c-1].equals("    ")) && grid[r][c-1].equals(grid[r][c])) { // if the first and second col are the same (and not empty)
 					String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-					grid[r][c-1] = newNum; //+ addSpaces(newNum);
-					grid[r][c] = " ";
+					grid[r][c-1] = newNum + addSpaces(newNum);
+					grid[r][c] = "    ";
 					c = c -1;
 				}
-				while (c != 0 && grid[r][c-1].equals(" ")) { //if not the first col and space to left is empty
+				while (c != 0 && grid[r][c-1].equals("    ")) { //if not the first col and space to left is empty
 					grid[r][c-1] = grid[r][c]; //move to left
-					grid [r][c] = " ";
+					grid [r][c] = "    ";
 					c = c-1;
-					if (c != 0 && !(grid[r][c-1].equals(" ")) && grid[r][c-1].equals(grid[r][c])) { //if number to left is the same
+					if (c != 0 && !(grid[r][c-1].equals("    ")) && grid[r][c-1].equals(grid[r][c])) { //if number to left is the same
 						String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-						grid[r][c-1] = newNum; //+ addSpaces(newNum);
-						grid[r][c] = " ";
+						grid[r][c-1] = newNum + addSpaces(newNum);
+						grid[r][c] = "    ";
 						c = c -1;
 					}
 				}
@@ -76,7 +76,7 @@ public class NumberPuzzle {
 	}
 
 	public void moveRight() {
-		for (int r = 1; r < 4; r++) { //for every row
+		for (int r = 0; r < 4; r++) { //for every row
 			for (int c = 2; c > -1; c--) { //starting from the third col
 				int orig = c;
 				if (!(grid[r][c+1].equals(" ")) && grid[r][c+1].equals(grid[r][c])) { //if third and last col are the same
