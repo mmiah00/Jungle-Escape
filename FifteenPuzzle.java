@@ -111,8 +111,9 @@ public class FifteenPuzzle {
     if (done) {
       putString (1,2,terminal, "You Finished!");
     }
+
     while(!done){
-      Tile space = board.nums[15]; 
+      Tile space = board.nums[15];
 
 			for (int i = 0; i < board.nums.length; i ++) {
         putString (board.nums[i], terminal);
@@ -124,52 +125,56 @@ public class FifteenPuzzle {
 
       Key key = terminal.readInput();
 
-      if (key != null)
-      {
-
-        if (key.getKind() == Key.Kind.Escape) {
-
+      if (key != null){
+        if (key.getKind() == Key.Kind.Escape) { //to exit out of terminal
           terminal.exitPrivateMode();
           done = true;
         }
 
         if (key.getKind() == Key.Kind.ArrowLeft) {
-
+          int spacex = board.getIndex (space);
+          if (spacex != 0 && spacex != 4 && spacex != 8 && spacex != 12) { //checking if within bounds
+            //switch so the space moves to the left
+            nums [spacex] = nums[spacex - 1]; //puts the tile to the left in its position
+            nums [spacex - 1] = space; //puts the space tile in the position to the left
+            space = nums [spacex - 1]; //stores the new empty Tile in the space variable
+          }
         }
 
         if (key.getKind() == Key.Kind.ArrowRight) {
-          terminal.moveCursor(x,y);
-          terminal.putCharacter(' ');
-          x++;
+          int spacex = board.getIndex (space);
+          if (spacex != 3 && spacex != 7 && spacex != 11 && spacex != 15) { //checking if within bounds
+            //switch so the space moves to the left
+            nums [spacex] = nums[spacex + 1]; //puts the tile to the left in its position
+            nums [spacex + 1] = space; //puts the space tile in the position to the left
+            space = nums [spacex + 1]; //stores the new empty Tile in the space variable
+          }
         }
 
         if (key.getKind() == Key.Kind.ArrowUp) {
-          terminal.moveCursor(x,y);
-          terminal.putCharacter(' ');
-          y--;
+          int spacex = board.getIndex (space);
+          if (spacex != 0 && spacex != 1 && spacex != 2 && spacex != 3) { //checking if within bounds
+            //switch so the space moves to the left
+            nums [spacex] = nums[spacex - 4]; //puts the tile to the left in its position
+            nums [spacex - 4] = space; //puts the space tile in the position to the left
+            space = nums [spacex - 4]; //stores the new empty Tile in the space variable
+          }
         }
 
         if (key.getKind() == Key.Kind.ArrowDown) {
-          terminal.moveCursor(x,y);
-          terminal.putCharacter(' ');
-          y++;
+          int spacex = board.getIndex (space);
+          if (spacex != 12 && spacex != 13 && spacex != 14 && spacex != 15) { //checking if within bounds
+            //switch so the space moves to the left
+            nums [spacex] = nums[spacex + 4]; //puts the tile to the left in its position
+            nums [spacex + 4] = space; //puts the space tile in the position to the left
+            space = nums [spacex + 4]; //stores the new empty Tile in the space variable
+          }
         }
-        //space moves it diagonally
-
-      //DO EVEN WHEN NO KEY PRESSED:
-      long tEnd = System.currentTimeMillis();
-      long millis = tEnd - tStart;
-      putString(1,2,terminal,"Milliseconds since start of program: "+millis);
-      if(millis/1000 > lastSecond){
-        lastSecond = millis / 1000;
-        //one second has passed.
-        putString(1,3,terminal,"Seconds since start of program: "+lastSecond);
-
       }
 
+      board.complete (); //check to see if the board is in order , updates the done variable
     }
   }
-}
 }
 
 //javac -cp "lanterna.jar;." FifteenPuzzle.java
