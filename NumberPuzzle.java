@@ -156,8 +156,24 @@ public class NumberPuzzle {
 		inputNewNum();
 	}
 
+	public boolean isComplete() { //checks if there are anymore possible moves
+    boolean complete = true;
+    for (int r = 0; r < 4; r++) {
+      for (int c = 0; c < 4; c++) {
+        if (grid[r][c] == " " || //if there is empty space
+            (c != 0 && grid[r][c-1] == grid[r][c]) || //can combine using moveLeft
+            (c != 3 && grid[r][c+1] == grid[r][c]) || //can combine using moveRight
+            (r != 0 && grid[r-1][c] == grid[r][c]) || //can combine using moveUp
+            (r != 3 && grid[r+1][c] == grid[r][c])) { //can combine using moveDown
+          return false; //then not complete
+        }
+      }
+    }
+    return complete;
+  }
+
 	public String toString() {
-		String s = "";
+		String s = "|-------------------|\n";
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
 				if (c == 0) {
@@ -167,7 +183,12 @@ public class NumberPuzzle {
 					s = s + grid[r][c] + "|";
 				}
 			}
-			s = s + "\n";
+			if (r == 3) {
+				s = s + "\n|-------------------|";
+			}
+			else {
+				s = s + "\n|----+----+----+----|\n";
+			}
 		}
 		return s;
 	}
