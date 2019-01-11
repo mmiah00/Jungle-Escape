@@ -93,6 +93,60 @@ public class NumberPuzzle {
 		inputNewNum();
 	}
 
+	public void moveUp() {
+		for (int c = 0; c < 4; c++) { //for every column
+			for (int r = 1; r < 4; r++) { //starting with second row
+				int orig = r;
+				if (!(grid[r-1][c].equals(" ")) && grid[r-1][c].equals(grid[r][c])) { //if first and second row are equal
+					int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
+					grid[r-1][c] = "" + newNum;
+					grid[r][c] = " ";
+          r = r-1;
+				}
+				while (r != 0 && grid[r-1][c].equals(" ")) { //if not the first row and row above is empty
+					grid[r-1][c] = grid[r][c]; //move up
+					grid [r][c] = " ";
+					r = r-1;
+					if (r != 0 && !(grid[r-1][c].equals(" ")) && grid[r-1][c].equals(grid[r][c])) { //if row above is the same number
+						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
+						grid[r-1][c] = "" + newNum;
+						grid[r][c] = " ";
+						r = r-1;
+					}
+				}
+				r = orig;
+			}
+		}
+		inputNewNum();
+	}
+
+  public void moveDown() {
+		for (int c = 0; c < 4; c++) { //for every column
+			for (int r = 2; r > -1; r--) { //starting with third row
+				int orig = r;
+				if (!(grid[r+1][c].equals(" ")) && grid[r+1][c].equals(grid[r][c])) { //if third and last row are the same
+					int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
+					grid[r+1][c] = "" + newNum;
+					grid[r][c] = " ";
+          r = r+1;
+				}
+				while (r != 3 && grid[r+1][c].equals(" ")) { //if not the last row and row below is empty
+					grid[r+1][c] = grid[r][c]; //move down
+					grid [r][c] = " ";
+					r = r+1;
+					if (r != 3 && !(grid[r+1][c].equals(" ")) && grid[r+1][c].equals(grid[r][c])) { //if row below has the same number
+						int newNum = Integer.parseInt(grid[r][c]) * 2; //combine their numbers
+						grid[r+1][c] = "" + newNum;
+						grid[r][c] = " ";
+						r = r+1;
+					}
+				}
+				r = orig;
+			}
+		}
+		inputNewNum();
+	}
+
 	public String toString() {
 		String s = "";
 		for (int r = 0; r < 4; r++) {
@@ -112,9 +166,9 @@ public class NumberPuzzle {
 	public static void main(String[] args) {
 		NumberPuzzle A = new NumberPuzzle();
 		System.out.println(A.toString());
-		for (int i = 0; i < 5; i++) {
-			A.moveRight();
-			System.out.println(A.toString());
+		for (int i = 0; i < 25; i++) {
+			A.moveDown();
 		}
+		System.out.println(A.toString());
 	}
 }
