@@ -108,11 +108,12 @@ public class FifteenPuzzle {
     long lastSecond = 0;
 
     //terminal.moveCursor(x,y);
-
+    if (done) {
+      putString (1,2,terminal, "You Finished!");
+    }
     while(!done){
-      int x = board.nums[15].xcor ();
-      int y = board.nums[15].ycor ();
-			
+      Tile space = board.nums[15]; 
+
 			for (int i = 0; i < board.nums.length; i ++) {
         putString (board.nums[i], terminal);
       }
@@ -129,13 +130,11 @@ public class FifteenPuzzle {
         if (key.getKind() == Key.Kind.Escape) {
 
           terminal.exitPrivateMode();
-          //running = false;
+          done = true;
         }
 
         if (key.getKind() == Key.Kind.ArrowLeft) {
-          terminal.moveCursor(x,y);
-          terminal.putCharacter(' ');
-          x--;
+
         }
 
         if (key.getKind() == Key.Kind.ArrowRight) {
