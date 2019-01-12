@@ -214,14 +214,14 @@ public class NumberPuzzle {
 			t.putCharacter(s.charAt(i));
 		}
 	}
-
+/*
 	public void putPuzzle(Terminal terminal){
 		String[] parts = toString().split("\n");
 		for (int i = 1; i < 10; i++) {
 			putString(0, i, terminal, parts[i]);
 		}
 	}
-
+*/
 	public static void main(String[] args) {
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -229,30 +229,31 @@ public class NumberPuzzle {
 		TerminalSize size = terminal.getTerminalSize();
 		terminal.setCursorVisible(false);
 
-
-		boolean running = true;
 		NumberPuzzle A = new NumberPuzzle();
 
-		while (running) {
-			running = (!(A.isComplete()));
+		while (!(A.isComplete())) {
 			putString(0, 0, terminal, A.toString());
-			//while (!(A.isComplete())) {
-				Key key = terminal.readInput();
-				if (key != null){
-					if (key.getKind() == Key.Kind.Escape) {
-						terminal.exitPrivateMode();
-						running = false;
-					}
-					if (key.getKind() == Key.Kind.ArrowLeft) {
-						A.moveLeft();
-						//putString(0, 0, terminal, A.toString());
-						//terminal.clearScreen();
-						//A.putPuzzle(terminal);
-					}
-				//}
+			Key key = terminal.readInput();
+			if (key != null){
+				if (key.getKind() == Key.Kind.Escape) {
+					terminal.exitPrivateMode();
+				}
+				if (key.getKind() == Key.Kind.ArrowLeft) {
+					A.moveLeft();
+				}
+				if (key.getKind() == Key.Kind.ArrowRight) {
+					A.moveRight();
+				}
+				if (key.getKind() == Key.Kind.ArrowUp) {
+					A.moveUp();
+				}
+				if (key.getKind() == Key.Kind.ArrowDown) {
+					A.moveDown();
+				}
 			}
 		}
-			terminal.exitPrivateMode();
+
+		terminal.exitPrivateMode();
 	}
 
 }
