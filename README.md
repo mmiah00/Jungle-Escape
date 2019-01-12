@@ -18,9 +18,11 @@ Vivien: I focused on trying to get 2048 to work with terminal input. I got the g
 
 1/9/2019
 Vivien: I worked on trying to fix the display issue. During class, I got the terminal to respond to the escape key, but it did not respond to any other. At home, I got the other keys to work. However, although addNewNum is implemented, the numbers are not moving. I'm not sure why. 
+Maisha: I kept trying to get around the terminal code and how to make test the code on my laptop. I worked out issues with github. I have gotten used to merging and committing by now. 
 
 1/10/2019
 Vivien: I made a lot of headway today. After taking Mr. K's suggestion, I rewrote my NumberPuzzle class and it was much easier to write. I still had a little difficulty writing a method that would allow me to adjust the spacing for different digit numbers, but I created a new method addSpaces that fixed that. Everything with NumberPuzzle seems to be working fine, so tomorrow I can incorporate the terminal display portion of the code and finish NumberPuzzle. 
+Maisha: After finally testing it on the school computer, I saw that my code did print out my grid successfully. I have thus finished printing the grid and also wrote the key contorl commands. 
 
 1/11/2019
 Vivien: I finished writing and testing the main in NumberPuzzle. When I was working on my code at home, I found that the terminal did not register keystrokes and therefore did not move 2048. However, when I used PuTTy to ssh into the school computers, NumberPuzzle worked properly.
