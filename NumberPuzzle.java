@@ -33,14 +33,14 @@ public class NumberPuzzle {
 		Random randgen = new Random();
 		int randRow = randgen.nextInt(4);
 		int randCol = randgen.nextInt(4);
-		grid[randRow][randCol] = "2   "; //first '2' is placed randomly
+		grid[randRow][randCol] = "   2"; //first '2' is placed randomly
 		randRow = randgen.nextInt(4); //another random row and col
 		randCol = randgen.nextInt(4);
 		while (!(grid[randRow][randCol].equals("    "))) { //if the row and col are the same as the first
 			randRow = randgen.nextInt(4); //find another random row and col
 			randCol = randgen.nextInt(4);
 		}
-		grid[randRow][randCol] = "2   "; //place second '2'
+		grid[randRow][randCol] = "   2"; //place second '2'
 	}
 
 	private void inputNewNum() {
@@ -51,7 +51,7 @@ public class NumberPuzzle {
 			randRow = randgen.nextInt(4); //find another random row and col
 			randCol = randgen.nextInt(4);
 		}
-		grid[randRow][randCol] = "2   "; //place second '2'
+		grid[randRow][randCol] = "   2"; //place second '2'
 	}
 
 	public String addSpaces(String s) {
@@ -69,7 +69,7 @@ public class NumberPuzzle {
 				int orig = c;
 				if (!(grid[r][c-1].equals("    ")) && grid[r][c-1].equals(grid[r][c])) { // if the first and second col are the same (and not empty)
 					String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-					grid[r][c-1] = newNum + addSpaces(newNum);
+					grid[r][c-1] = addSpaces(newNum) + newNum;
 					grid[r][c] = "    ";
 					c = c -1;
 				}
@@ -79,7 +79,7 @@ public class NumberPuzzle {
 					c = c-1;
 					if (c != 0 && !(grid[r][c-1].equals("    ")) && grid[r][c-1].equals(grid[r][c])) { //if number to left is the same
 						String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-						grid[r][c-1] = newNum + addSpaces(newNum);
+						grid[r][c-1] = addSpaces(newNum) + newNum;
 						grid[r][c] = "    ";
 						c = c -1;
 					}
@@ -96,7 +96,7 @@ public class NumberPuzzle {
 				int orig = c;
 				if (!(grid[r][c+1].equals("    ")) && grid[r][c+1].equals(grid[r][c])) { //if third and last col are the same
 					String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-					grid[r][c+1] = newNum + addSpaces(newNum);
+					grid[r][c+1] = addSpaces(newNum) + newNum;
 					grid[r][c] = "    ";
 					c = c+1;
 				}
@@ -106,7 +106,7 @@ public class NumberPuzzle {
 					c = c+1;
 					if (c != 3 && !(grid[r][c+1].equals("    ")) && grid[r][c+1].equals(grid[r][c])) { //if number to the left is the same
 						String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-						grid[r][c+1] = newNum + addSpaces(newNum);
+						grid[r][c+1] = addSpaces(newNum) + newNum;
 						grid[r][c] = "    ";
 						c = c+1;
 					}
@@ -123,7 +123,7 @@ public class NumberPuzzle {
 				int orig = r;
 				if (!(grid[r-1][c].equals("    ")) && grid[r-1][c].equals(grid[r][c])) { //if first and second row are equal
 					String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-					grid[r-1][c] = newNum + addSpaces(newNum);
+					grid[r-1][c] = addSpaces(newNum) + newNum;
 					grid[r][c] = "    ";
           r = r-1;
 				}
@@ -133,7 +133,7 @@ public class NumberPuzzle {
 					r = r-1;
 					if (r != 0 && !(grid[r-1][c].equals("    ")) && grid[r-1][c].equals(grid[r][c])) { //if row above is the same number
 						String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-						grid[r-1][c] = newNum + addSpaces(newNum);
+						grid[r-1][c] = addSpaces(newNum) + newNum;
 						grid[r][c] = "    ";
 						r = r-1;
 					}
@@ -150,7 +150,7 @@ public class NumberPuzzle {
 				int orig = r;
 				if (!(grid[r+1][c].equals("    ")) && grid[r+1][c].equals(grid[r][c])) { //if third and last row are the same
 					String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-					grid[r+1][c] = newNum + addSpaces(newNum);
+					grid[r+1][c] = addSpaces(newNum) + newNum;
 					grid[r][c] = "    ";
           r = r+1;
 				}
@@ -160,7 +160,7 @@ public class NumberPuzzle {
 					r = r+1;
 					if (r != 3 && !(grid[r+1][c].equals("    ")) && grid[r+1][c].equals(grid[r][c])) { //if row below has the same number
 						String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
-						grid[r+1][c] = newNum + addSpaces(newNum);
+						grid[r+1][c] = addSpaces(newNum) + newNum;
 						grid[r][c] = "    ";
 						r = r+1;
 					}
@@ -214,14 +214,7 @@ public class NumberPuzzle {
 			t.putCharacter(s.charAt(i));
 		}
 	}
-/*
-	public void putPuzzle(Terminal terminal){
-		String[] parts = toString().split("\n");
-		for (int i = 1; i < 10; i++) {
-			putString(0, i, terminal, parts[i]);
-		}
-	}
-*/
+
 	public static void main(String[] args) {
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
