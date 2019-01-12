@@ -171,7 +171,7 @@ public class FifteenPuzzle {
       board.complete (); //check to see if the board is in order , updates the done variable
       if (done) {
         putString (1,2,terminal, "You Finished!");
-        terminal.exitPrivateMode ();
+        terminal.exitPrivateMode (); //should exit once tile is completed 
       }
     }
   }
