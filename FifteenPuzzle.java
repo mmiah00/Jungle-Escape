@@ -108,9 +108,6 @@ public class FifteenPuzzle {
     long lastSecond = 0;
 
     //terminal.moveCursor(x,y);
-    if (done) {
-      putString (1,2,terminal, "You Finished!");
-    }
 
     while(!done){
       Tile space = board.nums[15];
@@ -170,9 +167,13 @@ public class FifteenPuzzle {
             space = nums [spacex + 4]; //stores the new empty Tile in the space variable
           }
         }
+        putString(1,4,terminal,"["+key.getCharacter() +"]");
       }
-
       board.complete (); //check to see if the board is in order , updates the done variable
+      if (done) {
+        putString (1,2,terminal, "You Finished!");
+        terminal.exitPrivateMode (); 
+      }
     }
   }
 }
