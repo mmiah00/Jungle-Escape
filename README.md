@@ -26,3 +26,7 @@ Maisha: After finally testing it on the school computer, I saw that my code did 
 
 1/11/2019
 Vivien: I finished writing and testing the main in NumberPuzzle. When I was working on my code at home, I found that the terminal did not register keystrokes and therefore did not move 2048. However, when I used PuTTy to ssh into the school computers, NumberPuzzle worked properly.
+Maisha: I took Vivien's advice and downloaded PuTTy to my laptop and used it to ssh into the school computer. I am currently working on fixing my merging issues and keeping track of my files
+
+1/12/2019
+Maisha: Today I worked on using PuTTy and am editing my code so that it can be tested. 
