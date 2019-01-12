@@ -12,7 +12,6 @@ import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
-
 import java.util.*;
 
 public class NumberPuzzle {
@@ -23,24 +22,24 @@ public class NumberPuzzle {
 		grid = new String[4][4];
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
-				grid[r][c] = "    ";
+				grid[r][c] = "    "; //4 spaces for 4 possible digits
 			}
 		}
-	addStartNums();
+	addStartNums(); //adds two "2" to the grid
 	}
 
 	private void addStartNums() {
 		Random randgen = new Random();
 		int randRow = randgen.nextInt(4);
 		int randCol = randgen.nextInt(4);
-		grid[randRow][randCol] = "   2"; //first '2' is placed randomly
+		grid[randRow][randCol] = "   2"; //first "2" is placed randomly
 		randRow = randgen.nextInt(4); //another random row and col
 		randCol = randgen.nextInt(4);
 		while (!(grid[randRow][randCol].equals("    "))) { //if the row and col are the same as the first
 			randRow = randgen.nextInt(4); //find another random row and col
 			randCol = randgen.nextInt(4);
 		}
-		grid[randRow][randCol] = "   2"; //place second '2'
+		grid[randRow][randCol] = "   2"; //place second "2"
 	}
 
 	private void inputNewNum() {
@@ -51,10 +50,10 @@ public class NumberPuzzle {
 			randRow = randgen.nextInt(4); //find another random row and col
 			randCol = randgen.nextInt(4);
 		}
-		grid[randRow][randCol] = "   2"; //place second '2'
+		grid[randRow][randCol] = "   2"; //place second "2"
 	}
 
-	public String addSpaces(String s) {
+	public String addSpaces(String s) { //adds spaces to account for the 4 spaces that should be in each position
 		String spaces = "";
 		int length = 4 - s.length();
 		for (int i = 0; i < length; i++) {
@@ -176,10 +175,10 @@ public class NumberPuzzle {
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
         if (grid[r][c] == " " || //if there is empty space
-            (c != 0 && grid[r][c-1] == grid[r][c]) || //can combine using moveLeft
-            (c != 3 && grid[r][c+1] == grid[r][c]) || //can combine using moveRight
-            (r != 0 && grid[r-1][c] == grid[r][c]) || //can combine using moveUp
-            (r != 3 && grid[r+1][c] == grid[r][c])) { //can combine using moveDown
+            (c != 0 && grid[r][c-1].equals(grid[r][c])) || //can combine using moveLeft
+            (c != 3 && grid[r][c+1].equals(grid[r][c])) || //can combine using moveRight
+            (r != 0 && grid[r-1][c].equals(grid[r][c])) || //can combine using moveUp
+            (r != 3 && grid[r+1][c].equals(grid[r][c]))) { //can combine using moveDown
           return false; //then not complete
         }
       }
@@ -187,7 +186,18 @@ public class NumberPuzzle {
     return complete;
   }
 
-	public String toString() {
+	public boolean beatGame() {
+    for (int r = 0; r < 4; r++) {
+      for (int c = 0; c < 4; c++) {
+				if (grid[r][c].equals("2048")) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public String toString() { //prints 2-d array grid with a grid around it to mimic game
 		String s = "|-------------------|\n";
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
@@ -208,7 +218,7 @@ public class NumberPuzzle {
 		return s;
 	}
 
-	public static void putString(int r, int c,Terminal t, String s){
+	public static void putString(int r, int c,Terminal t, String s){ //displays String on terminal
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
