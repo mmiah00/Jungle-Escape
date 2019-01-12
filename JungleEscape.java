@@ -21,30 +21,20 @@ public class JungleEscape {
       t.putCharacter(s.charAt(i));
     }
   }
-  /*
-  public static void play2028(Terminal t) {
-    NumberPuzzle A = new NumberPuzzle();
-    putString(0, 1, t, A.toString());
-    while (!(A.isComplete())) {
-      if (key.getKind() == Key.Kind.Escape) {
-        terminal.exitPrivateMode();
-      }
-      if (key.getKind() == Key.Kind.ArrowLeft) {
-        A.moveLeft();
-      }
-      if (key.getKind() == Key.Kind.ArrowRight) {
-        A.moveRight();
-      }
-      if (key.getKind() == Key.Kind.ArrowUp) {
-        A.moveUp();
-      }
-      if (key.getKind() == Key.Kind.ArrowDown) {
-        A.moveDown();
-      }
-    }
 
+  public static void scene1 (Terminal t) {
+    putString(0, 0, t, "            ,@@@@@@@,              ");
+    putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
+    putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
+    putString(0, 3, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
+    putString(0, 4, t, "%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’");
+    putString(0, 5, t, "%&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ ");
+    putString(0, 6, t, "‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ");
+    putString(0, 7, t, "    |o|        | |         | |     ");
+    putString(0, 8, t, "    |.|        | |         | |     ");
+    putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
   }
-*/
+
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -53,38 +43,13 @@ public class JungleEscape {
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
 
-    boolean running = true;
+    scene1(terminal);
 
-
-      NumberPuzzle A = new NumberPuzzle();
-      putString(0, 1, terminal, A.toString());
-
-      //while (!(A.)) {
-        //putString(0,1, terminal, A.toString());
-      while(running){
-        running = (!(A.isComplete()));
-        putString(0, 1, terminal, A.toString());
-        Key key = terminal.readInput();
-        if (key != null){
-          if (key.getKind() == Key.Kind.Escape) {
-            terminal.exitPrivateMode();
-            running = false;
-          }
-          if (key.getKind() == Key.Kind.ArrowLeft) {
-            A.moveLeft();
-          }
-          if (key.getKind() == Key.Kind.ArrowRight) {
-            A.moveRight();
-          }
-          if (key.getKind() == Key.Kind.ArrowUp) {
-            A.moveUp();
-          }
-          if (key.getKind() == Key.Kind.ArrowDown) {
-            A.moveDown();
-          }
-        }
-      //}
-      //running = false;
+    Key key = terminal.readInput();
+    if (key != null){
+      if (key.getKind() == Key.Kind.Escape) {
+        terminal.exitPrivateMode();
+      }
     }
   }
 }
