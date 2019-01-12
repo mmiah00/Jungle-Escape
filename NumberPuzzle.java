@@ -223,13 +223,15 @@ public class NumberPuzzle {
 		terminal.setCursorVisible(false);
 
 		NumberPuzzle A = new NumberPuzzle();
-
-		while (!(A.isComplete())) {
+		boolean running = true;
+		while (running) {
+			running = !(A.isComplete());
 			putString(0, 0, terminal, A.toString());
 			Key key = terminal.readInput();
 			if (key != null){
 				if (key.getKind() == Key.Kind.Escape) {
 					terminal.exitPrivateMode();
+					running = false;
 				}
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
@@ -245,7 +247,6 @@ public class NumberPuzzle {
 				}
 			}
 		}
-
 		terminal.exitPrivateMode();
 	}
 
