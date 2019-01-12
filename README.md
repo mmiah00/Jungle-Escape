@@ -21,3 +21,6 @@ Vivien: I worked on trying to fix the display issue. During class, I got the ter
 
 1/10/2019
 Vivien: I made a lot of headway today. After taking Mr. K's suggestion, I rewrote my NumberPuzzle class and it was much easier to write. I still had a little difficulty writing a method that would allow me to adjust the spacing for different digit numbers, but I created a new method addSpaces that fixed that. Everything with NumberPuzzle seems to be working fine, so tomorrow I can incorporate the terminal display portion of the code and finish NumberPuzzle. 
+
+1/11/2019
+Vivien: I finished writing and testing the main in NumberPuzzle. When I was working on my code at home, I found that the terminal did not register keystrokes and therefore did not move 2048. However, when I used PuTTy to ssh into the school computers, NumberPuzzle worked properly.
