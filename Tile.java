@@ -24,49 +24,7 @@ public class Tile {
     return ones;
   }
 
-  public static int xcor () {
-    return x;
-  }
-
-  public static int ycor () {
-    return y;
-  }
-
-  public static char tens () {
-    return tens;
-  }
-
-  public static char ones () {
-    return ones;
-  }
-
   public String toString () {
 	   return ".________.\n|        |\n|   "+ tens + ones + "   |\n|        |\n.________.";
-  }
-
-  /*
-  public void flip (Tile other) {
-  	char theirtens = other.tens;
-    char theirones = other.ones;
-  	int theirx = other.x;
-  	int theiry = other.y;
-  	char mytens = tens;
-    char myones = ones;
-  	int myx = x;
-  	int myy = y;
-  	tens = theirtens;
-    ones = theirones;
-  	x = theirx;
-  	y = theiry;
-  	other.tens = mytens;
-    other.ones = myones;
-  	other.x = myx;
-  	other.y = myy;
-  }
-  */
-
-  public static void main (String[] args) {
-    Tile test = new Tile ('1','2', 10,10);
-    System.out.println (test.toString ());
   }
 }
