@@ -106,11 +106,10 @@ public class FifteenPuzzle {
 
     long tStart = System.currentTimeMillis();
     long lastSecond = 0;
-
+    Tile space = board.nums[15];
     //terminal.moveCursor(x,y);
 
     while(!done){
-      Tile space = board.nums[15];
 
 			for (int i = 0; i < board.nums.length; i ++) {
         putString (board.nums[i], terminal);
@@ -172,7 +171,7 @@ public class FifteenPuzzle {
       board.complete (); //check to see if the board is in order , updates the done variable
       if (done) {
         putString (1,2,terminal, "You Finished!");
-        terminal.exitPrivateMode (); 
+        terminal.exitPrivateMode ();
       }
     }
   }
