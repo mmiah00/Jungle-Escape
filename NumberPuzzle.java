@@ -1,4 +1,3 @@
-/*
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.TerminalFacade;
 import com.googlecode.lanterna.input.Key;
@@ -12,7 +11,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-*/
+
 
 import java.util.*;
 
@@ -209,69 +208,51 @@ public class NumberPuzzle {
 		return s;
 	}
 
+	public static void putString(int r, int c,Terminal t, String s){
+		t.moveCursor(r,c);
+		for(int i = 0; i < s.length();i++){
+			t.putCharacter(s.charAt(i));
+		}
+	}
+
+	public void putPuzzle(Terminal terminal){
+		String[] parts = toString().split("\n");
+		for (int i = 1; i < 10; i++) {
+			putString(0, i, terminal, parts[i]);
+		}
+	}
+
 	public static void main(String[] args) {
+		Terminal terminal = TerminalFacade.createTextTerminal();
+		terminal.enterPrivateMode();
+
+		TerminalSize size = terminal.getTerminalSize();
+		terminal.setCursorVisible(false);
+
+
+		boolean running = true;
 		NumberPuzzle A = new NumberPuzzle();
-		System.out.println(A.toString());
-		for (int i = 0; i < 10; i++) {
-			A.moveDown();
-			System.out.println(A.toString());
-		}
-	}
-}
 
-/*
-public static void putString(int r, int c,Terminal t, String s){
-	t.moveCursor(r,c);
-	for(int i = 0; i < s.length();i++){
-		t.putCharacter(s.charAt(i));
-	}
-}
-
-public void putPuzzle(Terminal terminal){
-
-	String[] parts = toString().split("\n");
-	String row1 = parts[0];
-	String row2 = parts[1];
-	String row3 = parts[2];
-	String row4 = parts[3];
-	String row5 = parts[4];
-	String row6 = parts[5];
-	String row7 = parts[6];
-	String row8 = parts[7];
-	String row9 = parts[8];
-	putString(0, 1, terminal, row1);
-	putString(0, 2, terminal, row2);
-	putString(0, 3, terminal, row3);
-	putString(0, 4, terminal, row4);
-	putString(0, 5, terminal, row5);
-	putString(0, 6, terminal, row6);
-	putString(0, 7, terminal, row7);
-	putString(0, 8, terminal, row8);
-	putString(0, 9, terminal, row9);
-}
-
-
-	Terminal terminal = TerminalFacade.createTextTerminal();
-	terminal.enterPrivateMode();
-
-	TerminalSize size = terminal.getTerminalSize();
-	terminal.setCursorVisible(false);
-
-	NumberPuzzle A = new NumberPuzzle();
-	A.putPuzzle(terminal);
-	while (!(A.isComplete())) {
-		Key key = terminal.readInput();
-		if (key != null){
-			if (key.getKind() == Key.Kind.Escape) {
-				terminal.exitPrivateMode();
-			}
-			if (key.getKind() == Key.Kind.ArrowLeft) {
-				A.moveLeft();
-				terminal.clearScreen();
-				A.putPuzzle(terminal);
+		while (running) {
+			running = (!(A.isComplete()));
+			putString(0, 0, terminal, A.toString());
+			//while (!(A.isComplete())) {
+				Key key = terminal.readInput();
+				if (key != null){
+					if (key.getKind() == Key.Kind.Escape) {
+						terminal.exitPrivateMode();
+						running = false;
+					}
+					if (key.getKind() == Key.Kind.ArrowLeft) {
+						A.moveLeft();
+						//putString(0, 0, terminal, A.toString());
+						//terminal.clearScreen();
+						//A.putPuzzle(terminal);
+					}
+				//}
 			}
 		}
+			terminal.exitPrivateMode();
 	}
-	terminal.exitPrivateMode();
+
 }
-*/
