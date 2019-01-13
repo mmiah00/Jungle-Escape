@@ -45,10 +45,14 @@ public class JungleEscape {
 
     scene1(terminal);
 
-    Key key = terminal.readInput();
-    if (key != null){
-      if (key.getKind() == Key.Kind.Escape) {
-        terminal.exitPrivateMode();
+    boolean running = true;
+    while (running) {
+      Key key = terminal.readInput();
+      if (key != null){
+        if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          running = false;
+        }
       }
     }
   }
