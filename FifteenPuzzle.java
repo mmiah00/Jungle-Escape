@@ -98,28 +98,22 @@ public class FifteenPuzzle {
 
 
   public static void main(String[] args){
-    FifteenPuzzle board = new FifteenPuzzle ();
-
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
+
+    FifteenPuzzle board = new FifteenPuzzle ();
     Tile space = board.nums[15];
 
     while(!done){
 			for (int i = 0; i < board.nums.length; i ++) {
-        putString (board.nums[i], terminal);
+        putString (board.nums[i], terminal); //print grid
       }
-			//terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-			terminal.applySGR(Terminal.SGR.RESET_ALL);
-
       Key key = terminal.readInput();
 
       if (key != null){
-
         if (key.getKind() == Key.Kind.Escape) { //to exit out of terminal
           terminal.exitPrivateMode();
           done = true;
@@ -164,9 +158,6 @@ public class FifteenPuzzle {
       }
 
       board.complete (); //check to see if the board is in order , updates the done variable
-      if (done) {
-        terminal.exitPrivateMode ();
-      }
     }
   }
 }
