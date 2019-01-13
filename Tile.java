@@ -24,6 +24,14 @@ public class Tile {
     return ones;
   }
 
+  public void setX (int value) {
+    x = value;
+  }
+
+  public void setY (int value) {
+    y = value;
+  }
+
   public String toString () {
 	   return ".________.\n|        |\n|   "+ tens + ones + "   |\n|        |\n.________.";
   }
