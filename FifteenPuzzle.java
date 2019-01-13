@@ -107,10 +107,11 @@ public class FifteenPuzzle {
     FifteenPuzzle board = new FifteenPuzzle ();
     Tile space = board.nums[15];
 
+    for (int i = 0; i < board.nums.length; i ++) {
+      putString (board.nums[i], terminal); //print grid
+    }
+
     while(!done){
-			for (int i = 0; i < board.nums.length; i ++) {
-        putString (board.nums[i], terminal); //print grid
-      }
       Key key = terminal.readInput();
 
       if (key != null){
@@ -125,6 +126,9 @@ public class FifteenPuzzle {
             //switch so the space moves to the left
             board.flip (space, board.nums[spacex - 1]);
             space = board.nums[spacex - 1];
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
           }
         }
 
@@ -134,6 +138,9 @@ public class FifteenPuzzle {
             //switch so the space moves to the right
             board.flip (space, board.nums[spacex + 1]);
             space = board.nums[spacex + 1];
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
           }
         }
 
@@ -143,6 +150,9 @@ public class FifteenPuzzle {
             //switch so the space moves up
             board.flip (space, board.nums[spacex - 4]);
             space = board.nums[spacex - 4];
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
           }
         }
 
@@ -152,6 +162,9 @@ public class FifteenPuzzle {
             //switch so the space moves down
             board.flip (space, board.nums[spacex + 4]);
             space = board.nums[spacex + 4];
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
           }
         }
       }
