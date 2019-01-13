@@ -113,10 +113,6 @@ public class FifteenPuzzle {
     FifteenPuzzle board = new FifteenPuzzle ();
     Tile space = board.nums[15];
 
-    for (int i = 0; i < board.nums.length; i ++) {
-      putString (board.nums[i], terminal); //print grid
-    }
-
     while(!done){
       Key key = terminal.readInput();
 
