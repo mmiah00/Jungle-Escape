@@ -154,11 +154,10 @@ public class FifteenPuzzle {
             space = board.nums[spacex + 4];
           }
         }
-        putString(1,1,terminal,"["+key.getCharacter() +"]");
       }
-
       board.complete (); //check to see if the board is in order , updates the done variable
     }
+    terminal.exitPrivateMode ();
   }
 }
 
