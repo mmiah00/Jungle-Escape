@@ -106,7 +106,7 @@ public class FifteenPuzzle {
     Tile space = board.nums[15];
 
     while(!done){
-      putString (40,10, terminal, "FIX THE BRIDGE BY SOLVING THIS PUZZLE"); 
+      putString (50,10, terminal, "FIX THE BRIDGE BY SOLVING THIS PUZZLE");
 			for (int i = 0; i < board.nums.length; i ++) {
         putString (board.nums[i], terminal);
       }
