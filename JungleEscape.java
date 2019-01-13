@@ -87,7 +87,8 @@ public class JungleEscape {
         }
       }
       if (mode == 0) {
-        play2048(terminal); 
+        NumberPuzzle A = new NumberPuzzle();
+        A.play2048(terminal); 
         /*
         putString(0, 0, terminal, A.toString());
         boolean gameNotDone = true;
