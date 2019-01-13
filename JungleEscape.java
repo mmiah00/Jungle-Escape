@@ -66,34 +66,9 @@ public class JungleEscape {
 					running = false;
 
         }
-				if (key.getKind() == Key.Kind.ArrowLeft) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					x--;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowRight) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					x++;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowUp) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y--;
-				}
-
-				if (key.getKind() == Key.Kind.ArrowDown) {
-					terminal.moveCursor(x,y);
-					terminal.putCharacter(' ');
-					y++;
-				}
-				//space moves it diagonally
 				if (key.getCharacter() == ' ') {
 					terminal.moveCursor(x,y);
 					terminal.putCharacter(' ');
-					y++;
 					x++;
 				}
 				putString(1,4,terminal,"["+key.getCharacter() +"]");
