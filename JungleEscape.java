@@ -61,6 +61,8 @@ public class JungleEscape {
     }
   }
 
+
+
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -85,7 +87,18 @@ public class JungleEscape {
         }
         else if (mode == 0) {
           NumberPuzzle A = new NumberPuzzle();
-          A.play2048(terminal);
+          if (key.getKind() == Key.Kind.ArrowLeft) {
+  					A.moveLeft();
+  				}
+  				if (key.getKind() == Key.Kind.ArrowRight) {
+  					A.moveRight();
+  				}
+  				if (key.getKind() == Key.Kind.ArrowUp) {
+  					A.moveUp();
+  				}
+  				if (key.getKind() == Key.Kind.ArrowDown) {
+  					A.moveDown();
+  				}
         }
       }
     }
