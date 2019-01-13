@@ -46,8 +46,10 @@ public class FifteenPuzzle {
   }
 
   public void flip (Tile one, Tile another) {
-    nums[getIndex (one)] = another;
-    nums[getIndex (another)] = one;
+    int oneI = getIndex (one);
+    int anotherI = getIndex (another);
+    nums[oneI] = another;
+    nums[anotherI] = one;
   }
 
   private int getIndex (Tile aTile) {
@@ -103,7 +105,6 @@ public class FifteenPuzzle {
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
-    putString (50,10, terminal, "FIX THE BRIDGE BY SOLVING THIS PUZZLE");
     Tile space = board.nums[15];
 
     while(!done){
