@@ -89,6 +89,9 @@ public class JungleEscape {
       if (mode == 0) {
         NumberPuzzle A = new NumberPuzzle();
         putString(0, 0, terminal, A.toString());
+        A.play2048(terminal); 
+        /*
+        putString(0, 0, terminal, A.toString());
         boolean gameNotDone = true;
         while (gameNotDone){
           gameNotDone = !(A.isComplete());
@@ -113,7 +116,7 @@ public class JungleEscape {
             }
           }
         }
-        terminal.exitPrivateMode();
+        terminal.exitPrivateMode();*/
       }
     }
     terminal.exitPrivateMode();
