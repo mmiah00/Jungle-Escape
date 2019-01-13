@@ -55,6 +55,7 @@ public class JungleEscape {
         }
       }
     }
+    terminal.exitPrivateMode();
   }
 }
   /*
