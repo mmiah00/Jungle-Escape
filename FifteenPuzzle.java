@@ -113,14 +113,16 @@ public class FifteenPuzzle {
     FifteenPuzzle board = new FifteenPuzzle ();
     Tile space = board.nums[15];
 
+
+    for (int i = 0; i < board.nums.length; i ++) {
+      putString (board.nums[i], terminal); //print grid
+    }
+    terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+    terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+    terminal.applySGR(Terminal.SGR.RESET_ALL);
+    
     while(!done){
       Key key = terminal.readInput();
-      for (int i = 0; i < board.nums.length; i ++) {
-        putString (board.nums[i], terminal); //print grid
-      }
-      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-      terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-      terminal.applySGR(Terminal.SGR.RESET_ALL);
 
       if (key != null){
 
