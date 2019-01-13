@@ -115,9 +115,10 @@ public class FifteenPuzzle {
 
     while(!done){
       Key key = terminal.readInput();
+      putString (1,1, terminal, "Welcome to FifteenPuzzle");
 
-      for (int i = 0; i < nums.length; i ++) {
-        putString (nums[i], terminal); //print grid
+      for (int i = 0; i < board.nums.length; i ++) {
+        putString (board.nums[i], terminal); //print grid
       }
 
       terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
