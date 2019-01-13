@@ -106,6 +106,7 @@ public class FifteenPuzzle {
     Tile space = board.nums[15];
 
     while(!done){
+      putString (40,10, terminal, "FIX THE BRIDGE BY SOLVING THIS PUZZLE"); 
 			for (int i = 0; i < board.nums.length; i ++) {
         putString (board.nums[i], terminal);
       }
@@ -158,11 +159,12 @@ public class FifteenPuzzle {
             space = board.nums[spacex + 4];
           }
         }
+        putString(1,1,terminal,"["+key.getCharacter() +"]");
       }
 
       board.complete (); //check to see if the board is in order , updates the done variable
       if (done) {
-        terminal.exitPrivateMode (); 
+        terminal.exitPrivateMode ();
       }
     }
   }
