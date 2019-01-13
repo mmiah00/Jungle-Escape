@@ -15,8 +15,22 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class JungleEscape {
 
-/*
-  public static void scene1 (Terminal t, String[] path) {
+  public static void scene1 (Terminal t){//, String[] path) {
+
+    int x = 0;
+		int y = 10;
+
+		Terminal terminal = TerminalFacade.createTextTerminal();
+		terminal.enterPrivateMode();
+
+		TerminalSize size = terminal.getTerminalSize();
+		terminal.setCursorVisible(false);
+
+		boolean running = true;
+
+		long tStart = System.currentTimeMillis();
+		long lastSecond = 0;
+
     putString(0, 0, t, "            ,@@@@@@@,              ");
     putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
     putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
@@ -28,12 +42,110 @@ public class JungleEscape {
     putString(0, 8, t, "    |.|        | |         | |     ");
     putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
 
+		while(running){
+
+			terminal.moveCursor(x,y);
+			terminal.applyBackgroundColor(Terminal.Color.WHITE);
+			terminal.applyForegroundColor(Terminal.Color.BLACK);
+			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
+			terminal.applySGR(Terminal.SGR.ENTER_UNDERLINE);
+			terminal.putCharacter('O');
+			//terminal.putCharacter(' ');
+			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+			Key key = terminal.readInput();
+
+			if (key != null)
+			{
+
+				if (key.getKind() == Key.Kind.Escape) {
+
+					terminal.exitPrivateMode();
+					running = false;
+
+        }
+				if (key.getKind() == Key.Kind.ArrowLeft) {
+					terminal.moveCursor(x,y);
+					terminal.putCharacter(' ');
+					x--;
+				}
+
+				if (key.getKind() == Key.Kind.ArrowRight) {
+					terminal.moveCursor(x,y);
+					terminal.putCharacter(' ');
+					x++;
+				}
+
+				if (key.getKind() == Key.Kind.ArrowUp) {
+					terminal.moveCursor(x,y);
+					terminal.putCharacter(' ');
+					y--;
+				}
+
+				if (key.getKind() == Key.Kind.ArrowDown) {
+					terminal.moveCursor(x,y);
+					terminal.putCharacter(' ');
+					y++;
+				}
+				//space moves it diagonally
+				if (key.getCharacter() == ' ') {
+					terminal.moveCursor(x,y);
+					terminal.putCharacter(' ');
+					y++;
+					x++;
+				}
+				putString(1,4,terminal,"["+key.getCharacter() +"]");
+				putString(1,1,terminal,key+"        ");//to clear leftover letters pad withspaces
+			}
+
+			//DO EVEN WHEN NO KEY PRESSED:
+			long tEnd = System.currentTimeMillis();
+			long millis = tEnd - tStart;
+			putString(1,15,terminal,"Milliseconds since start of program: "+millis);
+			if(millis/1000 > lastSecond){
+				lastSecond = millis / 1000;
+				//one second has passed.
+				putString(1,16,terminal,"Seconds since start of program: "+lastSecond);
+      }
+    }
+  }
+
+    /*
     path[0] = "o";
     for (int i = 1; i < 35; i++) {
       path[i] = " ";
     }
     putString(0, 10, t, toString(path));
+    */
+    //personRunning (t);
+
+
+  /*
+  public static void personRunning (Terminal t) {
+    long tStart = System.currentTimeMillis();
+    int x = 0 ;
+    boolean running = true;
+    while (running) {
+      if (tStart % 1000 == 0) {
+        putString (x,11,t, " O ");
+        putString (x,12,t, "-|_ ");
+        putString (x,13,t, "/ /");
+        x += 1;
+      }
+      else {
+        putString (x,11,t, " O ");
+        putString (x,12,t, "-|- ");
+        putString (x,13,t, "/ \\");
+        x += 1;
+      }
+      if (tStart == 10000) {
+        running = false;
+      }
+    }
   }
+  */
 
   public static String toString(String [] ary) {
     String s = " ";
@@ -43,6 +155,7 @@ public class JungleEscape {
     return s;
   }
 
+  /*
   public static String moveAlongPath(String [] ary) {
       Key key = terminal.readInput();
       if (key != null){
@@ -53,6 +166,7 @@ public class JungleEscape {
 
   }
   */
+
 
   public static void putString(int r, int c,Terminal t, String s){
     t.moveCursor(r,c);
@@ -70,6 +184,7 @@ public class JungleEscape {
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
+    scene1 (terminal);
 
 /*
     String[] path1 = new String[35];
@@ -88,7 +203,7 @@ public class JungleEscape {
       }
       if (mode == 0) {
         NumberPuzzle A = new NumberPuzzle();
-        A.play2048(terminal); 
+        A.play2048(terminal);
         /*
         putString(0, 0, terminal, A.toString());
         boolean gameNotDone = true;
