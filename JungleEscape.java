@@ -85,35 +85,35 @@ public class JungleEscape {
           terminal.exitPrivateMode();
           running = false;
         }
-        if (mode == 0) {
-          NumberPuzzle A = new NumberPuzzle();
+      }
+      if (mode == 0) {
+        NumberPuzzle A = new NumberPuzzle();
+        putString(0, 0, terminal, A.toString());
+        boolean gameNotDone = true;
+        while (gameNotDone){
+          gameNotDone = !(A.isComplete());
           putString(0, 0, terminal, A.toString());
-          boolean gameNotDone = true;
-          while (gameNotDone){
-            gameNotDone = !(A.isComplete());
-            putString(0, 0, terminal, A.toString());
-            if (key != null){
-      				if (key.getKind() == Key.Kind.Escape) {
-                terminal.exitPrivateMode();
-                gameNotDone = false;
-                running = false;
-              }
-      				if (key.getKind() == Key.Kind.ArrowLeft) {
-      					A.moveLeft();
-      				}
-      				if (key.getKind() == Key.Kind.ArrowRight) {
-      					A.moveRight();
-      				}
-      				if (key.getKind() == Key.Kind.ArrowUp) {
-      					A.moveUp();
-      				}
-      				if (key.getKind() == Key.Kind.ArrowDown) {
-      					A.moveDown();
-      				}
+          if (key != null){
+            if (key.getKind() == Key.Kind.Escape) {
+              terminal.exitPrivateMode();
+              gameNotDone = false;
+              running = false;
+            }
+            if (key.getKind() == Key.Kind.ArrowLeft) {
+              A.moveLeft();
+            }
+            if (key.getKind() == Key.Kind.ArrowRight) {
+              A.moveRight();
+            }
+            if (key.getKind() == Key.Kind.ArrowUp) {
+              A.moveUp();
+            }
+            if (key.getKind() == Key.Kind.ArrowDown) {
+              A.moveDown();
             }
           }
-          terminal.exitPrivateMode(); 
         }
+        terminal.exitPrivateMode();
       }
     }
     terminal.exitPrivateMode();
