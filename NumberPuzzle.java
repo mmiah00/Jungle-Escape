@@ -226,7 +226,7 @@ public class NumberPuzzle {
 	}
 
 	public static void play2048(Terminal terminal) {
-		//NumberPuzzle A = new NumberPuzzle();
+		NumberPuzzle A = new NumberPuzzle();
 		boolean running = true;
 		while (running) {
 			running = !(A.isComplete());
