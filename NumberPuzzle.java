@@ -225,6 +225,43 @@ public class NumberPuzzle {
 		}
 	}
 
+	public static void play2048(Terminal terminal) {
+		NumberPuzzle A = new NumberPuzzle();
+		putString(0, 0, terminal, A.toString());
+		boolean gameNotDone = true;
+		while (gameNotDone) {
+			gameNotDone = !(A.isComplete());
+			putString(0, 0, terminal, A.toString());
+			Key key = terminal.readInput();
+			if (key != null){
+				if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          gameNotDone = false;
+        }
+				if (key.getKind() == Key.Kind.ArrowLeft) {
+					A.moveLeft();
+				}
+				if (key.getKind() == Key.Kind.ArrowRight) {
+					A.moveRight();
+				}
+				if (key.getKind() == Key.Kind.ArrowUp) {
+					A.moveUp();
+				}
+				if (key.getKind() == Key.Kind.ArrowDown) {
+					A.moveDown();
+				}
+			}
+		}
+		/*
+		if (A.beatGame()) {
+			terminal.clearScreen();
+		}
+		else {
+			A = new NumberPuzzle();
+		}*/
+	}
+
+/*
 	public static void main(String[] args) {
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -259,5 +296,6 @@ public class NumberPuzzle {
 		}
 		terminal.exitPrivateMode();
 	}
+	*/
 
 }
