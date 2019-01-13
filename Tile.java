@@ -32,6 +32,14 @@ public class Tile {
     y = value;
   }
 
+  public void setTens (char t) {
+    tens = t;
+  }
+
+  public void setOnes (char o) {
+    ones = o;
+  }
+
   public String toString () {
 	   return ".________.\n|        |\n|   "+ tens + ones + "   |\n|        |\n.________.";
   }
