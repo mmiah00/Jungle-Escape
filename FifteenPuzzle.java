@@ -129,6 +129,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
+            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
 
@@ -141,6 +142,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
+            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
 
@@ -153,6 +155,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
+            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
 
@@ -165,6 +168,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
+            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
       }
