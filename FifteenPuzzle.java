@@ -103,10 +103,10 @@ public class FifteenPuzzle {
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
+    putString (50,10, terminal, "FIX THE BRIDGE BY SOLVING THIS PUZZLE");
     Tile space = board.nums[15];
 
     while(!done){
-      putString (50,10, terminal, "FIX THE BRIDGE BY SOLVING THIS PUZZLE");
 			for (int i = 0; i < board.nums.length; i ++) {
         putString (board.nums[i], terminal);
       }
