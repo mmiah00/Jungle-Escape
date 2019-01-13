@@ -24,25 +24,25 @@ public class FifteenPuzzle {
     done = false;
     nums = new Tile [16];
 
-    nums[0] = new Tile ('1', '0', 2, 2);
-    nums[1] = new Tile ('0', '2', 13, 2);
-    nums[2] = new Tile ('1', '3', 24, 2);
-    nums[3] = new Tile ('0', '4', 35, 2);
+    nums[0] = new Tile ('1', '0', 10, 5);
+    nums[1] = new Tile ('0', '2', 21, 5);
+    nums[2] = new Tile ('1', '3', 32, 5);
+    nums[3] = new Tile ('0', '4', 43, 5);
 
-    nums[4] = new Tile ('1', '2', 2, 7);
-    nums[5] = new Tile ('0', '9', 13, 7);
-    nums[6] = new Tile ('0', '7', 24, 7);
-    nums[7] = new Tile ('1', '5', 35, 7);
+    nums[4] = new Tile ('1', '2', 10, 10);
+    nums[5] = new Tile ('0', '9', 21, 10);
+    nums[6] = new Tile ('0', '7', 32, 10);
+    nums[7] = new Tile ('1', '5', 43, 10);
 
-    nums[8] = new Tile ('0', '1', 2, 12);
-    nums[9] = new Tile ('1', '1', 13, 12);
-    nums[10] = new Tile ('1', '4', 24, 12);
-    nums[11] = new Tile ('0', '6', 35, 12);
+    nums[8] = new Tile ('0', '1', 10, 15);
+    nums[9] = new Tile ('1', '1', 21, 15);
+    nums[10] = new Tile ('1', '4', 32, 15);
+    nums[11] = new Tile ('0', '6', 43, 15);
 
-    nums[12] = new Tile ('0', '3', 2, 17);
-    nums[13] = new Tile ('0', '5', 13, 17);
-    nums[14] = new Tile ('0', '8', 24, 17);
-    nums[15] = new Tile (' ', ' ', 35, 17);
+    nums[12] = new Tile ('0', '3', 10, 20);
+    nums[13] = new Tile ('0', '5', 21, 20);
+    nums[14] = new Tile ('0', '8', 32, 20);
+    nums[15] = new Tile (' ', ' ', 43, 20);
   }
 
   public void flip (Tile one, Tile another) {
