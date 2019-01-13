@@ -46,7 +46,7 @@ public class FifteenPuzzle {
   }
 
   public void flip (Tile one, Tile another) {
-    
+
     int oneI = getIndex (one);
     int anotherI = getIndex (another);
     nums[oneI] = another;
@@ -149,7 +149,7 @@ public class FifteenPuzzle {
     			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
     			  terminal.applySGR(Terminal.SGR.RESET_ALL);
             */
-            space = board.nums[spacex - 1];
+            //space = board.nums[spacex - 1];
           }
         }
 
