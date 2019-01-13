@@ -115,6 +115,13 @@ public class FifteenPuzzle {
       Key key = terminal.readInput();
 
       if (key != null){
+        for (int i = 0; i < board.nums.length; i ++) {
+          putString (board.nums[i], terminal); //print grid
+        }
+        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+			  terminal.applySGR(Terminal.SGR.RESET_ALL);
+
         if (key.getKind() == Key.Kind.Escape) { //to exit out of terminal
           terminal.exitPrivateMode();
           done = true;
@@ -126,10 +133,6 @@ public class FifteenPuzzle {
             //switch so the space moves to the left
             board.flip (space, board.nums[spacex - 1]);
             space = board.nums[spacex - 1];
-            for (int i = 0; i < board.nums.length; i ++) {
-              putString (board.nums[i], terminal); //print grid
-            }
-            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
 
@@ -139,10 +142,6 @@ public class FifteenPuzzle {
             //switch so the space moves to the right
             board.flip (space, board.nums[spacex + 1]);
             space = board.nums[spacex + 1];
-            for (int i = 0; i < board.nums.length; i ++) {
-              putString (board.nums[i], terminal); //print grid
-            }
-            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
 
@@ -152,10 +151,6 @@ public class FifteenPuzzle {
             //switch so the space moves up
             board.flip (space, board.nums[spacex - 4]);
             space = board.nums[spacex - 4];
-            for (int i = 0; i < board.nums.length; i ++) {
-              putString (board.nums[i], terminal); //print grid
-            }
-            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
 
@@ -165,10 +160,6 @@ public class FifteenPuzzle {
             //switch so the space moves down
             board.flip (space, board.nums[spacex + 4]);
             space = board.nums[spacex + 4];
-            for (int i = 0; i < board.nums.length; i ++) {
-              putString (board.nums[i], terminal); //print grid
-            }
-            terminal.applySGR(Terminal.SGR.RESET_ALL);
           }
         }
       }
