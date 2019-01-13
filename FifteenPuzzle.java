@@ -115,14 +115,14 @@ public class FifteenPuzzle {
 
     while(!done){
       Key key = terminal.readInput();
+      for (int i = 0; i < board.nums.length; i ++) {
+        putString (board.nums[i], terminal); //print grid
+      }
+      terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+      terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+      terminal.applySGR(Terminal.SGR.RESET_ALL);
 
       if (key != null){
-        for (int i = 0; i < board.nums.length; i ++) {
-          putString (board.nums[i], terminal); //print grid
-        }
-        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-			  terminal.applySGR(Terminal.SGR.RESET_ALL);
 
         if (key.getKind() == Key.Kind.Escape) { //to exit out of terminal
           terminal.exitPrivateMode();
@@ -134,6 +134,13 @@ public class FifteenPuzzle {
           if (spacex != 0 && spacex != 4 && spacex != 8 && spacex != 12) { //checking if within bounds
             //switch so the space moves to the left
             board.flip (space, board.nums[spacex - 1]);
+            /*
+            putString (space, terminal);
+            putString (board.nums[spacex - 1]);
+            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
+            */
             space = board.nums[spacex - 1];
           }
         }
@@ -143,6 +150,13 @@ public class FifteenPuzzle {
           if (spacex != 3 && spacex != 7 && spacex != 11 && spacex != 15) { //checking if within bounds
             //switch so the space moves to the right
             board.flip (space, board.nums[spacex + 1]);
+            /*
+            putString (space, terminal);
+            putString (board.nums[spacex + 1]);
+            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
+            */
             space = board.nums[spacex + 1];
           }
         }
@@ -152,6 +166,13 @@ public class FifteenPuzzle {
           if (spacex != 0 && spacex != 1 && spacex != 2 && spacex != 3) { //checking if within bounds
             //switch so the space moves up
             board.flip (space, board.nums[spacex - 4]);
+            /*
+            putString (space, terminal);
+            putString (board.nums[spacex - 4]);
+            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
+            */
             space = board.nums[spacex - 4];
           }
         }
@@ -161,6 +182,13 @@ public class FifteenPuzzle {
           if (spacex != 12 && spacex != 13 && spacex != 14 && spacex != 15) { //checking if within bounds
             //switch so the space moves down
             board.flip (space, board.nums[spacex + 4]);
+            /*
+            putString (space, terminal);
+            putString (board.nums[spacex + 4]);
+            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
+            */
             space = board.nums[spacex + 4];
           }
         }
