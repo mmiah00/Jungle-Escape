@@ -87,18 +87,25 @@ public class JungleEscape {
         }
         else if (mode == 0) {
           NumberPuzzle A = new NumberPuzzle();
-          if (key.getKind() == Key.Kind.ArrowLeft) {
-  					A.moveLeft();
-  				}
-  				if (key.getKind() == Key.Kind.ArrowRight) {
-  					A.moveRight();
-  				}
-  				if (key.getKind() == Key.Kind.ArrowUp) {
-  					A.moveUp();
-  				}
-  				if (key.getKind() == Key.Kind.ArrowDown) {
-  					A.moveDown();
-  				}
+          putString(0, 0, terminal, A.toString());
+          boolean gameNotDone = true;
+          while (gameNotDone){
+            gameNotDone = !(A.isComplete()); 
+            putString(0, 0, terminal, A.toString());
+            if (key.getKind() == Key.Kind.ArrowLeft) {
+    					A.moveLeft();
+    				}
+    				if (key.getKind() == Key.Kind.ArrowRight) {
+    					A.moveRight();
+    				}
+    				if (key.getKind() == Key.Kind.ArrowUp) {
+    					A.moveUp();
+    				}
+    				if (key.getKind() == Key.Kind.ArrowDown) {
+    					A.moveDown();
+    				}
+          }
+
         }
       }
     }
