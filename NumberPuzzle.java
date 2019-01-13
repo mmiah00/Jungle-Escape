@@ -226,16 +226,16 @@ public class NumberPuzzle {
 	}
 
 	public static void play2048(Terminal terminal) {
-		NumberPuzzle A = new NumberPuzzle();
-		boolean running = true;
-		while (running) {
-			running = !(A.isComplete());
+		//NumberPuzzle A = new NumberPuzzle();
+		boolean gameNotDone = true;
+		while (gameNotDone) {
+			gameNotDone = !(A.isComplete());
 			putString(0, 0, terminal, A.toString());
 			Key key = terminal.readInput();
 			if (key != null){
 				if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
-          running = false;
+          gameNotDone = false;
         }
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
@@ -251,12 +251,13 @@ public class NumberPuzzle {
 				}
 			}
 		}
+		/*
 		if (A.beatGame()) {
 			terminal.clearScreen();
 		}
 		else {
 			A = new NumberPuzzle();
-		}
+		}*/
 	}
 
 /*
