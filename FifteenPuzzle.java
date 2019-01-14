@@ -46,12 +46,22 @@ public class FifteenPuzzle {
   }
 
   public void flip (Tile one, Tile another) {
+    /*
     Tile thisone = one;
     Tile anotherone = another;
     one.setTens (anotherone.tens());
     one.setOnes (anotherone.ones());
     another.setTens (thisone.tens ());
     another.setOnes (thisone.ones());
+    */
+    int onex = one.xcor ();
+    int oney = one.ycor ();
+    int anotherx = another.xcor ();
+    int anothery = another.ycor ();
+    one.setX (anotherx);
+    one.setY (anothery);
+    another.setX (onex);
+    another.setY (oney);
   }
 
   private int getIndex (Tile aTile) {
@@ -62,8 +72,6 @@ public class FifteenPuzzle {
     }
     return -1;
   }
-
-
   /*
   public static void putString (Tile aTile, Terminal t) {
     int x = aTile.xcor ();
@@ -111,7 +119,7 @@ public class FifteenPuzzle {
   }
 
 
-  public static void play (Terminal t ){
+  public static void main (String[] args){
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
