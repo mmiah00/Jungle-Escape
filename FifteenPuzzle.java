@@ -147,7 +147,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex + 1];
+            space = board.nums[spacex - 1];
           }
         }
 
@@ -159,7 +159,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex - 1];
+            space = board.nums[spacex + 1];
           }
         }
 
@@ -171,7 +171,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex + 4];
+            space = board.nums[spacex - 4];
           }
         }
 
@@ -183,7 +183,7 @@ public class FifteenPuzzle {
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex - 4];
+            space = board.nums[spacex + 4];
           }
         }
       }
