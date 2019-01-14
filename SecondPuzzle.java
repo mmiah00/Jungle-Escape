@@ -31,7 +31,7 @@ public class SecondPuzzle {
   public void fillGrid() {
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
-        grid[r][c] = addSpaces("" + 4*r+c+1) + 4*r+c+1;
+        grid[r][c] = addSpaces("" + (4*r+c+1)) + (4*r+c+1);
       }
     }
     grid[3][3] = "  ";
@@ -41,16 +41,16 @@ public class SecondPuzzle {
     Random randgen = new Random();
     for (int i = 0; i < 20; i++) {
       int direction = randgen.nextInt(4);
-      if (direction == 0); {
+      if (direction == 0) {
         moveLeft();
       }
-      if (direction == 1); {
+      if (direction == 1) {
         moveRight();
       }
-      if (direction == 2); {
+      if (direction == 2) {
         moveUp();
       }
-      if (direction == 3); {
+      if (direction == 3) {
         moveDown();
       }
     }
@@ -60,7 +60,7 @@ public class SecondPuzzle {
 		String spaces = "";
 		int length = 2 - s.length();
 		for (int i = 0; i < length; i++) {
-			spaces = spaces + " ";
+			spaces = spaces + "*";
 		}
 		return spaces;
 	}
@@ -102,7 +102,7 @@ public class SecondPuzzle {
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
         int Num = Integer.parseInt(grid[row][col].trim());
-        if (Num != 4*r+c+1) {
+        if (Num != (4*r+c+1)) {
           return false;
         }
       }
@@ -149,12 +149,19 @@ public class SecondPuzzle {
 		}
 	}
 
-	public static void playFifteen(Terminal terminal) {
+	public static void main(String[] args) {
+		Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
+
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
 		SecondPuzzle A = new SecondPuzzle();
 		putString(0, 0, terminal, A.toString());
 		putString(0, 11, terminal, "|Use the arrow keys |");
 		putString(0, 12, terminal, "|to combine numbers |");
 		putString(0, 13, terminal, "|  and reach 2048   |");
+/*
 		boolean gameNotDone = true;
 		while (gameNotDone) {
 			gameNotDone = !(A.isComplete());
