@@ -100,6 +100,7 @@ public class Scene1 {
         }
       }
     }
+    terminal.clearScreen();
     return 1;
     //terminal.exitPrivateMode();
   }
