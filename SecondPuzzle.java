@@ -34,7 +34,7 @@ public class SecondPuzzle {
         grid[r][c] = addSpaces("" + 4*r+c+1) + 4*r+c+1;
       }
     }
-    grid[3][3] = "  "; 
+    grid[3][3] = "  ";
   }
 
   public void addStartNums() {
@@ -66,7 +66,7 @@ public class SecondPuzzle {
 	}
 
 	public void moveLeft() {
-		if (row != 0) {
+		if (col != 0) {
       String newNum = "" + Integer.parseInt(grid[row][col-1].trim());
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row][col-1] = "  ";
@@ -74,7 +74,7 @@ public class SecondPuzzle {
 	}
 
 	public void moveRight() {
-    if (row != 3) {
+    if (col != 3) {
       String newNum = "" + Integer.parseInt(grid[row][col+1].trim());
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row][col+1] = "  ";
@@ -82,7 +82,7 @@ public class SecondPuzzle {
 	}
 
 	public void moveUp() {
-    if (col != 0) {
+    if (row != 0) {
       String newNum = "" + Integer.parseInt(grid[row+1][col].trim());
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row+1][col] = "  ";
@@ -90,7 +90,7 @@ public class SecondPuzzle {
 	}
 
   public void moveDown() {
-    if (col != 3) {
+    if (row != 3) {
       String newNum = "" + Integer.parseInt(grid[row-1][col].trim());
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row-1][col] = "  ";
