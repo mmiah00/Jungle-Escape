@@ -13,39 +13,37 @@ import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
-public class Scene1 {
+public class Scene2 {
 
-  String[] path = new String[35];
+  String[] path = new String[20];
   int index = 0;
 
-  public Scene1 (Terminal t) {
-    putString(0, 0, t, "            ,@@@@@@@,              ");
-    putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
-    putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
-    putString(0, 3, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
-    putString(0, 4, t, "%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’");
-    putString(0, 5, t, "%&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ ");
-    putString(0, 6, t, "‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ");
-    putString(0, 7, t, "    |o|        | |         | |     ");
-    putString(0, 8, t, "    |.|        | |         | |     ");
-    putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
+  public Scene2 (Terminal t) {
+    putString(0, 0, t, "--------------------");
+    putString(0, 1, t, "      /   .\\        ");
+    putString(0, 2, t, "     / ` .  \\       ");
+    putString(0, 3, t, " [] / .   `  \\      ");
+    putString(0, 4, t, "   /.   `  `  \\     ");
+    putString(0, 5, t, "  /  ` . `  . .\\    ");
+    putString(0, 6, t, " / `  .   .  `  \\   ");
+    putString(0, 7, t, "/ .  `   ` .  .  \\  ");
 
     path[0] = "o";
-    for (int i = 1; i < 35; i++) {
+    for (int i = 1; i < 20; i++) {
       path[i] = " ";
     }
-    putString(0, 10, t, toString());
+    putString(0, 8, t, toString());
 
-    putString(0, 12, t, "| Attempting to escape the zombie |");
-    putString(0, 13, t, "| apocolype, you decide to start  |");
-    putString(0, 14, t, "| running away from your problems.|");
-    putString(0, 15, t, "| Keep running until you reach the|");
-    putString(0, 16, t, "|             safehouse.          |");
+    putString(0, 10, t, "|  Oh No! There's a river! |");
+    putString(0, 11, t, "|   Wait, there's a box!   |");
+    putString(0, 12, t, "| Solve the puzzle to open |");
+    putString(0, 13, t, "| the box and get materials|");
+    putString(0, 14, t, "|    to build a bridge.    |");
   }
 
   public String toString() {
     String s = " ";
-    for (int i = 0; i < 35; i++) {
+    for (int i = 0; i < 20; i++) {
       s = s + path[i];
     }
     return s;
@@ -60,7 +58,7 @@ public class Scene1 {
   }
 
   public void moveRight() {
-    if (index != 34) {
+    if (index != 19) {
       path[index+1] = "o";
       path[index] = " ";
       index++;
@@ -68,7 +66,7 @@ public class Scene1 {
   }
 
   public boolean isLastSpot() {
-    return index == 34;
+    return index == 19;
   }
 
   public static void putString(int r, int c,Terminal t, String s){
@@ -78,8 +76,8 @@ public class Scene1 {
     }
   }
 
-  public static int playScene1(Terminal terminal) {
-    Scene1 A = new Scene1(terminal);
+  public static int playScene2(Terminal terminal) {
+    Scene2 A = new Scene2(terminal);
 
     boolean pathNotDone = true;
     while (pathNotDone) {
@@ -100,6 +98,6 @@ public class Scene1 {
       }
     }
     terminal.clearScreen();
-    return 1;
+    return 2;
   }
 }

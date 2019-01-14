@@ -45,6 +45,10 @@ public class JungleEscape2 {
         mode = A.playScene1(terminal);
       }
       if (mode == 1) {
+        Scene2 A = new Scene2(terminal);
+        mode = A.playScene2(terminal);
+      }
+      if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
         A.play2048(terminal);
       }
