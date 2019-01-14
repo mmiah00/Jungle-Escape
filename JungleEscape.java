@@ -120,22 +120,26 @@ public class JungleEscape {
 
 					terminal.exitPrivateMode();
 					running = false;
-
         }
+
 				if (key.getCharacter() == ' ') {
 					terminal.moveCursor(x,y);
 					terminal.putCharacter(' ');
 					x++;
           spaces ++;
-			}
-    }
+        }
 
-      if (spaces == 20) {
-        putString(0, 15, t, "|             You have come upon a box and see there's a puzzle on it.         |");
-        putString(0, 16, t, "|                                                                              |");
-        putString(0, 17, t, "|                                                                              |");
-        spaces = 0;
-        mode ++;
+        if (spaces == 20) {
+          putString(0, 15, t, "|             You have come upon a box and see there's a puzzle on it.         |");
+          putString(0, 16, t, "|                       Press RIGHT to check it out                            |");
+          putString(0, 17, t, "|                                                                              |");
+          spaces = 0;
+        }
+
+        if (key.getKind () == Key.Kind.ArrowRight) {
+          mode ++;
+          running = false;
+        }
       }
     }
   }
