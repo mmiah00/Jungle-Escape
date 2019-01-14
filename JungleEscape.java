@@ -45,53 +45,8 @@ public class JungleEscape {
     putString(0, 9, t, "    |.|        | |         | |         |.|        | |         | |         |.|    ");
     putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\");
 
-    long millis = tStart;
-    if(millis/1000 > lastSecond){
-      lastSecond = millis / 1000;
-    }
-
-    if (lastSecond == 1) {
-      putString(0, 20, t, " ______________________________________________________________________________________________________");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 22, t, "|    Attempting to escape the zombie apocolype, you decide to start running away from your problems.   |");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 23, t, " ______________________________________________________________________________________________________");
-    }
-
-    if (lastSecond == 2) {
-      putString(0, 20, t, " ______________________________________________________________________________________________________");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 22, t, "|  It seemed like there is no end; until you reach the jungle. Of course you should be worrying about  |");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 23, t, " ______________________________________________________________________________________________________");
-    }
-
-    if (lastSecond == 4) {
-      putString(0, 20, t, " ______________________________________________________________________________________________________");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 22, t, "|    wild animals or maybe even the possibilities of animal zombies, but you did not stop to think.    |");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 23, t, " ______________________________________________________________________________________________________");
-    }
-
-    if (lastSecond == 6) {
-      putString(0, 20, t, " ______________________________________________________________________________________________________");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 22, t, "|                               So you just keep running, mindlessly.                                  |");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 23, t, " ______________________________________________________________________________________________________");
-    }
-
-    if (lastSecond == 7) {
-      putString(0, 20, t, " ______________________________________________________________________________________________________");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 22, t, "|                               ** Press SPACE to move forward **                                      |");
-      putString(0, 21, t, "|                                                                                                      |");
-      putString(0, 23, t, " ______________________________________________________________________________________________________");
-    }
 
 		while(running){
-
 			terminal.moveCursor(x,y);
 			terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
@@ -103,6 +58,72 @@ public class JungleEscape {
 			terminal.applySGR(Terminal.SGR.RESET_ALL);
 
 			Key key = terminal.readInput();
+
+      long tEnd = System.currentTimeMillis ();
+      long millis = tEnd - tStart;
+      if(millis/1000 > lastSecond){
+        lastSecond = millis / 1000;
+      }
+
+      if (lastSecond == 1) {
+        putString(0, 20, t, " ______________________________________________________________________________________________________");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 22, t, "|    Attempting to escape the zombie apocolype, you decide to start running away from your problems.   |");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 23, t, " ______________________________________________________________________________________________________");
+        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      }
+
+      if (lastSecond == 2) {
+        putString(0, 20, t, " ______________________________________________________________________________________________________");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 22, t, "|  It seemed like there is no end; until you reach the jungle. Of course you should be worrying about  |");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 23, t, " ______________________________________________________________________________________________________");
+        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      }
+
+      if (lastSecond == 4) {
+        putString(0, 20, t, " ______________________________________________________________________________________________________");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 22, t, "|    wild animals or maybe even the possibilities of animal zombies, but you did not stop to think.    |");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 23, t, " ______________________________________________________________________________________________________");
+        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      }
+
+      if (lastSecond == 6) {
+        putString(0, 20, t, " ______________________________________________________________________________________________________");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 22, t, "|                               So you just keep running, mindlessly.                                  |");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 23, t, " ______________________________________________________________________________________________________");
+        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      }
+
+      if (lastSecond == 7) {
+        putString(0, 20, t, " ______________________________________________________________________________________________________");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 22, t, "|                               ** Press SPACE to move forward **                                      |");
+        putString(0, 21, t, "|                                                                                                      |");
+        putString(0, 23, t, " ______________________________________________________________________________________________________");
+        terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
+  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+      }
 
 			if (key != null)
 			{
