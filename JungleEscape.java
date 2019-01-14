@@ -18,7 +18,7 @@ public class JungleEscape {
   public static void scene1 (Terminal t){//, String[] path) {
 
     int x = 0;
-		int y = 11;
+		int y = 12;
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -43,6 +43,7 @@ public class JungleEscape {
     putString(0, 8, t, "    |o|        | |         | |         |o|        | |         | |         |o|    ");
     putString(0, 9, t, "    |.|        | |         | |         |.|        | |         | |         |.|    ");
     putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\");
+    putString(0, 11, t, "                    [.]                                                         ");
 
 
 		while(running){
@@ -65,8 +66,8 @@ public class JungleEscape {
       }
 
       if (lastSecond == 1) {
-        putString(0, 15, t, "|    Attempting to escape the zombie apocolype, you decide to start running away from your problems.   |");
-        putString(0, 16, t, "|                                                                                                      |");
+        putString(0, 15, t, "|    Attempting to escape the zombie apocolype, you decide to start running    |");
+        putString(0, 16, t, "|    away from your problems.                                                  |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -75,8 +76,9 @@ public class JungleEscape {
       }
 
       if (lastSecond == 2) {
-        putString(0, 15, t, "|  It seemed like there is no end; until you reach the jungle. Of course you should be worrying about  |");
-        putString(0, 16, t, "|    wild animals or maybe even the possibilities of animal zombies, but you did not stop to think.    |");
+        putString(0, 15, t, "|  It seemed like there is no end; until you reach the jungle. Of course you   |");
+        putString(0, 16, t, "|  should be worrying about wild animals or maybe even the possibilities       |");
+        putString(0, 16, t, "|  of animal zombies, but you did not stop to think.                           |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -85,10 +87,10 @@ public class JungleEscape {
 
       }
 
-      if (lastSecond == 6) {
-        putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\");
-        putString(0, 15, t, "|                               So you just keep running, mindlessly.                                  |");
-        putString(0, 16, t, "|                                                                                                      |");
+      if (lastSecond == 7) {
+        putString(0, 15, t, "|                     So you just keep running, mindlessly.                    |");
+        putString(0, 16, t, "|                                                                              |");
+        putString(0, 17, t, "|                                                                              |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -99,8 +101,9 @@ public class JungleEscape {
 
       if (lastSecond == 7) {
         putString(0, 0, t, " Press SPACE to move forward ");
-        putString(0, 15, t, "|                               ** Press SPACE to move forward **                                      |");
-        putString(0, 16, t, "|                                                                                                      |");
+        putString(0, 15, t, "|                         ** Press SPACE to move forward **                    |");
+        putString(0, 16, t, "|                                                                              |");
+        putString(0, 17, t, "|                                                                              |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -127,8 +130,9 @@ public class JungleEscape {
     }
 
       if (spaces == 20) {
-        putString(0, 15, t, "|                   You have come upon a box and see there's a puzzle on it.                           |");
-        putString(0, 16, t, "|                                                                                                      |");
+        putString(0, 15, t, "|             You have come upon a box and see there's a puzzle on it.         |");
+        putString(0, 16, t, "|                                                                              |");
+        putString(0, 17, t, "|                                                                              |");
       }
     }
   }
