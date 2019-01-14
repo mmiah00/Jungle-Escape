@@ -49,7 +49,7 @@ public class FifteenPuzzle {
     one.setTens (another.tens());
     one.setOnes (another.ones());
     another.setTens (one.tens ());
-    another.setOnes (one.ones()); 
+    another.setOnes (one.ones());
   }
 
   private int getIndex (Tile aTile) {
@@ -97,7 +97,7 @@ public class FifteenPuzzle {
   }
 
 
-  public static void main(String[] args){
+  public static void play (Terminal t ){
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 

@@ -205,6 +205,11 @@ public class JungleEscape {
         }
         terminal.exitPrivateMode();*/
       }
+
+      if (mode == 1) {
+        FifteenPuzzle B = new FifteenPuzzle ();
+        B.play (terminal); 
+      }
     }
     terminal.exitPrivateMode();
 
