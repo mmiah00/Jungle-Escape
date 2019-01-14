@@ -228,9 +228,9 @@ public class NumberPuzzle {
 	public static void play2048(Terminal terminal) {
 		NumberPuzzle A = new NumberPuzzle();
 		putString(0, 0, terminal, A.toString());
-		putString(0, 12, terminal, "|  Use the arrow keys to  |");
-		putString(0, 13, terminal, "|combine numbers and reach|");
-		putString(0, 14, terminal, "|           2048          |");
+		putString(0, 11, terminal, "|Use the arrow keys |");
+		putString(0, 12, terminal, "|to combine numbers |");
+		putString(0, 13, terminal, "|  and reach 2048   |");
 		boolean gameNotDone = true;
 		while (gameNotDone) {
 			gameNotDone = !(A.isComplete());
