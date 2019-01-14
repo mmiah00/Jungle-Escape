@@ -46,10 +46,12 @@ public class FifteenPuzzle {
   }
 
   public void flip (Tile one, Tile another) {
-    one.setTens (another.tens());
-    one.setOnes (another.ones());
-    another.setTens (one.tens ());
-    another.setOnes (one.ones());
+    Tile thisone = one;
+    Tile anotherone = another;
+    one.setTens (anotherone.tens());
+    one.setOnes (anotherone.ones());
+    another.setTens (thisone.tens ());
+    another.setOnes (thisone.ones());
   }
 
   private int getIndex (Tile aTile) {
