@@ -72,14 +72,14 @@ public class Scene1 {
     }
   }
 
-  public static void main(String[] args) {
-
+  public static int playScene1(Terminal terminal) {
+/*
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
-
+*/
     Scene1 A = new Scene1(terminal);
 
     boolean pathNotDone = true;
@@ -100,6 +100,7 @@ public class Scene1 {
         }
       }
     }
-    terminal.exitPrivateMode();
+    return 1;
+    //terminal.exitPrivateMode();
   }
 }
