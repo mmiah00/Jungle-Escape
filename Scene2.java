@@ -19,14 +19,14 @@ public class Scene2 {
   int index = 0;
 
   public Scene2 (Terminal t) {
-    putString(0, 0, t, "--------------------");
-    putString(0, 1, t, "        /   .\\      ");
-    putString(0, 2, t, "       / ` .  \\     ");
-    putString(0, 3, t, " []   / .   `  \\    ");
-    putString(0, 4, t, "     /.   `  `  \\   ");
-    putString(0, 5, t, "    /  ` . `  . .\\  ");
-    putString(0, 6, t, "   / `  .   .  `  \\ ");
-    putString(0, 7, t, "  / .  `   ` .  .  \\");
+    putString(0, 0, t, "------------------------");
+    putString(0, 1, t, "            /   .\\      ");
+    putString(0, 2, t, "           / ` .  \\     ");
+    putString(0, 3, t, "          / .   `  \\    ");
+    putString(0, 4, t, "         /.   `  `  \\   ");
+    putString(0, 5, t, "        /  ` . `  . .\\  ");
+    putString(0, 6, t, "  []   / `  .   .  `  \\ ");
+    putString(0, 7, t, "      / .  `   ` .  .  \\");
 
     path[0] = "o";
     for (int i = 1; i < 20; i++) {
@@ -58,7 +58,7 @@ public class Scene2 {
   }
 
   public void moveRight() {
-    if (index != 1) {
+    if (index != 5) {
       path[index+1] = "o";
       path[index] = " ";
       index++;
@@ -66,7 +66,7 @@ public class Scene2 {
   }
 
   public boolean isLastSpot() {
-    return index == 1;
+    return index == 5;
   }
 
   public static void putString(int r, int c,Terminal t, String s){
