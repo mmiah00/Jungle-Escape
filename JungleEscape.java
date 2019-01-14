@@ -71,10 +71,11 @@ public class JungleEscape {
         putString(0, 22, t, "|    Attempting to escape the zombie apocolype, you decide to start running away from your problems.   |");
         putString(0, 21, t, "|                                                                                                      |");
         putString(0, 23, t, " ______________________________________________________________________________________________________");
+        /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
   			terminal.applySGR(Terminal.SGR.RESET_ALL);
-
+        */
       }
 
       if (lastSecond == 2) {
@@ -83,9 +84,11 @@ public class JungleEscape {
         putString(0, 22, t, "|  It seemed like there is no end; until you reach the jungle. Of course you should be worrying about  |");
         putString(0, 21, t, "|                                                                                                      |");
         putString(0, 23, t, " ______________________________________________________________________________________________________");
+        /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
   			terminal.applySGR(Terminal.SGR.RESET_ALL);
+        */
 
       }
 
@@ -95,9 +98,11 @@ public class JungleEscape {
         putString(0, 22, t, "|    wild animals or maybe even the possibilities of animal zombies, but you did not stop to think.    |");
         putString(0, 21, t, "|                                                                                                      |");
         putString(0, 23, t, " ______________________________________________________________________________________________________");
+        /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+        terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+        terminal.applySGR(Terminal.SGR.RESET_ALL);
+        */
 
       }
 
@@ -107,9 +112,11 @@ public class JungleEscape {
         putString(0, 22, t, "|                               So you just keep running, mindlessly.                                  |");
         putString(0, 21, t, "|                                                                                                      |");
         putString(0, 23, t, " ______________________________________________________________________________________________________");
+        /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
   			terminal.applySGR(Terminal.SGR.RESET_ALL);
+        */
 
       }
 
@@ -119,9 +126,11 @@ public class JungleEscape {
         putString(0, 22, t, "|                               ** Press SPACE to move forward **                                      |");
         putString(0, 21, t, "|                                                                                                      |");
         putString(0, 23, t, " ______________________________________________________________________________________________________");
+        /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-  			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-  			terminal.applySGR(Terminal.SGR.RESET_ALL);
+        terminal.applyForegroundColor(Terminal.Color.DEFAULT);
+        terminal.applySGR(Terminal.SGR.RESET_ALL);
+        */
 
       }
 
@@ -139,10 +148,10 @@ public class JungleEscape {
 					terminal.putCharacter(' ');
 					x++;
           spaces ++;
-				}
 			}
+    }
 
-      if (spaces == 10) {
+      if (spaces == 20) {
         putString(0, 20, t, " ___________________________________________________________________________________");
         putString(0, 21, t, "|                                                                                  |");
         putString(0, 22, t, "|          You have come upon a box and see there's a puzzle on it.                |");
