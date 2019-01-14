@@ -227,7 +227,7 @@ public class JungleEscape {
     TerminalSize size2 = terminal2.getTerminalSize();
     terminal2.setCursorVisible(false);
 
-    putString (0, 10, terminal2, "2048");
+    putString (0, 10, terminal2, "                                  2048");
     putString (0, 11, terminal2, " You shake the box. It sounds like it has something important. ");
     putString (0, 12, terminal2, " To play, press your right, left, up, and down keys to move the numbers together.");
 
