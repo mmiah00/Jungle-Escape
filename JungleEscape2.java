@@ -48,11 +48,13 @@ public class JungleEscape2 {
         Scene2 A = new Scene2(terminal);
         mode = A.playScene2(terminal);
       }
+      /*
       if (mode == 2) {
         SecondPuzzle A = new SecondPuzzle();
         A.playFifteen(terminal);
       }
-      if (mode == 3) {
+      */
+      if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
         A.play2048(terminal);
       }
