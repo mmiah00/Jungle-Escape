@@ -221,7 +221,6 @@ public class JungleEscape {
 
     /******************************************************************************************************************************/
 
-<<<<<<< HEAD
     Terminal terminal2 = TerminalFacade.createTextTerminal();
     terminal2.enterPrivateMode();
 
@@ -235,56 +234,9 @@ public class JungleEscape {
     if (mode == 1) {
       NumberPuzzle A = new NumberPuzzle ();
       A.play2048 (terminal2);
-=======
-    boolean running = true;
-    int mode = 0;
-    while (running) {
-      Key key = terminal.readInput();
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          running = false;
-        }
-      }
-      if (mode == 0) {
-        NumberPuzzle A = new NumberPuzzle();
-        A.play2048(terminal);
-        /*
-        putString(0, 0, terminal, A.toString());
-        boolean gameNotDone = true;
-        while (gameNotDone){
-          gameNotDone = !(A.isComplete());
-          putString(0, 0, terminal, A.toString());
-          if (key != null){
-            if (key.getKind() == Key.Kind.Escape) {
-              terminal.exitPrivateMode();
-              gameNotDone = false;
-              running = false;
-            }
-            if (key.getKind() == Key.Kind.ArrowLeft) {
-              A.moveLeft();
-            }
-            if (key.getKind() == Key.Kind.ArrowRight) {
-              A.moveRight();
-            }
-            if (key.getKind() == Key.Kind.ArrowUp) {
-              A.moveUp();
-            }
-            if (key.getKind() == Key.Kind.ArrowDown) {
-              A.moveDown();
-            }
-          }
-        }
-        terminal.exitPrivateMode();*/
-      }
-
-      if (mode == 1) {
-        FifteenPuzzle B = new FifteenPuzzle ();
-        B.play (terminal); 
-      }
->>>>>>> jungleescape
     }
 
+    /******************************************************************************************************************************/
     /******************************************************************************************************************************/
 
   }
