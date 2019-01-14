@@ -18,7 +18,7 @@ public class JungleEscape {
   public static void scene1 (Terminal t){//, String[] path) {
 
     int x = 0;
-		int y = 10;
+		int y = 11;
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -31,16 +31,17 @@ public class JungleEscape {
 		long tStart = System.currentTimeMillis();
 		long lastSecond = 0;
 
-    putString(0, 0, t, "            ,@@@@@@@,              ");
-    putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
-    putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
-    putString(0, 3, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
-    putString(0, 4, t, "%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’");
-    putString(0, 5, t, "%&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ ");
-    putString(0, 6, t, "‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ");
-    putString(0, 7, t, "    |o|        | |         | |     ");
-    putString(0, 8, t, "    |.|        | |         | |     ");
-    putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
+    putString(0, 0, t, " Press SPACE to move forward ");
+    putString(0, 1, t, "            ,@@@@@@@,                          ,@@@@@@@,              ");
+    putString(0, 2, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.      ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
+    putString(0, 3, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o  ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
+    putString(0, 4, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
+    putString(0, 5, t, "%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’");
+    putString(0, 6, t, "%&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ %&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ ");
+    putString(0, 7, t, "‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ");
+    putString(0, 8, t, "    |o|        | |         | |         |o|        | |         | |     ");
+    putString(0, 9, t, "    |.|        | |         | |         |.|        | |         | |     ");
+    putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
 
 		while(running){
 
@@ -48,7 +49,6 @@ public class JungleEscape {
 			terminal.applyBackgroundColor(Terminal.Color.WHITE);
 			terminal.applyForegroundColor(Terminal.Color.BLACK);
 			//applySGR(a,b) for multiple modifiers (bold,blink) etc.
-			terminal.applySGR(Terminal.SGR.ENTER_UNDERLINE);
 			terminal.putCharacter('O');
 			//terminal.putCharacter(' ');
 			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
@@ -71,8 +71,6 @@ public class JungleEscape {
 					terminal.putCharacter(' ');
 					x++;
 				}
-				putString(1,4,terminal,"["+key.getCharacter() +"]");
-				putString(1,1,terminal,key+"        ");//to clear leftover letters pad withspaces
 			}
 
 			//DO EVEN WHEN NO KEY PRESSED:
