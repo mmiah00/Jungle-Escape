@@ -218,15 +218,24 @@ public class JungleEscape {
     terminal1.setCursorVisible(false);
     scene1 (terminal1);
 
+    /******************************************************************************************************************************/
+
     Terminal terminal2 = TerminalFacade.createTextTerminal();
     terminal2.enterPrivateMode();
 
     TerminalSize size2 = terminal2.getTerminalSize();
     terminal2.setCursorVisible(false);
+
+    putString (0, 15, terminal2, " You shake the box. It sounds like it has something important. ");
+    putString (0, 16, terminal2, " To play, press your right, left, up, and down keys to move the numbers together.  ");
+
     if (mode == 1) {
       NumberPuzzle A = new NumberPuzzle ();
       A.play2048 (terminal2);
     }
+
+    /******************************************************************************************************************************/
+
   }
     //terminal.exitPrivateMode();
 
