@@ -68,11 +68,7 @@ public class JungleEscape {
 
       if (lastSecond == 1) {
         putString(0, 15, t, "|    Attempting to escape the zombie apocolype, you decide to start running    |");
-<<<<<<< HEAD
-        putString(0, 16, t, "|    away from your problems.                                                  |");
-=======
         putString(0, 16, t, "|    and running until there is no end.                                        |");
->>>>>>> jungleescape
         putString(0, 17, t, "|                                                                              |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
@@ -82,15 +78,9 @@ public class JungleEscape {
       }
 
       if (lastSecond == 4) {
-<<<<<<< HEAD
-        putString(0, 15, t, "|  It seemed like there is no end; until you reach the jungle. Of course you   |");
-        putString(0, 16, t, "|  should be worrying about wild animals or maybe even the possibilities       |");
-        putString(0, 17, t, "|  of animal zombies, but you did not stop to think.                           |");
-=======
         putString(0, 15, t, "|  It seemed like there is no hope; until you reach the jungle. Of course you   |");
         putString(0, 16, t, "|  should be worrying about wild animals or maybe even the possibilities        |");
         putString(0, 17, t, "|  of animal zombies, but could did not stop to think.                          |");
->>>>>>> jungleescape
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -100,11 +90,7 @@ public class JungleEscape {
       }
 
       if (lastSecond == 9) {
-<<<<<<< HEAD
-        putString(0, 15, t, "|                     So you just keep running, mindlessly.                    |");
-=======
         putString(0, 15, t, "|                          So you just keep running.                           |");
->>>>>>> jungleescape
         putString(0, 16, t, "|                                                                              |");
         putString(0, 17, t, "|                                                                              |");
         /*
@@ -251,10 +237,7 @@ public class JungleEscape {
     }
 
     /******************************************************************************************************************************/
-<<<<<<< HEAD
-    /******************************************************************************************************************************/
-=======
->>>>>>> jungleescape
+
 
   }
     //terminal.exitPrivateMode();
