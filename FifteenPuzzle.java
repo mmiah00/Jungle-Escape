@@ -144,10 +144,10 @@ public class FifteenPuzzle {
           if (spacex != 0 && spacex != 4 && spacex != 8 && spacex != 12) { //checking if within bounds
             //switch so the space moves to the left
             board.flip (space, board.nums[spacex - 1]);
+            space = board.nums[spacex - 1];
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex - 1];
           }
         }
 
