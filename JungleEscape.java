@@ -33,7 +33,6 @@ public class JungleEscape {
 
     int spaces = 0;
 
-    putString(0, 0, t, " Press SPACE to move forward ");
     putString(0, 1, t, "            ,@@@@@@@,                          ,@@@@@@@,                         ");
     putString(0, 2, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.      ,,,,   ,@@@@@@/@@,  .oo8888o.      ,,,,   ");
     putString(0, 3, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o  ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o  ,&%%&%&&");
@@ -77,6 +76,7 @@ public class JungleEscape {
         putString(0, 9, t, "    |.|        | |         | |         |.|        | |         | |         |.|    ");
         putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\");
         putString(0, 15, t, "|    Attempting to escape the zombie apocolype, you decide to start running away from your problems.   |");
+        putString(0, 16, t, "|                                                                                                      |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -117,6 +117,7 @@ public class JungleEscape {
         putString(0, 9, t, "    |.|        | |         | |         |.|        | |         | |         |.|    ");
         putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\");
         putString(0, 15, t, "|                               So you just keep running, mindlessly.                                  |");
+        putString(0, 16, t, "|                                                                                                      |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
   			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -138,6 +139,7 @@ public class JungleEscape {
         putString(0, 9, t, "    |.|        | |         | |         |.|        | |         | |         |.|    ");
         putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\");
         putString(0, 15, t, "|                               ** Press SPACE to move forward **                                      |");
+        putString(0, 16, t, "|                                                                                                      |");
         /*
         terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
         terminal.applyForegroundColor(Terminal.Color.DEFAULT);
@@ -164,7 +166,8 @@ public class JungleEscape {
     }
 
       if (spaces == 20) {
-        putString(0, 15, t, "|          You have come upon a box and see there's a puzzle on it.                |");
+        putString(0, 15, t, "|                   You have come upon a box and see there's a puzzle on it.                           |");
+        putString(0, 16, t, "|                                                                                                      |");
       }
     }
   }
