@@ -76,7 +76,7 @@ public class JungleEscape {
         */
       }
 
-      if (lastSecond == 2) {
+      if (lastSecond == 4) {
         putString(0, 15, t, "|  It seemed like there is no end; until you reach the jungle. Of course you   |");
         putString(0, 16, t, "|  should be worrying about wild animals or maybe even the possibilities       |");
         putString(0, 16, t, "|  of animal zombies, but you did not stop to think.                           |");
@@ -88,7 +88,7 @@ public class JungleEscape {
 
       }
 
-      if (lastSecond == 7) {
+      if (lastSecond == 9) {
         putString(0, 15, t, "|                     So you just keep running, mindlessly.                    |");
         putString(0, 16, t, "|                                                                              |");
         putString(0, 17, t, "|                                                                              |");
@@ -100,7 +100,7 @@ public class JungleEscape {
 
       }
 
-      if (lastSecond == 7) {
+      if (lastSecond == 11) {
         putString(0, 0, t, " Press SPACE to move forward ");
         putString(0, 15, t, "|                         ** Press SPACE to move forward **                    |");
         putString(0, 16, t, "|                                                                              |");
@@ -134,9 +134,9 @@ public class JungleEscape {
         putString(0, 15, t, "|             You have come upon a box and see there's a puzzle on it.         |");
         putString(0, 16, t, "|                                                                              |");
         putString(0, 17, t, "|                                                                              |");
+        spaces = 0;
+        mode ++;
       }
-      spaces = 0;
-      mode ++;
     }
   }
 
