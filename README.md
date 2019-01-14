@@ -29,4 +29,7 @@ Vivien: I finished writing and testing the main in NumberPuzzle. When I was work
 Maisha: I took Vivien's advice and downloaded PuTTy to my laptop and used it to ssh into the school computer. I am currently working on fixing my merging issues and keeping track of my files
 
 1/12/2019
-Maisha: Today I worked on using PuTTy and am editing my code so that it can be tested. 
+Maisha: Today I worked on using PuTTy and am editing my code so that it can be tested. It prints fine but switching two tiles doesn't. 
+
+1/13/2019
+Maisha: I continued trying to fix my issues with FifteenPuzzle. I then started working on the JungleEscape file to incorporate some of the dialogue and words. I also transitioned between scene 1 and playing 2048 puzzle. 
