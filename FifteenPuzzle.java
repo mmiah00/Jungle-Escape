@@ -24,30 +24,34 @@ public class FifteenPuzzle {
     done = false;
     nums = new Tile [16];
 
-    nums[0] = new Tile ('1', '0', 2, 2);
-    nums[1] = new Tile ('0', '2', 13, 2);
-    nums[2] = new Tile ('1', '3', 24, 2);
-    nums[3] = new Tile ('0', '4', 35, 2);
+    nums[0] = new Tile ('1', '0', 10, 3);
+    nums[1] = new Tile ('0', '2', 21, 3);
+    nums[2] = new Tile ('1', '3', 32, 3);
+    nums[3] = new Tile ('0', '4', 43, 3);
 
-    nums[4] = new Tile ('1', '2', 2, 7);
-    nums[5] = new Tile ('0', '9', 13, 7);
-    nums[6] = new Tile ('0', '7', 24, 7);
-    nums[7] = new Tile ('1', '5', 35, 7);
+    nums[4] = new Tile ('1', '2', 10, 8);
+    nums[5] = new Tile ('0', '9', 21, 8);
+    nums[6] = new Tile ('0', '7', 32, 8);
+    nums[7] = new Tile ('1', '5', 43, 8);
 
-    nums[8] = new Tile ('0', '1', 2, 12);
-    nums[9] = new Tile ('1', '1', 13, 12);
-    nums[10] = new Tile ('1', '4', 24, 12);
-    nums[11] = new Tile ('0', '6', 35, 12);
+    nums[8] = new Tile ('0', '1', 10, 13);
+    nums[9] = new Tile ('1', '1', 21, 13);
+    nums[10] = new Tile ('1', '4', 32, 13);
+    nums[11] = new Tile ('0', '6', 43, 13);
 
-    nums[12] = new Tile ('0', '3', 2, 17);
-    nums[13] = new Tile ('0', '5', 13, 17);
-    nums[14] = new Tile ('0', '8', 24, 17);
-    nums[15] = new Tile (' ', ' ', 35, 17);
+    nums[12] = new Tile ('0', '3', 10, 18);
+    nums[13] = new Tile ('0', '5', 21, 18);
+    nums[14] = new Tile ('0', '8', 32, 18);
+    nums[15] = new Tile (' ', ' ', 43, 18);
   }
 
   public void flip (Tile one, Tile another) {
-    nums[getIndex (one)] = another;
-    nums[getIndex (another)] = one;
+    Tile thisone = one;
+    Tile anotherone = another;
+    one.setTens (anotherone.tens());
+    one.setOnes (anotherone.ones());
+    another.setTens (thisone.tens ());
+    another.setOnes (thisone.ones());
   }
 
   private int getIndex (Tile aTile) {
@@ -60,6 +64,7 @@ public class FifteenPuzzle {
   }
 
 
+  /*
   public static void putString (Tile aTile, Terminal t) {
     int x = aTile.xcor ();
     int y = aTile.ycor ();
@@ -75,6 +80,17 @@ public class FifteenPuzzle {
         y += 1;
       }
     }
+  }
+  */
+
+  public static void putString (Tile aTile, Terminal t) {
+    int x = aTile.xcor ();
+    int y = aTile.ycor ();
+    String[] s = aTile.toString ().split ("\n");
+    putString (x, y, t, s[0]);
+    putString (x, y + 1, t, s[1]);
+    putString (x, y + 2, t, s[2]);
+    putString (x, y + 4, t, s[3]);
   }
 
   public static void putString(int r, int c,Terminal t, String s){
@@ -95,25 +111,25 @@ public class FifteenPuzzle {
   }
 
 
-  public static void main(String[] args){
-    FifteenPuzzle board = new FifteenPuzzle ();
-
+  public static void play (Terminal t ){
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
+
+    putString (1,1, terminal, "Welcome to FifteenPuzzle");
+    terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+    FifteenPuzzle board = new FifteenPuzzle ();
     Tile space = board.nums[15];
 
-    while(!done){
-			for (int i = 0; i < board.nums.length; i ++) {
-        putString (board.nums[i], terminal);
-      }
-			//terminal.putCharacter(' ');
-			terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-			terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-			terminal.applySGR(Terminal.SGR.RESET_ALL);
+    for (int i = 0; i < board.nums.length; i ++) {
+      putString (board.nums[i], terminal); //print grid
+    }
+    terminal.applySGR(Terminal.SGR.RESET_ALL);
 
+    while(!done){
       Key key = terminal.readInput();
 
       if (key != null){
@@ -129,6 +145,9 @@ public class FifteenPuzzle {
             //switch so the space moves to the left
             board.flip (space, board.nums[spacex - 1]);
             space = board.nums[spacex - 1];
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
           }
         }
 
@@ -137,6 +156,9 @@ public class FifteenPuzzle {
           if (spacex != 3 && spacex != 7 && spacex != 11 && spacex != 15) { //checking if within bounds
             //switch so the space moves to the right
             board.flip (space, board.nums[spacex + 1]);
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
             space = board.nums[spacex + 1];
           }
         }
@@ -146,6 +168,9 @@ public class FifteenPuzzle {
           if (spacex != 0 && spacex != 1 && spacex != 2 && spacex != 3) { //checking if within bounds
             //switch so the space moves up
             board.flip (space, board.nums[spacex - 4]);
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
             space = board.nums[spacex - 4];
           }
         }
@@ -155,16 +180,16 @@ public class FifteenPuzzle {
           if (spacex != 12 && spacex != 13 && spacex != 14 && spacex != 15) { //checking if within bounds
             //switch so the space moves down
             board.flip (space, board.nums[spacex + 4]);
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
             space = board.nums[spacex + 4];
           }
         }
       }
-
       board.complete (); //check to see if the board is in order , updates the done variable
-      if (done) {
-        terminal.exitPrivateMode (); 
-      }
     }
+    terminal.exitPrivateMode ();
   }
 }
 
