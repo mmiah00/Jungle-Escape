@@ -111,7 +111,88 @@ public class FifteenPuzzle {
     done = (actual == ans); //update done variable, if done that means its complete
   }
 
+  public static void main (String[] args){
+    Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
 
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
+    putString (1,1, terminal, "Welcome to FifteenPuzzle");
+    terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+    FifteenPuzzle board = new FifteenPuzzle ();
+    Tile space = board.nums[15];
+
+    for (int i = 0; i < board.nums.length; i ++) {
+      putString (board.nums[i], terminal); //print grid
+    }
+    terminal.applySGR(Terminal.SGR.RESET_ALL);
+
+    while(!done){
+      Key key = terminal.readInput();
+
+      if (key != null){
+
+        if (key.getKind() == Key.Kind.Escape) { //to exit out of terminal
+          terminal.exitPrivateMode();
+          done = true;
+        }
+
+        if (key.getKind() == Key.Kind.ArrowLeft) {
+          int spacex = board.getIndex (space);
+          if (spacex != 0 && spacex != 4 && spacex != 8 && spacex != 12) { //checking if within bounds
+            //switch so the space moves to the left
+            board.flip (space, board.nums[spacex - 1]);
+            space = board.nums[spacex - 1];
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
+          }
+        }
+
+        if (key.getKind() == Key.Kind.ArrowRight) {
+          int spacex = board.getIndex (space);
+          if (spacex != 3 && spacex != 7 && spacex != 11 && spacex != 15) { //checking if within bounds
+            //switch so the space moves to the right
+            board.flip (space, board.nums[spacex + 1]);
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
+            space = board.nums[spacex + 1];
+          }
+        }
+
+        if (key.getKind() == Key.Kind.ArrowUp) {
+          int spacex = board.getIndex (space);
+          if (spacex != 0 && spacex != 1 && spacex != 2 && spacex != 3) { //checking if within bounds
+            //switch so the space moves up
+            board.flip (space, board.nums[spacex - 4]);
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
+            space = board.nums[spacex - 4];
+          }
+        }
+
+        if (key.getKind() == Key.Kind.ArrowDown) {
+          int spacex = board.getIndex (space);
+          if (spacex != 12 && spacex != 13 && spacex != 14 && spacex != 15) { //checking if within bounds
+            //switch so the space moves down
+            board.flip (space, board.nums[spacex + 4]);
+            for (int i = 0; i < board.nums.length; i ++) {
+              putString (board.nums[i], terminal); //print grid
+            }
+            space = board.nums[spacex + 4];
+          }
+        }
+      }
+      board.complete (); //check to see if the board is in order , updates the done variable
+    }
+    terminal.exitPrivateMode ();
+  }
+
+/*
   public static void play (Terminal t ){
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
@@ -192,6 +273,9 @@ public class FifteenPuzzle {
     }
     terminal.exitPrivateMode ();
   }
+*/
+
+
 }
 
 //javac -cp "lanterna.jar;." FifteenPuzzle.java
