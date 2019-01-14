@@ -46,12 +46,19 @@ public class FifteenPuzzle {
   }
 
   public void flip (Tile one, Tile another) {
+<<<<<<< HEAD
     Tile thisone = one;
     Tile anotherone = another;
     one.setTens (anotherone.tens());
     one.setOnes (anotherone.ones());
     another.setTens (thisone.tens ());
     another.setOnes (thisone.ones());
+=======
+    one.setTens (another.tens());
+    one.setOnes (another.ones());
+    another.setTens (one.tens ());
+    another.setOnes (one.ones());
+>>>>>>> jungleescape
   }
 
   private int getIndex (Tile aTile) {
@@ -111,7 +118,7 @@ public class FifteenPuzzle {
   }
 
 
-  public static void main(String[] args){
+  public static void play (Terminal t ){
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
