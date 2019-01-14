@@ -30,6 +30,8 @@ Maisha: I took Vivien's advice and downloaded PuTTy to my laptop and used it to 
 
 1/12/2019
 Maisha: Today I worked on using PuTTy and am editing my code so that it can be tested. It prints fine but switching two tiles doesn't. 
+Vivien: I worked on play2048 and JungleEscape and sucessfully got play2048 to be called from JungleEscape. 
 
 1/13/2019
 Maisha: I continued trying to fix my issues with FifteenPuzzle. I then started working on the JungleEscape file to incorporate some of the dialogue and words. I also transitioned between scene 1 and playing 2048 puzzle. 
+Vivien: I worked on adding the backgrounds for the first two scenes. In the beginning, I had a lot of difficulty setting up the background because I didnt realize had to put each row in a different putString. I created scene1 and scene2 where the player can walk across the terminal and incorportated play2048 as the first game. I attempted to complete FifteenPuzzle, but I was unable to.  
