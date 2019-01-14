@@ -226,8 +226,8 @@ public class JungleEscape {
     TerminalSize size2 = terminal2.getTerminalSize();
     terminal2.setCursorVisible(false);
 
-    putString (0, 15, terminal2, " You shake the box. It sounds like it has something important. ");
-    putString (0, 16, terminal2, " To play, press your right, left, up, and down keys to move the numbers together.  ");
+    putString (0, 10, terminal2, " You shake the box. It sounds like it has something important. ");
+    putString (0, 11, terminal2, " To play, press your right, left, up, and down keys to move the numbers together.  ");
 
     if (mode == 1) {
       NumberPuzzle A = new NumberPuzzle ();
