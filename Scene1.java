@@ -35,6 +35,12 @@ public class Scene1 {
       path[i] = " ";
     }
     putString(0, 10, t, toString());
+
+    putString(0, 12, t, "| Attempting to escape the zombie |");
+    putString(0, 13, t, "| apocolype, you decide to start  |");
+    putString(0, 14, t, "| running away from your problems.|");
+    putString(0, 15, t, "| Keep running until you reach the|");
+    putString(0, 16, t, "|             safehouse.          |");
   }
 
   public String toString() {
