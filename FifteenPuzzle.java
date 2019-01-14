@@ -80,7 +80,7 @@ public class FifteenPuzzle {
     }
   }
   */
-  
+
   public static void putString (Tile aTile, Terminal t) {
     int x = aTile.xcor ();
     int y = aTile.ycor ();
@@ -146,15 +146,7 @@ public class FifteenPuzzle {
               putString (board.nums[i], terminal); //print grid
             }
             terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-            /*
-            putString (space, terminal);
-            putString (board.nums[spacex - 1], terminal);
-            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
-            */
-            space = board.nums[spacex - 1];
+            //space = board.nums[spacex - 1];
           }
         }
 
@@ -167,16 +159,7 @@ public class FifteenPuzzle {
               putString (board.nums[i], terminal); //print grid
             }
             terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-            /*
-            putString (space, terminal);
-            putString (board.nums[spacex + 1], terminal);
-            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
-            */
-
-            space = board.nums[spacex + 1];
+            //space = board.nums[spacex + 1];
           }
         }
 
@@ -189,16 +172,7 @@ public class FifteenPuzzle {
               putString (board.nums[i], terminal); //print grid
             }
             terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-            /*
-            putString (space, terminal);
-            putString (board.nums[spacex - 4], terminal);
-            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
-            */
-
-            space = board.nums[spacex - 4];
+            //space = board.nums[spacex - 4];
           }
         }
 
@@ -211,15 +185,7 @@ public class FifteenPuzzle {
               putString (board.nums[i], terminal); //print grid
             }
             terminal.applySGR(Terminal.SGR.RESET_ALL);
-
-            /*
-            putString (space, terminal);
-            putString (board.nums[spacex + 4], terminal);
-            terminal.applyBackgroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applyForegroundColor(Terminal.Color.DEFAULT);
-    			  terminal.applySGR(Terminal.SGR.RESET_ALL);
-            */
-            space = board.nums[spacex + 4];
+            //space = board.nums[spacex + 4];
           }
         }
       }
