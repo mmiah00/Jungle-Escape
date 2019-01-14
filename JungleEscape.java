@@ -211,15 +211,21 @@ public class JungleEscape {
 
   public static void main(String[] args) {
 
-    Terminal terminal = TerminalFacade.createTextTerminal();
-    terminal.enterPrivateMode();
+    Terminal terminal1 = TerminalFacade.createTextTerminal();
+    terminal1.enterPrivateMode();
 
-    TerminalSize size = terminal.getTerminalSize();
-    terminal.setCursorVisible(false);
-    scene1 (terminal);
+    TerminalSize size1 = terminal1.getTerminalSize();
+    terminal1.setCursorVisible(false);
+    scene1 (terminal1);
+
+    Terminal terminal2 = TerminalFacade.createTextTerminal();
+    terminal2.enterPrivateMode();
+
+    TerminalSize size2 = terminal2.getTerminalSize();
+    terminal2.setCursorVisible(false);
     if (mode == 1) {
       NumberPuzzle A = new NumberPuzzle ();
-      A.play2048 (terminal);
+      A.play2048 (terminal2);
     }
   }
     //terminal.exitPrivateMode();
