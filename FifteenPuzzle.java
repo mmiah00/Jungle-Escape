@@ -46,12 +46,28 @@ public class FifteenPuzzle {
   }
 
   public void flip (Tile one, Tile another) {
+<<<<<<< HEAD
+=======
+    /*
+>>>>>>> fifteenpuzzle
     Tile thisone = one;
     Tile anotherone = another;
     one.setTens (anotherone.tens());
     one.setOnes (anotherone.ones());
     another.setTens (thisone.tens ());
     another.setOnes (thisone.ones());
+<<<<<<< HEAD
+=======
+    */
+    int onex = one.xcor ();
+    int oney = one.ycor ();
+    int anotherx = another.xcor ();
+    int anothery = another.ycor ();
+    one.setX (anotherx);
+    one.setY (anothery);
+    another.setX (onex);
+    another.setY (oney);
+>>>>>>> fifteenpuzzle
   }
 
   private int getIndex (Tile aTile) {
@@ -62,8 +78,6 @@ public class FifteenPuzzle {
     }
     return -1;
   }
-
-
   /*
   public static void putString (Tile aTile, Terminal t) {
     int x = aTile.xcor ();
@@ -111,7 +125,11 @@ public class FifteenPuzzle {
   }
 
 
+<<<<<<< HEAD
   public static void play (Terminal t ){
+=======
+  public static void main (String[] args){
+>>>>>>> fifteenpuzzle
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
@@ -156,6 +174,7 @@ public class FifteenPuzzle {
           if (spacex != 3 && spacex != 7 && spacex != 11 && spacex != 15) { //checking if within bounds
             //switch so the space moves to the right
             board.flip (space, board.nums[spacex + 1]);
+            space = board.nums[spacex + 1];
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
@@ -168,10 +187,10 @@ public class FifteenPuzzle {
           if (spacex != 0 && spacex != 1 && spacex != 2 && spacex != 3) { //checking if within bounds
             //switch so the space moves up
             board.flip (space, board.nums[spacex - 4]);
+            space = board.nums[spacex - 4];
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex - 4];
           }
         }
 
@@ -180,10 +199,10 @@ public class FifteenPuzzle {
           if (spacex != 12 && spacex != 13 && spacex != 14 && spacex != 15) { //checking if within bounds
             //switch so the space moves down
             board.flip (space, board.nums[spacex + 4]);
+            space = board.nums[spacex - 4];
             for (int i = 0; i < board.nums.length; i ++) {
               putString (board.nums[i], terminal); //print grid
             }
-            space = board.nums[spacex + 4];
           }
         }
       }
