@@ -24,8 +24,18 @@ public class SecondPuzzle {
 		grid = new String[4][4];
 		row = 3;
     col = 3;
+    fillGrid();
 		addStartNums(); //adds two "2" to the grid
 	}
+
+  public void fillGrid() {
+    for (int r = 0; r < 4; r++) {
+      for (int c = 0; c < 4; c++) {
+        grid[r][c] = addSpaces("" + 4*r+c+1) + 4*r+c+1;
+      }
+    }
+    grid[3][3] = "  "; 
+  }
 
   public void addStartNums() {
     Random randgen = new Random();
