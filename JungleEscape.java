@@ -14,11 +14,12 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class JungleEscape {
+  static int mode = 0;
 
   public static void scene1 (Terminal t){//, String[] path) {
 
     int x = 0;
-		int y = 12;
+		int y = 11;
 
 		Terminal terminal = TerminalFacade.createTextTerminal();
 		terminal.enterPrivateMode();
@@ -134,6 +135,8 @@ public class JungleEscape {
         putString(0, 16, t, "|                                                                              |");
         putString(0, 17, t, "|                                                                              |");
       }
+      spaces = 0;
+      mode ++;
     }
   }
 
@@ -210,57 +213,13 @@ public class JungleEscape {
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
     scene1 (terminal);
-
-/*
-    String[] path1 = new String[35];
-    scene1(terminal, path1);
-*/
-
-    boolean running = true;
-    int mode = 0;
-    while (running) {
-      Key key = terminal.readInput();
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          running = false;
-        }
-      }
-      if (mode == 0) {
-        NumberPuzzle A = new NumberPuzzle();
-        A.play2048(terminal);
-        /*
-        putString(0, 0, terminal, A.toString());
-        boolean gameNotDone = true;
-        while (gameNotDone){
-          gameNotDone = !(A.isComplete());
-          putString(0, 0, terminal, A.toString());
-          if (key != null){
-            if (key.getKind() == Key.Kind.Escape) {
-              terminal.exitPrivateMode();
-              gameNotDone = false;
-              running = false;
-            }
-            if (key.getKind() == Key.Kind.ArrowLeft) {
-              A.moveLeft();
-            }
-            if (key.getKind() == Key.Kind.ArrowRight) {
-              A.moveRight();
-            }
-            if (key.getKind() == Key.Kind.ArrowUp) {
-              A.moveUp();
-            }
-            if (key.getKind() == Key.Kind.ArrowDown) {
-              A.moveDown();
-            }
-          }
-        }
-        terminal.exitPrivateMode();*/
-      }
+    if (mode == 1) {
+      NumberPuzzle A = new NumberPuzzle ();
+      A.play2048 (terminal);
     }
-    terminal.exitPrivateMode();
-
   }
+    //terminal.exitPrivateMode();
+
 }
   /*
   create terminal
@@ -276,3 +235,52 @@ public class JungleEscape {
   playfrogger
   victory
   */
+
+
+  /*
+      String[] path1 = new String[35];
+      scene1(terminal, path1);
+  */
+  /*
+      boolean running = true;
+      int mode = 0;
+      while (running) {
+        Key key = terminal.readInput();
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            running = false;
+          }
+        }
+        if (mode == 0) {
+          NumberPuzzle A = new NumberPuzzle();
+          A.play2048(terminal);
+          */
+
+          /*
+          putString(0, 0, terminal, A.toString());
+          boolean gameNotDone = true;
+          while (gameNotDone){
+            gameNotDone = !(A.isComplete());
+            putString(0, 0, terminal, A.toString());
+            if (key != null){
+              if (key.getKind() == Key.Kind.Escape) {
+                terminal.exitPrivateMode();
+                gameNotDone = false;
+                running = false;
+              }
+              if (key.getKind() == Key.Kind.ArrowLeft) {
+                A.moveLeft();
+              }
+              if (key.getKind() == Key.Kind.ArrowRight) {
+                A.moveRight();
+              }
+              if (key.getKind() == Key.Kind.ArrowUp) {
+                A.moveUp();
+              }
+              if (key.getKind() == Key.Kind.ArrowDown) {
+                A.moveDown();
+              }
+            }
+          }
+          terminal.exitPrivateMode();*/
