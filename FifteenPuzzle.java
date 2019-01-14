@@ -49,7 +49,7 @@ public class FifteenPuzzle {
     one.setTens (another.tens());
     one.setOnes (another.ones());
     another.setTens (one.tens ());
-    another.setOnes (one.ones()); 
+    another.setOnes (one.ones());
   }
 
   private int getIndex (Tile aTile) {
@@ -62,6 +62,7 @@ public class FifteenPuzzle {
   }
 
 
+  /*
   public static void putString (Tile aTile, Terminal t) {
     int x = aTile.xcor ();
     int y = aTile.ycor ();
@@ -77,6 +78,17 @@ public class FifteenPuzzle {
         y += 1;
       }
     }
+  }
+  */
+  
+  public static void putString (Tile aTile, Terminal t) {
+    int x = aTile.xcor ();
+    int y = aTile.ycor ();
+    String[] s = aTile.toString ().split ("\n");
+    putString (x, y, t, s[0]);
+    putString (x, y + 1, t, s[1]);
+    putString (x, y + 2, t, s[2]);
+    putString (x, y + 4, t, s[3]);
   }
 
   public static void putString(int r, int c,Terminal t, String s){
