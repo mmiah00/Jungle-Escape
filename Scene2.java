@@ -20,13 +20,13 @@ public class Scene2 {
 
   public Scene2 (Terminal t) {
     putString(0, 0, t, "--------------------");
-    putString(0, 1, t, "      /   .\\        ");
-    putString(0, 2, t, "     / ` .  \\       ");
-    putString(0, 3, t, " [] / .   `  \\      ");
-    putString(0, 4, t, "   /.   `  `  \\     ");
-    putString(0, 5, t, "  /  ` . `  . .\\    ");
-    putString(0, 6, t, " / `  .   .  `  \\   ");
-    putString(0, 7, t, "/ .  `   ` .  .  \\  ");
+    putString(0, 1, t, "        /   .\\      ");
+    putString(0, 2, t, "       / ` .  \\     ");
+    putString(0, 3, t, " []   / .   `  \\    ");
+    putString(0, 4, t, "     /.   `  `  \\   ");
+    putString(0, 5, t, "    /  ` . `  . .\\  ");
+    putString(0, 6, t, "   / `  .   .  `  \\ ");
+    putString(0, 7, t, "  / .  `   ` .  .  \\");
 
     path[0] = "o";
     for (int i = 1; i < 20; i++) {
@@ -58,7 +58,7 @@ public class Scene2 {
   }
 
   public void moveRight() {
-    if (index != 19) {
+    if (index != 1) {
       path[index+1] = "o";
       path[index] = " ";
       index++;
@@ -66,7 +66,7 @@ public class Scene2 {
   }
 
   public boolean isLastSpot() {
-    return index == 19;
+    return index == 1;
   }
 
   public static void putString(int r, int c,Terminal t, String s){
@@ -82,7 +82,7 @@ public class Scene2 {
     boolean pathNotDone = true;
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
-      putString(0, 10, terminal, A.toString());
+      putString(0, 8, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
