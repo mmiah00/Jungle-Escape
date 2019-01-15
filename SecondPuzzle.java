@@ -88,6 +88,7 @@ public class SecondPuzzle {
       String newNum = grid[row+1][col].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row+1][col] = "  ";
+			row++;
     }
 	}
 
@@ -96,6 +97,7 @@ public class SecondPuzzle {
       String newNum = grid[row-1][col].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row-1][col] = "  ";
+			row--;
     }
 	}
 
