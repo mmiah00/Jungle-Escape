@@ -39,7 +39,7 @@ public class SecondPuzzle {
 
   public void scramble() {
     Random randgen = new Random();
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 40; i++) {
       int direction = randgen.nextInt(4);
       if (direction == 0) {
         moveLeft();
