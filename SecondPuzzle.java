@@ -172,9 +172,6 @@ public class SecondPuzzle {
           terminal.exitPrivateMode();
           gameNotDone = false;
         }
-			}
-		}
-				/*
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
 				}
