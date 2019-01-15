@@ -66,20 +66,20 @@ public class SecondPuzzle {
 	}
 
 	public void moveLeft() {
+		if (col != 3) {
+      String newNum = grid[row][col+1].trim();
+      grid[row][col] = addSpaces(newNum) + newNum;
+      grid[row][col+1] = "  ";
+			col++;
+    }
+	}
+
+	public void moveRight() {
 		if (col != 0) {
       String newNum = grid[row][col-1].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row][col-1] = "  ";
 			col--;
-    }
-	}
-
-	public void moveRight() {
-    if (col != 3) {
-      String newNum = grid[row][col+1].trim();
-      grid[row][col] = addSpaces(newNum) + newNum;
-      grid[row][col+1] = "  ";
-			col++;
     }
 	}
 
