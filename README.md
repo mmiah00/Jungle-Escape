@@ -35,3 +35,6 @@ Vivien: I worked on play2048 and JungleEscape and sucessfully got play2048 to be
 1/13/2019
 Maisha: I continued trying to fix my issues with FifteenPuzzle. I then started working on the JungleEscape file to incorporate some of the dialogue and words. I also transitioned between scene 1 and playing 2048 puzzle. 
 Vivien: I worked on adding the backgrounds for the first two scenes. In the beginning, I had a lot of difficulty setting up the background because I didnt realize had to put each row in a different putString. I created scene1 and scene2 where the player can walk across the terminal and incorportated play2048 as the first game. I attempted to complete FifteenPuzzle, but I was unable to.  
+
+1/14/2019
+Vivien: I completed SecondPuzzle (FifteenPuzzle)! I had the skeleton from yesterday but I had to go back and fix the exceptions and missing code. SecondPuzzle works as is, but depending on how difficult to play the other parts of the game are, I might go back and make SecondPuzzle easier (less scrambled) or make a restart method. For tomorrow, I need to incorporate SecondPuzzle into JungleEscape and work on scene3. A couple problems I am noticing are that the grids (for both 2048 and 15 Puzzle) sometimes flash and the individual games have diffficulty exiting private move. 
