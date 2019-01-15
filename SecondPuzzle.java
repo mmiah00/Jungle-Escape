@@ -44,13 +44,13 @@ public class SecondPuzzle {
       if (direction == 0) {
         moveLeft();
       }
-      if (direction == 1) {
+      else if (direction == 1) {
         moveRight();
       }
-      if (direction == 2) {
+      else if (direction == 2) {
         moveUp();
       }
-      if (direction == 3) {
+      else if (direction == 3) {
         moveDown();
       }
     }
