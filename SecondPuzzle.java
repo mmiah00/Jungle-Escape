@@ -25,7 +25,7 @@ public class SecondPuzzle {
 		row = 3;
     col = 3;
     fillGrid();
-		addStartNums(); //adds two "2" to the grid
+		//addStartNums(); //adds two "2" to the grid
 	}
 
   public void fillGrid() {
@@ -36,7 +36,7 @@ public class SecondPuzzle {
     }
     grid[3][3] = "  ";
   }
-
+/*
   public void addStartNums() {
     Random randgen = new Random();
     for (int i = 0; i < 20; i++) {
@@ -55,19 +55,19 @@ public class SecondPuzzle {
       }
     }
   }
-
+*/
 	public String addSpaces(String s) { //adds spaces to account for the 4 spaces that should be in each position
 		String spaces = "";
 		int length = 2 - s.length();
 		for (int i = 0; i < length; i++) {
-			spaces = spaces + "*";
+			spaces = spaces + " ";
 		}
 		return spaces;
 	}
 
 	public void moveLeft() {
 		if (col != 0) {
-      String newNum = "" + Integer.parseInt(grid[row][col-1].trim());
+      String newNum = grid[row][col-1].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row][col-1] = "  ";
     }
@@ -101,8 +101,8 @@ public class SecondPuzzle {
     boolean complete = true;
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
-        int Num = Integer.parseInt(grid[row][col].trim());
-        if (Num != (4*r+c+1)) {
+        String correct = addSpaces("" + (4*r+c+1)) + (4*r+c+1);
+        if (!(grid[r][c].equals(16)) && !(grid[r][c].equals(4*r+c+1))) {
           return false;
         }
       }
@@ -161,7 +161,7 @@ public class SecondPuzzle {
 		putString(0, 11, terminal, "|Use the arrow keys |");
 		putString(0, 12, terminal, "|to combine numbers |");
 		putString(0, 13, terminal, "|  and reach 2048   |");
-/*
+
 		boolean gameNotDone = true;
 		while (gameNotDone) {
 			gameNotDone = !(A.isComplete());
@@ -172,6 +172,9 @@ public class SecondPuzzle {
           terminal.exitPrivateMode();
           gameNotDone = false;
         }
+			}
+		}
+				/*
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
 				}
