@@ -25,7 +25,7 @@ public class SecondPuzzle {
 		row = 3;
     col = 3;
     fillGrid();
-		//addStartNums(); //adds two "2" to the grid
+		scramble(); //adds two "2" to the grid
 	}
 
   public void fillGrid() {
@@ -36,8 +36,8 @@ public class SecondPuzzle {
     }
     grid[3][3] = "  ";
   }
-/*
-  public void addStartNums() {
+
+  public void scramble() {
     Random randgen = new Random();
     for (int i = 0; i < 20; i++) {
       int direction = randgen.nextInt(4);
@@ -55,7 +55,7 @@ public class SecondPuzzle {
       }
     }
   }
-*/
+
 	public String addSpaces(String s) { //adds spaces to account for the 4 spaces that should be in each position
 		String spaces = "";
 		int length = 2 - s.length();
@@ -70,7 +70,7 @@ public class SecondPuzzle {
       String newNum = grid[row][col-1].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row][col-1] = "  ";
-			col--; 
+			col--;
     }
 	}
 
