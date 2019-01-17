@@ -3,8 +3,8 @@ import java.util.*;
 public class Frogger {
   private String[10][8] world;
   private int lives;
-  private int currentRow;
-  private int currentCol;
+  private int currentRow; //ycor of player
+  private int currentCol; //xcor of player
 
   public Frogger() {
     for (int r = 1; r < 9; r++) {
@@ -13,6 +13,7 @@ public class Frogger {
       }
       addCars(r);
     }
+    lives = 3;
     currentRow = 9;
     currentCol = 3;
   }
@@ -47,7 +48,13 @@ public class Frogger {
   }
 
   public void movePlayer(int horizontal, int vertical) {
-    
+
+  }
+
+  public boolean crash () {
+    if (currentCol + 1 != null) {
+      return true;
+    }
   }
 
   public String toString() {
