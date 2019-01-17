@@ -1,59 +1,66 @@
+import java.util.*;
+
 public class Frogger {
-  private String[][] world;
-  public int lives;
-  public Frogger () {
-    world = new String [5][5];
-    lives = 3;
+  private String[10][8] world;
+  private int lives;
+  private int currentRow;
+  private int currentCol;
+
+  public Frogger() {
+    for (int r = 1; r < 9; r++) {
+      for (int c = 0; c < 8; c++) {
+        world[r][c] = "     \n     ";
+      }
+      addCars(r);
+    }
+    currentRow = 9;
+    currentCol = 3;
   }
 
-  public static String carString () {
-    //String car = "         __\n         ____|__|___\n       _|  -     -  |_\n         |_______________|\n        (/)        (/)        ";
-    String car = "_________\n(/)   (/)\n";
-    return car;
+  public void addCars(int r) {
+    Random randgen = new Random();
+    for (int i = 0; i < 4; i++) {
+      int randCol;
+      while (!(world[r][randCol].equals("     \n     "))) {
+        randCol = randgen.nextInt(8);
+      }
+      world[r][randCol] = "[ = ]\n o o ";
+    }
   }
 
-  private void moveCars () {
-    while (lives > 0) {
-      for (int x = 0; x < world.length; x ++) {
-        for (int y =0; y < world[x].length; x ++) {
-          if (world[x][y] != null) {
-            world [x][y + 1] = carString ();
-            world [x][y] = null;
-          }
-          System.out.println (toString ());
-        }
+  public void moveCarsLeft(int r) {
+    for (int c = 0; c < 8; c++) {
+      if (world[r][c].equals("[ = ]\n o o ")) {
+        world[r][c-1] = "[ = ]\n o o ";
+        world[r][c] = "     \n     ";
       }
     }
   }
 
-  public String toString ()  {
-    String ans = "";
-    for (int x = 0 ; x < world.length; x ++) {
-      for (int y = 0; y < world[x].length; y ++) {
-        if (world [x][y] == carString()) {
-          ans += world [x][y];
-          //ans += "car";
-        }
-
-        else {
-          ans += "         \n         \n";
-          //ans += "-";
-        }
-        if (y == world.length - 1 ) {
-          ans += "\n";
-        }
+  public void moveCarsRight(int r) {
+    for (int c = 0; c < 8; c++) {
+      if (world[r][c].equals("[ = ]\n o o ")) {
+        world[r][c+1] = "[ = ]\n o o ";
+        world[r][c] = "     \n     ";
       }
     }
-    return ans;
   }
 
-  public static void main (String[] args) {
-    Frogger frog = new Frogger ();
-    //System.out.println (frog.toString ());
-    //frog.world[0][0] = carString();
-    frog.world[3][2] = carString();
-    System.out.println (frog.toString ());
-    //frog.moveCars();
+  public void movePlayer(int horizontal, int vertical) {
+    
   }
 
+  public String toString() {
+    String s = "";
+    for (int r = 0; r < 10; r++) {
+      for (int c = 0; c < 8; c++) {
+        s = s + world[r][c];
+      }
+    }
+    return s;
+  }
+
+  public static void main (String args[]) {
+
+  }
 }
