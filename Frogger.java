@@ -48,13 +48,15 @@ public class Frogger {
   }
 
   public void movePlayer(int horizontal, int vertical) {
-
+    currentCol += horizontal;
+    currentRow += vertical;
   }
 
   public boolean crash () {
     if (currentCol + 1 != null) {
       return true;
     }
+    return false;
   }
 
   public String toString() {
@@ -68,6 +70,26 @@ public class Frogger {
   }
 
   public static void main (String args[]) {
+    Frogger world = new Frogger ();
 
+    if (key != null){
+      if (key.getKind() == Key.Kind.Escape) {
+        terminal.exitPrivateMode();
+        //return 5;
+        //gameNotDone = false;
+      }
+      if (key.getKind() == Key.Kind.ArrowLeft) {
+        world.movePlayer (-1,0);
+      }
+      if (key.getKind() == Key.Kind.ArrowRight) {
+        world.movePlayer (1,0);
+      }
+      if (key.getKind() == Key.Kind.ArrowUp) {
+        world.movePlayer (0,1);
+      }
+      if (key.getKind() == Key.Kind.ArrowDown) {
+        world.movePlayer (0,-1);
+      }
+    }
   }
 }
