@@ -233,6 +233,7 @@ public class NumberPuzzle {
 		putString(0, 13, terminal, "|  and reach 2048   |");
 
 		boolean gameNotDone = true;
+		int next; 
 		while (gameNotDone) {
 			gameNotDone = !(A.isComplete());
 			putString(0, 0, terminal, A.toString());
@@ -240,8 +241,8 @@ public class NumberPuzzle {
 			if (key != null){
 				if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
-					return 1; 
-					//gameNotDone = false;
+					gameNotDone = false;
+					return 1;
         }
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
