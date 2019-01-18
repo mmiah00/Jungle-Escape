@@ -38,7 +38,10 @@ Vivien: I worked on adding the backgrounds for the first two scenes. In the begi
 
 1/14/2019
 Vivien: I completed SecondPuzzle (FifteenPuzzle)! I had the skeleton from yesterday but I had to go back and fix the exceptions and missing code. SecondPuzzle works as is, but depending on how difficult to play the other parts of the game are, I might go back and make SecondPuzzle easier (less scrambled) or make a restart method. For tomorrow, I need to incorporate SecondPuzzle into JungleEscape and work on scene3. A couple problems I am noticing are that the grids (for both 2048 and 15 Puzzle) sometimes flash and the individual games have diffficulty exiting private move. 
+Maisha: I tweaked bit of the dialogue in Scene 1 and 2. I started trying to fix my version of FifteenPuzzle but Vivien fixed hers before I could finish mine so we decided to use that. In class we started thinking about how the rest of our game is going to flow as well as how to incorporate Frogger. 
 
 1/16/2019
 Vivien: We spent class talking about how we could design and code Frogger. Our main concern/focus is detecting a car based on the the player's move and whether the player will die because of going into that car. For the moment, we're using a 2d string array. Because we're still in the beginning and deciding which way is best to code the class, we made seperate version (that are similar). I completed the methods needed for the constructor in Frogger and am working on moving the player around. 
 
+1/17/2019
+Maisha: I started fixing the UML Diagrams because we had a lot to add and delete especially because we changed the way our games worked based on the terminal. I had to retype it because there were a lot of changes since the first version. For example, we were planning to make scene1, scene2, and scene3 methods in JungleEscape but instead decided to make it its own class. We started thinking about how to write Frogger and started drawing sketches of the basic game and mapping out the different functions, but have not reached a conclusion yet. 
