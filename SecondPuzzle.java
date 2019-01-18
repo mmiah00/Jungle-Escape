@@ -153,7 +153,7 @@ public class SecondPuzzle {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static int playFifteen(Terminal terminal) {
 		Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
 
@@ -190,7 +190,8 @@ public class SecondPuzzle {
 				}
 			}
 		}
-		terminal.exitPrivateMode();
+		terminal.clearScreen();
+		return 4;
 		/*
 		if (A.beatGame()) {
 			terminal.clearScreen();

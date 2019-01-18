@@ -225,12 +225,13 @@ public class NumberPuzzle {
 		}
 	}
 
-	public static void play2048(Terminal terminal) {
+	public static int play2048(Terminal terminal) {
 		NumberPuzzle A = new NumberPuzzle();
 		putString(0, 0, terminal, A.toString());
 		putString(0, 11, terminal, "|Use the arrow keys |");
 		putString(0, 12, terminal, "|to combine numbers |");
 		putString(0, 13, terminal, "|  and reach 2048   |");
+
 		boolean gameNotDone = true;
 		while (gameNotDone) {
 			gameNotDone = !(A.isComplete());
@@ -255,7 +256,8 @@ public class NumberPuzzle {
 				}
 			}
 		}
-		terminal.exitPrivateMode();
+		terminal.clearScreen();
+		return 3;
 		/*
 		if (A.beatGame()) {
 			terminal.clearScreen();

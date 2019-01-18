@@ -49,15 +49,13 @@ public class JungleEscape {
         Scene2 A = new Scene2(terminal);
         mode = A.playScene2(terminal);
       }
-      /*
-      if (mode == 2) {
-        SecondPuzzle A = new SecondPuzzle();
-        A.playFifteen(terminal);
-      }
-      */
       if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
-        A.play2048(terminal);
+        mode = A.play2048(terminal);
+      }
+      if (mode == 3) {
+        SecondPuzzle A = new SecondPuzzle();
+        A.playFifteen(terminal);
       }
     }
     terminal.exitPrivateMode();
