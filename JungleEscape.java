@@ -42,8 +42,10 @@ public class JungleEscape {
         }
       }
       if (mode == 0) {
-        Scene1 A = new Scene1(terminal);
-        mode = A.playScene1(terminal);
+        Test A = new Test(terminal);
+        mode = A.playTest(terminal); 
+        //Scene1 A = new Scene1(terminal);
+        //mode = A.playScene1(terminal);
       }
       if (mode == 1) {
         Scene2 A = new Scene2(terminal);
