@@ -154,12 +154,6 @@ public class SecondPuzzle {
 	}
 
 	public static int playFifteen(Terminal terminal) {
-		Terminal terminal = TerminalFacade.createTextTerminal();
-    terminal.enterPrivateMode();
-
-    TerminalSize size = terminal.getTerminalSize();
-    terminal.setCursorVisible(false);
-
 		SecondPuzzle A = new SecondPuzzle();
 		putString(0, 0, terminal, A.toString());
 		putString(0, 11, terminal, "|Use the arrow keys |");
