@@ -240,7 +240,8 @@ public class NumberPuzzle {
 			if (key != null){
 				if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
-          gameNotDone = false;
+					return 1; 
+					//gameNotDone = false;
         }
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
