@@ -1,12 +1,28 @@
+//API : http://mabe02.github.io/lanterna/apidocs/2.1/
+import com.googlecode.lanterna.terminal.Terminal.SGR;
+import com.googlecode.lanterna.TerminalFacade;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.Key.Kind;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.Terminal.Color;
+import com.googlecode.lanterna.terminal.TerminalSize;
+import com.googlecode.lanterna.LanternaException;
+import com.googlecode.lanterna.input.CharacterPattern;
+import com.googlecode.lanterna.input.InputDecoder;
+import com.googlecode.lanterna.input.InputProvider;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.KeyMappingProfile;
+
 import java.util.*;
 
 public class Frogger {
-  private String[10][8] world;
+  private String[][] world;
   private int lives;
   private int currentRow; //ycor of player
   private int currentCol; //xcor of player
 
   public Frogger() {
+    world = new String [10][8];
     for (int r = 1; r < 9; r++) {
       for (int c = 0; c < 8; c++) {
         world[r][c] = "     \n     ";
@@ -21,7 +37,7 @@ public class Frogger {
   public void addCars(int r) {
     Random randgen = new Random();
     for (int i = 0; i < 4; i++) {
-      int randCol;
+      int randCol = randgen.nextInt () % 8;
       while (!(world[r][randCol].equals("     \n     "))) {
         randCol = randgen.nextInt(8);
       }
@@ -53,7 +69,7 @@ public class Frogger {
   }
 
   public boolean crash () {
-    if (currentCol + 1 != null) {
+    if (world [currentCol + 1] != null) {
       return true;
     }
     return false;
@@ -72,6 +88,13 @@ public class Frogger {
   public static void main (String args[]) {
     Frogger world = new Frogger ();
 
+    Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
+
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
+    Key key = terminal.readInput();
     if (key != null){
       if (key.getKind() == Key.Kind.Escape) {
         terminal.exitPrivateMode();
