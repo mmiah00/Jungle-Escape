@@ -13,12 +13,10 @@ import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
-public class Scene1 {
-
-  String[] path = new String[35];
-  int index = 0;
+public class Scene1 extends Scene {
 
   public Scene1 (Terminal t) {
+    path = new String[35];
     putString(0, 0, t, "            ,@@@@@@@,              ");
     putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
     putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
@@ -40,41 +38,6 @@ public class Scene1 {
     putString(0, 13, t, "| apocolype, you decide to start  |");
     putString(0, 14, t, "| running and runing until you    |");
     putString(0, 15, t, "| reach the end.                  |");
-  }
-
-  public String toString() {
-    String s = " ";
-    for (int i = 0; i < 35; i++) {
-      s = s + path[i];
-    }
-    return s;
-  }
-
-  public void moveLeft() {
-    if (index != 0) {
-      path[index-1] = "o";
-      path[index] = " ";
-      index--;
-    }
-  }
-
-  public void moveRight() {
-    if (index != 34) {
-      path[index+1] = "o";
-      path[index] = " ";
-      index++;
-    }
-  }
-
-  public boolean isLastSpot() {
-    return index == 34;
-  }
-
-  public static void putString(int r, int c,Terminal t, String s){
-    t.moveCursor(r,c);
-    for(int i = 0; i < s.length();i++){
-      t.putCharacter(s.charAt(i));
-    }
   }
 
   public static int playScene1(Terminal terminal) {

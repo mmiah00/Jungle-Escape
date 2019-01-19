@@ -13,12 +13,10 @@ import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
-public class Scene2 {
-
-  String[] path = new String[20];
-  int index = 0;
+public class Scene2 extends Scene{
 
   public Scene2 (Terminal t) {
+    path = new String[20];
     putString(0, 0, t, "------------------------");
     putString(0, 1, t, "            /   .\\      ");
     putString(0, 2, t, "           / ` .  \\     ");
@@ -39,41 +37,6 @@ public class Scene2 {
     putString(0, 12, t, "| Solve the puzzle to open |");
     putString(0, 13, t, "| the box and get materials|");
     putString(0, 14, t, "|    to build a bridge.    |");
-  }
-
-  public String toString() {
-    String s = " ";
-    for (int i = 0; i < 20; i++) {
-      s = s + path[i];
-    }
-    return s;
-  }
-
-  public void moveLeft() {
-    if (index != 0) {
-      path[index-1] = "o";
-      path[index] = " ";
-      index--;
-    }
-  }
-
-  public void moveRight() {
-    if (index != 5) {
-      path[index+1] = "o";
-      path[index] = " ";
-      index++;
-    }
-  }
-
-  public boolean isLastSpot() {
-    return index == 5;
-  }
-
-  public static void putString(int r, int c,Terminal t, String s){
-    t.moveCursor(r,c);
-    for(int i = 0; i < s.length();i++){
-      t.putCharacter(s.charAt(i));
-    }
   }
 
   public static int playScene2(Terminal terminal) {
