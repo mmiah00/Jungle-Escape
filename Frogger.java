@@ -38,7 +38,7 @@ public class Frogger {
   public void addCars(int r) {
     Random randgen = new Random();
     for (int i = 0; i < 4; i++) {
-      int randCol = randgen.nextInt () % 8;
+      int randCol = Math.abs (randgen.nextInt () % 8);
       while (!(world[r][randCol].equals("     \n     "))) {
         randCol = randgen.nextInt(8);
       }
