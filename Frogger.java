@@ -31,11 +31,13 @@ public class Frogger {
   }
 
   public void moveCarsLeft(int r) {
-    for (int c = 0; c < 8; c++) {
+    int max = 8;
+    for (int c = 0; c < max; c++) {
       if (world[r][c].equals("o-o")) {
         if (c == 0) {
           world[r][7] = "o-o";
           world[r][c] = "   ";
+          max--; 
         }
         else {
           world[r][c - 1] = "o-o";
@@ -82,8 +84,6 @@ public class Frogger {
     Frogger A = new Frogger();
     System.out.println(A.toString());
     A.moveCarsLeft(1);
-    System.out.println(A.toString());
-    A.moveCarsRight(8);
     System.out.println(A.toString());
   }
 }
