@@ -20,6 +20,7 @@ public class Frogger {
   private int lives;
   private int currentRow; //ycor of player
   private int currentCol; //xcor of player
+  //u+1F697 car unicode
 
   public Frogger() {
     world = new String [10][8];
@@ -37,7 +38,7 @@ public class Frogger {
   public void addCars(int r) {
     Random randgen = new Random();
     for (int i = 0; i < 4; i++) {
-      int randCol = randgen.nextInt () % 8;
+      int randCol = Math.abs (randgen.nextInt () % 8);
       while (!(world[r][randCol].equals("     \n     "))) {
         randCol = randgen.nextInt(8);
       }
@@ -85,6 +86,13 @@ public class Frogger {
     return s;
   }
 
+  public static void putString(int r, int c,Terminal t, String s){
+    t.moveCursor(r,c);
+    for(int i = 0; i < s.length();i++){
+      t.putCharacter(s.charAt(i));
+    }
+  }
+
   public static void main (String args[]) {
     Frogger world = new Frogger ();
 
@@ -93,6 +101,8 @@ public class Frogger {
 
     TerminalSize size = terminal.getTerminalSize();
     terminal.setCursorVisible(false);
+
+    putString (0,0, terminal, world.toString ()); 
 
     Key key = terminal.readInput();
     if (key != null){
