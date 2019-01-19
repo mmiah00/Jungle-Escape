@@ -20,6 +20,7 @@ public class Frogger {
   private int lives;
   private int currentRow; //ycor of player
   private int currentCol; //xcor of player
+  //u+1F697 car unicode
 
   public Frogger() {
     world = new String [10][8];
@@ -37,7 +38,7 @@ public class Frogger {
   public void addCars(int r) {
     Random randgen = new Random();
     for (int i = 0; i < 4; i++) {
-      int randCol = randgen.nextInt () % 8;
+      int randCol = Math.abs (randgen.nextInt () % 8);
       while (!(world[r][randCol].equals("     \n     "))) {
         randCol = randgen.nextInt(8);
       }
