@@ -20,6 +20,7 @@ public class Frogger {
   private int lives;
   private int currentRow; //ycor of player
   private int currentCol; //xcor of player
+  //u+1F697 car unicode
 
   public Frogger() {
     world = new String [10][8];
