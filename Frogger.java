@@ -1,3 +1,17 @@
+//API : http://mabe02.github.io/lanterna/apidocs/2.1/
+import com.googlecode.lanterna.terminal.Terminal.SGR;
+import com.googlecode.lanterna.TerminalFacade;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.Key.Kind;
+import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.Terminal.Color;
+import com.googlecode.lanterna.terminal.TerminalSize;
+import com.googlecode.lanterna.LanternaException;
+import com.googlecode.lanterna.input.CharacterPattern;
+import com.googlecode.lanterna.input.InputDecoder;
+import com.googlecode.lanterna.input.InputProvider;
+import com.googlecode.lanterna.input.Key;
+import com.googlecode.lanterna.input.KeyMappingProfile;
 import java.util.*;
 
 public class Frogger {
@@ -18,8 +32,9 @@ public class Frogger {
       }
       addCars(r);
     }
+    world[9][4] = "o**";
     currentRow = 9;
-    currentCol = 3;
+    currentCol = 4;
   }
 
   public void addCars(int r) {
@@ -54,7 +69,7 @@ public class Frogger {
         if (c == 7) {
           world[r][0] = "o-o";
           world[r][c] = "   ";
-          min++; 
+          min++;
         }
         else {
           world[r][c + 1] = "o-o";
@@ -64,10 +79,24 @@ public class Frogger {
     }
   }
 
+  public void movePlayer(int horizontal, int vertical) {
+    int newRow = currentRow + vertical;
+    int newCol = currentCol + horizontal;
+    if (newRow == 0) {
+      world[newRow][newCol] = "o**";
+    }
+    else {
+      world[newRow][newCol] = "o  ";
+    }
+    currentRow = currentRow + vertical;
+    currentCol = currentRow + horizontal;
+  }
 
-  //public void movePlayer(int horizontal, int vertical) {
-
-  //}
+  public boolean isCrash(int horizontal, int vertical) {
+    int newRow = currentRow + vertical;
+    int newCol = currentCol + horizontal;
+    return world[newRow][newCol].equals("o-o");
+  }
 
   public String toString() {
     String s = "";
@@ -80,10 +109,67 @@ public class Frogger {
     return s;
   }
 
+  public boolean isComplete() {
+    return (currentRow == 0);
+  }
+
+  public static void putString(int r, int c,Terminal t, String s){
+    t.moveCursor(r,c);
+    for(int i = 0; i < s.length();i++){
+      t.putCharacter(s.charAt(i));
+    }
+  }
+
+  public static void main(String[] args) {
+    Terminal terminal = TerminalFacade.createTextTerminal();
+    terminal.enterPrivateMode();
+
+    TerminalSize size = terminal.getTerminalSize();
+    terminal.setCursorVisible(false);
+
+    Frogger A = new Frogger();
+    putString(0, 0, terminal, A.toString());
+
+    boolean gameNotDone = true;
+    while (gameNotDone) {
+      A.moveCarsLeft(1);
+      A.moveCarsLeft(3);
+      A.moveCarsLeft(4);
+      A.moveCarsLeft(6);
+      A.moveCarsRight(2);
+      A.moveCarsRight(5);
+      A.moveCarsRight(7);
+      A.moveCarsRight(8);
+
+      gameNotDone = !(A.isComplete());
+      putString(0, 0, terminal, A.toString());
+      Key key = terminal.readInput();
+      if (key != null){
+        if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          gameNotDone = false;
+        }
+        if (key.getKind() == Key.Kind.ArrowUp) {
+          if (A.isCrash(0, 1)) {
+            terminal.clearScreen();
+            System.out.println("You died");
+          }
+          else {
+            A.movePlayer(-1, 0);
+          }
+        }
+      }
+    }
+    terminal.exitPrivateMode();
+  }
+/*
   public static void main (String args[]) {
     Frogger A = new Frogger();
     System.out.println(A.toString());
-    A.moveCarsRight(1);
+    if (!(A.movePlayer(1))) {
+      System.out.println "CRASHED"
+    }
     System.out.println(A.toString());
   }
+  */
 }
