@@ -33,20 +33,35 @@ public class Frogger {
   public void moveCarsLeft(int r) {
     for (int c = 0; c < 8; c++) {
       if (world[r][c].equals("o-o")) {
-        world[r][c-1] = "o-o";
-        world[r][c] = "   ";
+        if (c == 0) {
+          world[r][7] = "o-o";
+          world[r][c] = "   ";
+        }
+        else {
+          world[r][c - 1] = "o-o";
+          world[r][c] = "   ";
+        }
       }
     }
   }
 
+
+
   public void moveCarsRight(int r) {
     for (int c = 0; c < 8; c++) {
       if (world[r][c].equals("o-o")) {
-        world[r][c+1] = "o-o";
-        world[r][c] = "   ";
+        if (c == 7) {
+          world[r][0] = "o-o";
+          world[r][c] = "   ";
+        }
+        else {
+          world[r][c + 1] = "o-o";
+          world[r][c] = "   ";
+        }
       }
     }
   }
+
 
   //public void movePlayer(int horizontal, int vertical) {
 
@@ -65,6 +80,10 @@ public class Frogger {
 
   public static void main (String args[]) {
     Frogger A = new Frogger();
+    System.out.println(A.toString());
+    A.moveCarsLeft(1);
+    System.out.println(A.toString());
+    A.moveCarsRight(8);
     System.out.println(A.toString());
   }
 }
