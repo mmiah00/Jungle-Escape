@@ -12,10 +12,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-<<<<<<< HEAD
 
-=======
->>>>>>> testing
 import java.util.*;
 
 public class Frogger {
@@ -26,26 +23,18 @@ public class Frogger {
   //u+1F697 car unicode
 
   public Frogger() {
-<<<<<<< HEAD
-    world = new String [10][8];
-=======
     world = new String[10][8];
     for (int c = 0; c < 8; c++) {
       world[0][c] = "***";
       world[9][c] = "***";
     }
->>>>>>> testing
     for (int r = 1; r < 9; r++) {
       for (int c = 0; c < 8; c++) {
         world[r][c] = "   ";
       }
       addCars(r);
     }
-<<<<<<< HEAD
-    lives = 3;
-=======
     world[9][4] = "o**";
->>>>>>> testing
     currentRow = 9;
     currentCol = 4;
   }
