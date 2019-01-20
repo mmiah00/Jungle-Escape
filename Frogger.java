@@ -106,7 +106,8 @@ public class Frogger {
     if (newRow != -1 && newRow != 8 && newCol != -1 && newCol != 8) {
       return 0;
     }
-    else if (world[newRow][newCol].equals("o-o")) {
+    else if (world[newRow][newCol].equals("o-o") ||
+            world[currentRow][currentCol].equals("o-o") ) {
       return -1;
     }
     else {
