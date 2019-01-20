@@ -163,7 +163,7 @@ public class Frogger {
 */
 
 public void moveCars(int counter) {
-  if (counter % 1500 == 0) {
+  if (counter % 2000 == 0) {
     moveCarsLeft(1);
     moveCarsLeft(3);
     moveCarsLeft(4);
@@ -226,6 +226,43 @@ public static void main(String[] args) {
               A.movePlayer(0, 1);
             }
           }
+
+          if (key.getKind() == Key.Kind.ArrowDown) {
+            if (A.isCrash(0, -1) == -1) {
+              A.setLives(-1);
+              if (A.getLives() > -1) {
+                A.movePlayer(0, -1);
+              }
+            }
+            else {
+              A.movePlayer(0, -1);
+            }
+          }
+
+          if (key.getKind() == Key.Kind.ArrowLeft) {
+            if (A.isCrash(-1, 0) == -1) {
+              A.setLives(-1);
+              if (A.getLives() > -1) {
+                A.movePlayer(-1, 0);
+              }
+            }
+            else {
+              A.movePlayer(-1, 0);
+            }
+          }
+
+          if (key.getKind() == Key.Kind.ArrowRight) {
+            if (A.isCrash(1, 0) == -1) {
+              A.setLives(-1);
+              if (A.getLives() > -1) {
+                A.movePlayer(1, 0);
+              }
+            }
+            else {
+              A.movePlayer(1, 0);
+            }
+          }
+
         }
       }
     }
