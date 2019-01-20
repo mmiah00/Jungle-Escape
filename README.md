@@ -45,3 +45,9 @@ Vivien: We spent class talking about how we could design and code Frogger. Our m
 
 1/17/2019
 Maisha: I started fixing the UML Diagrams because we had a lot to add and delete especially because we changed the way our games worked based on the terminal. I had to retype it because there were a lot of changes since the first version. For example, we were planning to make scene1, scene2, and scene3 methods in JungleEscape but instead decided to make it its own class. We started thinking about how to write Frogger and started drawing sketches of the basic game and mapping out the different functions, but have not reached a conclusion yet. 
+
+1/18/2019
+Vivien: I went back and fixed problems with methods that were called from my constuctor. I got moveCarsRight and moveCarsLeft to work except when the cars are in the first or last columns. When the cars are the first or last columns, they skip 2 spaces. I need to fix that tomorrow.  
+
+1/19/2019
+Vivien: I realized that because I was moving the cars starting from one direction, a car would be moved twice at the end causing the problem from yesterday. I fixed that and then worked on moving the player. I finished and tested movePlayer without the terminal, just printing world. When I tried to combine everything with the terminal, I ran into serious problems. First, I had to go back and fix my movePlayer to account for more possibilities. I was able to fix that and the speed which the cars moved (I might want to go back and make the cars move at different speeds). However, one major problem that I still have is the player does not move after the first movement. Tomorrow I'm going to go back and double check movePlayer and see if I can get Frogger to work with ther terminal. I wrote the skeletons of the 3 remaining scenes but I need to test them. The last thing we need to add is the timer. 
