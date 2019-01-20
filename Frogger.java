@@ -154,11 +154,9 @@ public class Frogger {
       System.out.println(A.toString());
       A.movePlayer(0, 1);
       System.out.println(A.toString());
-      A.movePlayer(-1, 0);
+      A.movePlayer(0, 1);
       System.out.println(A.toString());
-      A.movePlayer(1, 0);
-      System.out.println(A.toString());
-      A.movePlayer(0, -1);
+      A.movePlayer(0, 1);
       System.out.println(A.toString());
     }
 */
@@ -171,10 +169,12 @@ public class Frogger {
 
     Frogger A = new Frogger();
     putString(0, 0, terminal, A.toString());
-    int counter = 0;
+
+    //int counter = 0;
 
     boolean gameNotDone = true;
     while (gameNotDone) {
+/*
       if (counter % 2000 == 0) {
         A.moveCarsLeft(1);
         A.moveCarsLeft(3);
@@ -186,10 +186,10 @@ public class Frogger {
         A.moveCarsRight(8);
       }
       counter++;
-
+*/
       gameNotDone = !(A.isComplete());
       putString(0,0, terminal, A.toString());
-
+/*
       if (A.isRunOver()) {
         if (A.getLives() == 0) {
           gameNotDone = false;
@@ -200,7 +200,7 @@ public class Frogger {
         }
       }
       putString(0, 0, terminal, A.toString());
-
+*/
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
@@ -208,13 +208,13 @@ public class Frogger {
           gameNotDone = false;
         }
         if (key.getKind() == Key.Kind.ArrowUp) {
-          if (A.isCrash(0, 1) == -1) {
+          /*if (A.isCrash(0, 1) == -1) {
             A.setLives(-1);
             System.out.println("A car hit you! You have " + A.getLives() + " more lives");
           }
-          else if (A.isCrash(0, 1) == 1) {
+          else if (A.isCrash(0, 1) == 1) {*/
             A.movePlayer(0, 1);
-          }
+          //}
         }
       }
     }
