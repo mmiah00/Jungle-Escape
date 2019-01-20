@@ -132,7 +132,7 @@ public class NumberPuzzle {
 				}
 				while (r != 0 && grid[r-1][c].equals("   ")) { //if not the first row and row above is empty
 					grid[r-1][c] = grid[r][c]; //move up
-					grid [r][c] = "    ";
+					grid [r][c] = "   ";
 					r = r-1;
 					if (r != 0 && !(grid[r-1][c].equals("   ")) && grid[r-1][c].equals(grid[r][c])) { //if row above is the same number
 						String newNum = "" + (Integer.parseInt(grid[r][c].trim()) * 2); //combine their numbers
