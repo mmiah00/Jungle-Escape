@@ -82,7 +82,7 @@ public class Frogger {
   }
 
   public void movePlayer(int horizontal, int vertical) {
-    int newRow = currentRow + vertical;
+    int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
     if (newRow == 0) {
       world[newRow][newCol] = "o**";
@@ -94,10 +94,18 @@ public class Frogger {
     currentCol = currentRow + horizontal;
   }
 
-  public boolean isCrash(int horizontal, int vertical) {
-    int newRow = currentRow + vertical;
+  public int isCrash(int horizontal, int vertical) {
+    int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
-    return world[newRow][newCol].equals("o-o");
+    if (newRow != -1 && newRow != 8 && newCol != -1 && newCol != 8) {
+      return 0;
+    }
+    else if (world[newRow][newCol].equals("o-o")) {
+      return -1;
+    }
+    else {
+      return 1;
+    }
   }
 
   public String toString() {
@@ -131,17 +139,21 @@ public class Frogger {
 
     Frogger A = new Frogger();
     putString(0, 0, terminal, A.toString());
+    int counter = 0;
 
     boolean gameNotDone = true;
     while (gameNotDone) {
-      A.moveCarsLeft(1);
-      A.moveCarsLeft(3);
-      A.moveCarsLeft(4);
-      A.moveCarsLeft(6);
-      A.moveCarsRight(2);
-      A.moveCarsRight(5);
-      A.moveCarsRight(7);
-      A.moveCarsRight(8);
+      if (counter % 10 == 0) {
+        A.moveCarsLeft(1);
+        A.moveCarsLeft(3);
+        A.moveCarsLeft(4);
+        A.moveCarsLeft(6);
+        A.moveCarsRight(2);
+        A.moveCarsRight(5);
+        A.moveCarsRight(7);
+        A.moveCarsRight(8);
+      }
+      counter++;
 
       gameNotDone = !(A.isComplete());
       putString(0, 0, terminal, A.toString());
@@ -152,12 +164,12 @@ public class Frogger {
           gameNotDone = false;
         }
         if (key.getKind() == Key.Kind.ArrowUp) {
-          if (A.isCrash(0, 1)) {
+          if (A.isCrash(0, 1) == -1) {
             terminal.clearScreen();
             System.out.println("You died");
           }
-          else {
-            A.movePlayer(-1, 0);
+          if (A.isCrash(0,1) == 1) {
+            A.movePlayer(0, 1);
           }
         }
       }
