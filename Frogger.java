@@ -165,14 +165,14 @@ public class Frogger {
 public void moveCars() {
   int counter = 0;
   if (counter % 1500 == 0) {
-    A.moveCarsLeft(1);
-    A.moveCarsLeft(3);
-    A.moveCarsLeft(4);
-    A.moveCarsLeft(6);
-    A.moveCarsRight(2);
-    A.moveCarsRight(5);
-    A.moveCarsRight(7);
-    A.moveCarsRight(8);
+    moveCarsLeft(1);
+    moveCarsLeft(3);
+    moveCarsLeft(4);
+    moveCarsLeft(6);
+    moveCarsRight(2);
+    moveCarsRight(5);
+    moveCarsRight(7);
+    moveCarsRight(8);
   }
   counter++;
 }
