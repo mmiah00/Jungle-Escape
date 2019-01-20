@@ -175,7 +175,7 @@ public class Frogger {
 
     boolean gameNotDone = true;
     while (gameNotDone) {
-      if (counter % 5000 == 0) {
+      if (counter % 2000 == 0) {
         A.moveCarsLeft(1);
         A.moveCarsLeft(3);
         A.moveCarsLeft(4);
@@ -210,7 +210,7 @@ public class Frogger {
             terminal.clearScreen();
             System.out.println("You died");
           }
-          if (A.isCrash(0,1) == 1) {
+          else if (A.isCrash(0, 1) == 1) {
             A.movePlayer(0, 1);
           }
         }
