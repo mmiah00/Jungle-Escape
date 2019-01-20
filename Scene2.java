@@ -19,12 +19,12 @@ public class Scene2 extends Scene{
     path = new String[6];
     putString(0, 0, t, "------------------------");
     t.applyBackgroundColor(Terminal.Color.BLUE);
-		t.applyForegroundColor(Terminal.Color.WHITE);
-    putString(0, 1, t, "            /   .\\      ");
-    putString(0, 2, t, "           / ` .  \\     ");
-    putString(0, 3, t, "          / .   `  \\    ");
-    putString(0, 4, t, "         /.   `  `  \\   ");
-    putString(0, 5, t, "        /  ` . `  . .\\  ");
+    putString(12, 1, t, "/   .\\");
+    putString(11, 2, t, "/ ` .  \\");
+    putString(10, 3, t, "/ .   `  \\");
+    putString(9, 4, t, "/.   `  `  \\");
+    putString(9, 5, t, "/  ` . `  . .\\");
+    t.applyBackgroundColor (Terminal.Color.DEFAULT); 
     putString(0, 6, t, "  ");
     t.moveCursor (2,6);
     t.putCharacter ('\u2610');
