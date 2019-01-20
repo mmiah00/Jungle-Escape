@@ -160,6 +160,7 @@ public class SecondPuzzle {
 				if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           gameNotDone = false;
+					return -1;
         }
 				if (key.getKind() == Key.Kind.ArrowLeft) {
 					A.moveLeft();
@@ -176,14 +177,7 @@ public class SecondPuzzle {
 			}
 		}
 		terminal.clearScreen();
-		return 4;
-		/*
-		if (A.beatGame()) {
-			terminal.clearScreen();
-		}
-		else {
-			A = new NumberPuzzle();
-		}*/
+		return 5;
 	}
 
 }

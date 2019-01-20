@@ -60,6 +60,10 @@ public class JungleEscape {
         Scene3 A = new Scene3(terminal);
         mode = A.playScene3(terminal);
       }
+      if (mode == 4) {
+        SecondPuzzle A = new SecondPuzzle();
+        mode = A.playFifteen(terminal);
+      }
       if (mode == 5) {
         Scene4 A = new Scene4(terminal);
         mode = A.playScene4(terminal);
@@ -68,13 +72,6 @@ public class JungleEscape {
         Scene5 A = new Scene5(terminal);
         mode = A.playScene5(terminal);
       }
-      /*
-      
-      if (mode == 3) {
-        SecondPuzzle A = new SecondPuzzle();
-        A.playFifteen(terminal);
-      }
-      */
     }
     terminal.exitPrivateMode();
 
