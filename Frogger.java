@@ -27,7 +27,7 @@ public class Frogger {
   }
 
   public int setLives(int n) {
-    lives = lives + n;
+    return lives = lives + n;
   }
 
   public Frogger() {
