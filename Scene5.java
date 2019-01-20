@@ -14,19 +14,28 @@ import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Scene5 extends Scene {
+  public Scene5 (Terminal t) {
+    display(t);
+  }
 
-  public static void playScene5(Terminal terminal) {
+  public void display(Terminal terminal) {
     putString(0, 0, terminal, "           x");
     putString(0, 1, terminal, ".-. _______|");
     putString(0, 2, terminal, "|=|/     /  \\");
     putString(0, 3, terminal, "| |_____|_\"\"_|");
     putString(0, 4, terminal, "|_|_[X]_|____|");
-    putString(0, 12, terminal, "| Great Job! You are SAFE! |");
-    putString(0, 13, terminal, "| Your escape took time t  |");
-    putString(0, 14, terminal, "|                          |");
-    putString(0, 15, terminal, "|  Press ESC to exit game  |");
+    putString(0, 6, terminal, "| Great Job! You are SAFE! |");
+    putString(0, 7, terminal, "| Your escape took time t  |");
+    putString(0, 8, terminal, "|                          |");
+    putString(0, 9, terminal, "|  Press ESC to exit game  |");
+  }
+
+  public static int playScene5(Terminal terminal) {
+    Scene5 A = new Scene5(terminal);
+
     boolean running = true;
     while (running) {
+      A.display(terminal);
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
@@ -36,5 +45,6 @@ public class Scene5 extends Scene {
       }
     }
     terminal.clearScreen();
+    return -1;
   }
 }

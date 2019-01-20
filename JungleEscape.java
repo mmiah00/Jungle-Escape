@@ -22,30 +22,6 @@ public class JungleEscape {
     }
   }
 
-  public static int playScene5(Terminal terminal) {
-    putString(0, 0, terminal, "           x");
-    putString(0, 1, terminal, ".-. _______|");
-    putString(0, 2, terminal, "|=|/     /  \\");
-    putString(0, 3, terminal, "| |_____|_\"\"_|");
-    putString(0, 4, terminal, "|_|_[X]_|____|");
-    putString(0, 12, terminal, "| Great Job! You are SAFE! |");
-    putString(0, 13, terminal, "| Your escape took time t  |");
-    putString(0, 14, terminal, "|                          |");
-    putString(0, 15, terminal, "|  Press ESC to exit game  |");
-    boolean running = true;
-    while (running) {
-      Key key = terminal.readInput();
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          running = false;
-        }
-      }
-    }
-    terminal.clearScreen();
-    return -1;
-  }
-
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -85,7 +61,8 @@ public class JungleEscape {
         mode = A.playScene4(terminal);
       }
       if (mode == 4) {
-        playScene5(terminal);
+        Scene5 A = new Scene5(terminal);
+        mode = A.playScene5(terminal);
       }
       /*
       if (mode == 2) {

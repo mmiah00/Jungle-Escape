@@ -17,26 +17,6 @@ public class Scene3 extends Scene{
 
   public Scene3 (Terminal t) {
     display(t);
-    /*
-    putString(0, 0, t, "  ,                 _,-,   ");
-    putString(0, 1, t, " /(  ___________   T_  |   ");
-    putString(0, 2, t, "|  >:===========`  ||`-'   ");
-    putString(0, 3, t, " )(                ||      ");
-    putString(0, 4, t, " \"\"                ||      ");
-    putString(0, 5, t, "                   --      ");
-
-    path[0] = "o";
-    for (int i = 1; i < 6; i++) {
-      path[i] = " ";
-    }
-    putString(0, 8, t, toString());
-
-    putString(0, 7, t, "|      You opened the box!     |");
-    putString(0, 8, t, "|  Now you can build a bridge! |");
-    putString(0, 9, t, "|     Put the planks in the    |");
-    putString(0, 10, t, "|  correct numerical order to  |");
-    putString(0, 11, t, "|       build your bridge.     |");
-    */
   }
 
   public void display(Terminal t) {
