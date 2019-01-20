@@ -21,7 +21,7 @@ public class Scene3 extends Scene{
     putString(0, 1, t, " /(  ___________   T_  |   ");
     putString(0, 2, t, "|  >:===========`  ||`-'   ");
     putString(0, 3, t, " )(                ||      ");
-    putString(0, 4, t, " ""                ||      ");
+    putString(0, 4, t, "                   ||      ");
     putString(0, 5, t, "                   --      ");
 
     /*path[0] = "o";
