@@ -50,6 +50,7 @@ public class Scene3 extends Scene{
           counter = 100000;
           return -1;
         }
+      }
       //putString(0, 8, terminal, A.toString());
     }
     terminal.clearScreen();
