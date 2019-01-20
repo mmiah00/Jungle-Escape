@@ -23,7 +23,7 @@ public class JungleEscape {
     }
   }
 
-  public static void playScene5(Terminal terminal) {
+  public static int playScene5(Terminal terminal) {
     putString(0, 0, terminal, "           x");
     putString(0, 1, terminal, ".-. _______|");
     putString(0, 2, terminal, "|=|/     /  \\");
@@ -40,6 +40,7 @@ public class JungleEscape {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           running = false;
+          return -1;
         }
       }
     }
@@ -63,6 +64,10 @@ public class JungleEscape {
           terminal.exitPrivateMode();
           running = false;
         }
+      }
+      if (mode == -1) {
+        terminal.exitPrivateMode();
+        running = false;
       }
       if (mode == 0) {
         Scene1 A = new Scene1(terminal);
