@@ -58,14 +58,14 @@ public class Scene3 extends Scene{
     Scene3 A = new Scene3(terminal);
 
     int counter = 0;
-    while (counter != 100000) {
+    while (counter != 10000) {
       counter++;
       A.display(terminal);
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
-          counter = 50000;
+          counter = 10000;
           return -1;
         }
       }
