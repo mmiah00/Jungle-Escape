@@ -106,7 +106,7 @@ public class SecondPuzzle {
     for (int r = 0; r < 3; r++) {
       for (int c = 0; c < 3; c++) {
         String correct = addSpaces("" + (3*r+c+1)) + (3*r+c+1);
-				if (!(r == 3 && c == 3)) {
+				if (!(r == 2 && c == 2)) {
 					if (!(grid[r][c].equals(correct))) {
 	          return false;
 	        }
@@ -117,7 +117,7 @@ public class SecondPuzzle {
   }
 
 	public String toString() { //prints 2-d array grid with a grid around it to mimic game
-		String s = "|-----------|\n";
+		String s = "|---------|\n";
 		for (int r = 0; r < 3; r++) {
 			for (int c = 0; c < 3; c++) {
 				if (c == 0) {
@@ -128,10 +128,10 @@ public class SecondPuzzle {
 				}
 			}
 			if (r == 2) {
-				s = s + "\n|-----------|";
+				s = s + "\n|--------|";
 			}
 			else {
-				s = s + "\n|--+--+--+--|\n";
+				s = s + "\n|--+--+--|\n";
 			}
 		}
 		return s;

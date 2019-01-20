@@ -216,7 +216,7 @@ public class NumberPuzzle {
 				s = s + "\n|---------------|";
 			}
 			else {
-				s = s + "\n|---+---+---+---|\n";
+				s = s + "\n|---------------|\n";
 			}
 		}
 		return s;
