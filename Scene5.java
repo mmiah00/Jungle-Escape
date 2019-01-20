@@ -16,15 +16,15 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 public class Scene5 extends Scene {
 
   public static void playScene5(Terminal terminal) {
-    putString(0, 0, t, "           x");
-    putString(0, 1, t, ".-. _______|");
-    putString(0, 2, t, "|=|/     /  \\");
-    putString(0, 3, t, "| |_____|_""_|");
-    putString(0, 4, t, "|_|_[X]_|____|");
-    putString(0, 12, t, "| Great Job! You are SAFE! |");
-    putString(0, 13, t, "| Your escape took " + time +  " |");
-    putString(0, 14, t, "|                          |");
-    putString(0, 15, t, "|  Press ESC to exit game  |");
+    putString(0, 0, terminal, "           x");
+    putString(0, 1, terminal, ".-. _______|");
+    putString(0, 2, terminal, "|=|/     /  \\");
+    putString(0, 3, terminal, "| |_____|_\"\"_|");
+    putString(0, 4, terminal, "|_|_[X]_|____|");
+    putString(0, 12, terminal, "| Great Job! You are SAFE! |");
+    putString(0, 13, terminal, "| Your escape took time t  |");
+    putString(0, 14, terminal, "|                          |");
+    putString(0, 15, terminal, "|  Press ESC to exit game  |");
     boolean running = true;
     while (running) {
       Key key = terminal.readInput();
