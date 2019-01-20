@@ -196,8 +196,10 @@ public class Frogger {
         }
         else {
           A.setLives(-1);
+          System.out.println("A car hit you! You have " + A.getLives() + " more lives");
         }
       }
+      putString(0, 0, terminal, A.toString());
 
       Key key = terminal.readInput();
       if (key != null){
@@ -208,7 +210,7 @@ public class Frogger {
         if (key.getKind() == Key.Kind.ArrowUp) {
           if (A.isCrash(0, 1) == -1) {
             A.setLives(-1);
-            System.out.println("A car hit you! You have " + A.getLives() + "more lives");
+            System.out.println("A car hit you! You have " + A.getLives() + " more lives");
           }
           else if (A.isCrash(0, 1) == 1) {
             A.movePlayer(0, 1);
