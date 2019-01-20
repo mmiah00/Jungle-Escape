@@ -238,8 +238,9 @@ public class NumberPuzzle {
 
 
 
-			//boolean gameNotDone = true;
-			while (!(A.beatGame())) {
+			boolean gameNotDone = true;
+			while (gameNotDone) {
+				gameNotDone = (!(A.beatGame()));
 				if (!(A.isComplete())) {
 					putString(0, 0, terminal, A.toString());
 					Key key = terminal.readInput();
