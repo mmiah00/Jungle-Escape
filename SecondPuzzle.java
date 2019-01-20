@@ -21,20 +21,20 @@ public class SecondPuzzle {
   private int col;
 
 	public SecondPuzzle() {
-		grid = new String[4][4];
-		row = 3;
-    col = 3;
+		grid = new String[3][3];
+		row = 2;
+    col = 2;
     fillGrid();
 		scramble(); //adds two "2" to the grid
 	}
 
   public void fillGrid() {
-    for (int r = 0; r < 4; r++) {
-      for (int c = 0; c < 4; c++) {
-        grid[r][c] = addSpaces("" + (4*r+c+1)) + (4*r+c+1);
+    for (int r = 0; r < 3; r++) {
+      for (int c = 0; c < 3; c++) {
+        grid[r][c] = addSpaces("" + (3*r+c+1)) + (3*r+c+1);
       }
     }
-    grid[3][3] = "  ";
+    grid[2][2] = "  ";
   }
 
   public void scramble() {
@@ -66,7 +66,7 @@ public class SecondPuzzle {
 	}
 
 	public void moveLeft() {
-		if (col != 3) {
+		if (col != 2) {
       String newNum = grid[row][col+1].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row][col+1] = "  ";
@@ -84,7 +84,7 @@ public class SecondPuzzle {
 	}
 
 	public void moveUp() {
-    if (row != 3) {
+    if (row != 2) {
       String newNum = grid[row+1][col].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
       grid[row+1][col] = "  ";
@@ -103,32 +103,23 @@ public class SecondPuzzle {
 
 	public boolean isComplete() { //checks if there are anymore possible moves
     boolean complete = true;
-    for (int r = 0; r < 4; r++) {
-      for (int c = 0; c < 4; c++) {
-        String correct = addSpaces("" + (4*r+c+1)) + (4*r+c+1);
-        if (!(grid[r][c].equals(16)) && !(grid[r][c].equals(4*r+c+1))) {
-          return false;
-        }
+    for (int r = 0; r < 3; r++) {
+      for (int c = 0; c < 3; c++) {
+        String correct = addSpaces("" + (3*r+c+1)) + (3*r+c+1);
+				if (!(r == 3 && c == 3)) {
+					if (!(grid[r][c].equals(correct))) {
+	          return false;
+	        }
+				}
       }
     }
     return complete;
   }
-/*
-	public boolean beatGame() {
-    for (int r = 0; r < 4; r++) {
-      for (int c = 0; c < 4; c++) {
-				if (grid[r][c].equals("2048")) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-*/
+
 	public String toString() { //prints 2-d array grid with a grid around it to mimic game
 		String s = "|-----------|\n";
-		for (int r = 0; r < 4; r++) {
-			for (int c = 0; c < 4; c++) {
+		for (int r = 0; r < 3; r++) {
+			for (int c = 0; c < 3; c++) {
 				if (c == 0) {
 					s = s + "|" + grid[r][c] + "|";
 				}
@@ -136,7 +127,7 @@ public class SecondPuzzle {
 					s = s + grid[r][c] + "|";
 				}
 			}
-			if (r == 3) {
+			if (r == 2) {
 				s = s + "\n|-----------|";
 			}
 			else {
