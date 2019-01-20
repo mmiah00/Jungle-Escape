@@ -65,6 +65,6 @@ public class Scene4 extends Scene {
       }
     }
     terminal.clearScreen();
-    return 4; //6;
+    return 6;
   }
 }

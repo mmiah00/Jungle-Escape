@@ -52,6 +52,6 @@ public class Scene3 extends Scene{
       //putString(0, 8, terminal, A.toString());
     }
     terminal.clearScreen();
-    return 3; //4;
+    return 4;
   }
 }
