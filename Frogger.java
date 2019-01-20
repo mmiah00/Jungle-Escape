@@ -1,3 +1,4 @@
+/*
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.terminal.Terminal.SGR;
 import com.googlecode.lanterna.TerminalFacade;
@@ -12,7 +13,7 @@ import com.googlecode.lanterna.input.InputDecoder;
 import com.googlecode.lanterna.input.InputProvider;
 import com.googlecode.lanterna.input.Key;
 import com.googlecode.lanterna.input.KeyMappingProfile;
-
+*/
 import java.util.*;
 
 public class Frogger {
@@ -84,14 +85,20 @@ public class Frogger {
   public void movePlayer(int horizontal, int vertical) {
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
-    if (newRow == 0) {
+    if (newRow == 0 || newRow == 9) {
       world[newRow][newCol] = "o**";
+      world[currentRow][currentCol] = "   ";
+    }
+    else if (currentRow == 9) {
+      world[newRow][newCol] = "o  ";
+      world[currentRow][currentCol] = "***";
     }
     else {
       world[newRow][newCol] = "o  ";
+      world[currentRow][currentCol] = "   ";
     }
-    currentRow = currentRow + vertical;
-    currentCol = currentRow + horizontal;
+    currentRow = newRow;
+    currentCol = newCol;
   }
 
   public int isCrash(int horizontal, int vertical) {
@@ -122,14 +129,29 @@ public class Frogger {
   public boolean isComplete() {
     return (currentRow == 0);
   }
-
+/*
   public static void putString(int r, int c,Terminal t, String s){
     t.moveCursor(r,c);
     for(int i = 0; i < s.length();i++){
       t.putCharacter(s.charAt(i));
     }
   }
+*/
 
+    public static void main (String args[]) {
+      Frogger A = new Frogger();
+      System.out.println(A.toString());
+      A.movePlayer(0, 1);
+      System.out.println(A.toString());
+      A.movePlayer(-1, 0);
+      System.out.println(A.toString());
+      A.movePlayer(1, 0);
+      System.out.println(A.toString());
+      A.movePlayer(0, -1);
+      System.out.println(A.toString());
+    }
+
+/*
   public static void main(String[] args) {
     Terminal terminal = TerminalFacade.createTextTerminal();
     terminal.enterPrivateMode();
@@ -176,14 +198,6 @@ public class Frogger {
     }
     terminal.exitPrivateMode();
   }
-/*
-  public static void main (String args[]) {
-    Frogger A = new Frogger();
-    System.out.println(A.toString());
-    if (!(A.movePlayer(1))) {
-      System.out.println "CRASHED"
-    }
-    System.out.println(A.toString());
-  }
   */
+
 }
