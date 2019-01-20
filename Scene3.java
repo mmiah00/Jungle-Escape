@@ -41,7 +41,7 @@ public class Scene3 extends Scene{
     Scene3 A = new Scene3(terminal);
 
     int counter = 0;
-    while (counter != 10000) {
+    while (counter != 1000000) {
       counter++;
       putString(0, 8, terminal, A.toString());
     }
