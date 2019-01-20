@@ -26,8 +26,8 @@ public class Frogger {
     return lives;
   }
 
-  public int setLives(int n) {
-    return lives = lives + n;
+  public void setLives(int n) {
+    lives = lives + n;
   }
 
   public Frogger() {
@@ -207,7 +207,7 @@ public class Frogger {
         }
         if (key.getKind() == Key.Kind.ArrowUp) {
           if (A.isCrash(0, 1) == -1) {
-            terminal.clearScreen();
+            A.setLives(-1);
             System.out.println("A car hit you! You have " + A.getLives() + "more lives");
           }
           else if (A.isCrash(0, 1) == 1) {
