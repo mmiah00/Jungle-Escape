@@ -187,7 +187,7 @@ public class Frogger {
       }
       counter++;
 
-      gameNotDone = !(A.isComplete();
+      gameNotDone = !(A.isComplete());
 
       if (A.isRunOver()) {
         if (A.getLives() == 0) {
