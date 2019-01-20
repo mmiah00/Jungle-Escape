@@ -208,7 +208,7 @@ public class Frogger {
         if (key.getKind() == Key.Kind.ArrowUp) {
           if (A.isCrash(0, 1) == -1) {
             terminal.clearScreen();
-            System.out.println("You died");
+            System.out.println("A car hit you! You have " + A.getLives() + "more lives");
           }
           else if (A.isCrash(0, 1) == 1) {
             A.movePlayer(0, 1);
