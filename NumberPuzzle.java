@@ -193,7 +193,7 @@ public class NumberPuzzle {
 	public boolean beatGame() {
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
-				if (grid[r][c].equals("128")) {
+				if (grid[r][c].equals("256")) {
 					return true;
 				}
 			}
@@ -236,114 +236,37 @@ public class NumberPuzzle {
 		putString(0, 12, terminal, "|to combine numbers |");
 		putString(0, 13, terminal, "|   and reach 256   |");
 
-
-
-			boolean gameNotDone = true;
-			while (gameNotDone) {
-				gameNotDone = (!(A.beatGame()));
-				if (!(A.isComplete())) {
-					putString(0, 0, terminal, A.toString());
-					Key key = terminal.readInput();
-					if (key != null){
-						if (key.getKind() == Key.Kind.Escape) {
-							terminal.exitPrivateMode();
-							gameNotDone = false;
-							return -1;
-						}
-						if (key.getKind() == Key.Kind.ArrowLeft) {
-							A.moveLeft();
-						}
-						if (key.getKind() == Key.Kind.ArrowRight) {
-							A.moveRight();
-						}
-						if (key.getKind() == Key.Kind.ArrowUp) {
-							A.moveUp();
-						}
-						if (key.getKind() == Key.Kind.ArrowDown) {
-							A.moveDown();
-						}
+		boolean gameNotDone = true;
+		while (gameNotDone) {
+			gameNotDone = (!(A.beatGame()));
+			if (!(A.isComplete())) {
+				putString(0, 0, terminal, A.toString());
+				Key key = terminal.readInput();
+				if (key != null){
+					if (key.getKind() == Key.Kind.Escape) {
+						terminal.exitPrivateMode();
+						gameNotDone = false;
+						return -1;
+					}
+					if (key.getKind() == Key.Kind.ArrowLeft) {
+						A.moveLeft();
+					}
+					if (key.getKind() == Key.Kind.ArrowRight) {
+						A.moveRight();
+					}
+					if (key.getKind() == Key.Kind.ArrowUp) {
+						A.moveUp();
+					}
+					if (key.getKind() == Key.Kind.ArrowDown) {
+						A.moveDown();
 					}
 				}
-				else {
-					A.reset();
-				}
-		}
-		terminal.clearScreen();
-		return 3;
-	}
-
-
-		 /*
-		while (gameNotDone) {
-			gameNotDone = !(A.isComplete());
-			putString(0, 0, terminal, A.toString());
-			Key key = terminal.readInput();
-			if (key != null){
-				if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-					gameNotDone = false;
-					return -1;
-        }
-				if (key.getKind() == Key.Kind.ArrowLeft) {
-					A.moveLeft();
-				}
-				if (key.getKind() == Key.Kind.ArrowRight) {
-					A.moveRight();
-				}
-				if (key.getKind() == Key.Kind.ArrowUp) {
-					A.moveUp();
-				}
-				if (key.getKind() == Key.Kind.ArrowDown) {
-					A.moveDown();
-				}
+			}
+			else {
+				A.reset();
 			}
 		}
 		terminal.clearScreen();
 		return 3;
-		//
-		if (A.beatGame()) {
-			terminal.clearScreen();
-		}
-		else {
-			A = new NumberPuzzle();
-		}//
 	}
-*/
-/*
-	public static void main(String[] args) {
-		Terminal terminal = TerminalFacade.createTextTerminal();
-		terminal.enterPrivateMode();
-
-		TerminalSize size = terminal.getTerminalSize();
-		terminal.setCursorVisible(false);
-
-		NumberPuzzle A = new NumberPuzzle();
-		boolean running = true;
-		while (running) {
-			running = !(A.isComplete());
-			putString(0, 0, terminal, A.toString());
-			Key key = terminal.readInput();
-			if (key != null){
-				if (key.getKind() == Key.Kind.Escape) {
-					terminal.exitPrivateMode();
-					running = false;
-				}
-				if (key.getKind() == Key.Kind.ArrowLeft) {
-					A.moveLeft();
-				}
-				if (key.getKind() == Key.Kind.ArrowRight) {
-					A.moveRight();
-				}
-				if (key.getKind() == Key.Kind.ArrowUp) {
-					A.moveUp();
-				}
-				if (key.getKind() == Key.Kind.ArrowDown) {
-					A.moveDown();
-				}
-			}
-		}
-		terminal.exitPrivateMode();
-	}
-	*/
-
 }
