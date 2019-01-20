@@ -45,7 +45,7 @@ public class Frogger {
     world[9][4] = "o**";
     currentRow = 9;
     currentCol = 4;
-    lives = 3; 
+    lives = 3;
   }
 
   public void addCars(int r) {
@@ -187,7 +187,7 @@ public class Frogger {
       }
       counter++;
 
-      gameNotDone = !(A.isComplete())
+      gameNotDone = !(A.isComplete();
 
       if (A.isRunOver()) {
         if (A.getLives() == 0) {
