@@ -164,7 +164,7 @@ public class Frogger {
 
 public void moveCars() {
   int counter = 0;
-  if (counter % 5000 == 0) {
+  if (counter % 10000 == 0) {
     moveCarsLeft(1);
     moveCarsLeft(3);
     moveCarsLeft(4);
