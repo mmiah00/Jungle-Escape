@@ -19,7 +19,7 @@ public abstract class Scene {
 
   public String toString() {
     String s = " ";
-    for (int i = 0; i < 35; i++) {
+    for (int i = 0; i < path.length; i++) {
       s = s + path[i];
     }
     return s;
