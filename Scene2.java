@@ -23,8 +23,8 @@ public class Scene2 extends Scene{
     putString(11, 2, t, "/ ` .  \\");
     putString(10, 3, t, "/ .   `  \\");
     putString(9, 4, t, "/.   `  `  \\");
-    putString(9, 5, t, "/  ` . `  . .\\");
-    putString(4, 6, t, "/ `  .   .  `  \\");
+    putString(8, 5, t, "/  ` . `  . .\\");
+    putString(7, 6, t, "/ `  .   .  `  \\");
     putString(6, 7, t, "/ .  `   ` .  .  \\");
     t.applyBackgroundColor (Terminal.Color.DEFAULT);
     putString(0, 6, t, "  ");
