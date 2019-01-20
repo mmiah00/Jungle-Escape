@@ -22,6 +22,14 @@ public class Frogger {
   private int currentCol; //xcor of player
   //u+1F697 car unicode
 
+  public int getLives() {
+    return lives;
+  }
+
+  public int setLives(int n) {
+    lives = lives + n;
+  }
+
   public Frogger() {
     world = new String[10][8];
     for (int c = 0; c < 8; c++) {
@@ -37,6 +45,7 @@ public class Frogger {
     world[9][4] = "o**";
     currentRow = 9;
     currentCol = 4;
+    lives = 3; 
   }
 
   public void addCars(int r) {
@@ -166,7 +175,7 @@ public class Frogger {
 
     boolean gameNotDone = true;
     while (gameNotDone) {
-      if (counter % 1000 == 0) {
+      if (counter % 5000 == 0) {
         A.moveCarsLeft(1);
         A.moveCarsLeft(3);
         A.moveCarsLeft(4);
@@ -178,7 +187,17 @@ public class Frogger {
       }
       counter++;
 
-      gameNotDone = !(A.isComplete()) && !(A.isRunOver());
+      gameNotDone = !(A.isComplete())
+
+      if (A.isRunOver()) {
+        if (A.getLives() == 0) {
+          gameNotOver = false;
+        }
+        else {
+          A.setLives(-1);
+        }
+      }
+
       putString(0, 0, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
