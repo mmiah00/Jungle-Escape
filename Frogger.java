@@ -214,10 +214,10 @@ public static void main(String[] args) {
             A.setLives(-5);
           }
           if (key.getKind() == Key.Kind.ArrowUp) {
-            if (A.isCrash() == -1) {
+            if (A.isCrash(0, 1) == -1) {
               A.setLives(-1);
               if (A.getLives() > -1) {
-                A.movePlayer(0,1);
+                A.movePlayer(0, 1);
               }
             }
             else {
