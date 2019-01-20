@@ -42,9 +42,9 @@ public class JungleEscape {
           return -1;
         }
       }
-      return -1;
     }
     terminal.clearScreen();
+    return -1;
   }
 
   public static void main(String[] args) {
