@@ -162,9 +162,8 @@ public class Frogger {
     }
 */
 
-public void moveCars() {
-  int counter = 0;
-  if (counter % 10000 == 0) {
+public void moveCars(int counter) {
+  if (counter % 1500 == 0) {
     moveCarsLeft(1);
     moveCarsLeft(3);
     moveCarsLeft(4);
@@ -174,7 +173,6 @@ public void moveCars() {
     moveCarsRight(7);
     moveCarsRight(8);
   }
-  counter++;
 }
 
 public static void main(String[] args) {
@@ -187,13 +185,17 @@ public static void main(String[] args) {
   Frogger A = new Frogger();
   putString(0, 0, terminal, A.toString());
 
+  int counter = 0;
+
   while (A.getLives() > -1) {
     if (A.isComplete()) {
       terminal.exitPrivateMode();
       A.setLives(-5);
     }
     else {
-      A.moveCars();
+      A.moveCars(counter);
+      counter++;
+
       putString(0,0, terminal, A.toString());
       if (A.isRunOver()) {
         if (A.getLives() == 0) {
