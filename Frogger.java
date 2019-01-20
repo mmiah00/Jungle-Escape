@@ -162,7 +162,7 @@ public class Frogger {
 
     boolean gameNotDone = true;
     while (gameNotDone) {
-      if (counter % 10 == 0) {
+      if (counter % 100 == 0) {
         A.moveCarsLeft(1);
         A.moveCarsLeft(3);
         A.moveCarsLeft(4);
