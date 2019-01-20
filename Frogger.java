@@ -1,3 +1,4 @@
+
 //API : http://mabe02.github.io/lanterna/apidocs/2.1/
 import com.googlecode.lanterna.terminal.Terminal.SGR;
 import com.googlecode.lanterna.TerminalFacade;
@@ -153,72 +154,72 @@ public class Frogger {
       Frogger A = new Frogger();
       System.out.println(A.toString());
       A.movePlayer(0, 1);
-      System.out.println(A.toString());
-      A.movePlayer(0, 1);
-      System.out.println(A.toString());
-      A.movePlayer(0, 1);
-      System.out.println(A.toString());
+      System.out.println(A.getLives());
+      A.setLives(-1);
+      System.out.println(A.getLives());
+      A.setLives(-1);
+      System.out.println(A.getLives());
     }
 */
-  public static void main(String[] args) {
-    Terminal terminal = TerminalFacade.createTextTerminal();
-    terminal.enterPrivateMode();
 
-    TerminalSize size = terminal.getTerminalSize();
-    terminal.setCursorVisible(false);
+public static void main(String[] args) {
+  Terminal terminal = TerminalFacade.createTextTerminal();
+  terminal.enterPrivateMode();
 
-    Frogger A = new Frogger();
-    putString(0, 0, terminal, A.toString());
+  TerminalSize size = terminal.getTerminalSize();
+  terminal.setCursorVisible(false);
 
-    //int counter = 0;
+  Frogger A = new Frogger();
+  putString(0, 0, terminal, A.toString());
 
-    boolean gameNotDone = true;
-    while (gameNotDone) {
+  int counter = 0;
+
+  boolean gameNotDone = true;
+  while (gameNotDone) {
+    if (counter % 2000 == 0) {
+      A.moveCarsLeft(1);
+      A.moveCarsLeft(3);
+      A.moveCarsLeft(4);
+      A.moveCarsLeft(6);
+      A.moveCarsRight(2);
+      A.moveCarsRight(5);
+      A.moveCarsRight(7);
+      A.moveCarsRight(8);
+    }
+    counter++;
+    
+    gameNotDone = !(A.isComplete());
+    putString(0,0, terminal, A.toString());
 /*
-      if (counter % 2000 == 0) {
-        A.moveCarsLeft(1);
-        A.moveCarsLeft(3);
-        A.moveCarsLeft(4);
-        A.moveCarsLeft(6);
-        A.moveCarsRight(2);
-        A.moveCarsRight(5);
-        A.moveCarsRight(7);
-        A.moveCarsRight(8);
+    if (A.isRunOver()) {
+      if (A.getLives() == 0) {
+        gameNotDone = false;
       }
-      counter++;
+      else {
+        A.setLives(-1);
+        System.out.println("A car hit you! You have " + A.getLives() + " more lives");
+      }
+    }
+    putString(0, 0, terminal, A.toString());
 */
-      gameNotDone = !(A.isComplete());
-      putString(0,0, terminal, A.toString());
-/*
-      if (A.isRunOver()) {
-        if (A.getLives() == 0) {
-          gameNotDone = false;
-        }
-        else {
+    Key key = terminal.readInput();
+    if (key != null){
+      if (key.getKind() == Key.Kind.Escape) {
+        terminal.exitPrivateMode();
+        gameNotDone = false;
+      }
+      if (key.getKind() == Key.Kind.ArrowUp) {
+        /*if (A.isCrash(0, 1) == -1) {
           A.setLives(-1);
           System.out.println("A car hit you! You have " + A.getLives() + " more lives");
         }
-      }
-      putString(0, 0, terminal, A.toString());
-*/
-      Key key = terminal.readInput();
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
-          terminal.exitPrivateMode();
-          gameNotDone = false;
-        }
-        if (key.getKind() == Key.Kind.ArrowUp) {
-          /*if (A.isCrash(0, 1) == -1) {
-            A.setLives(-1);
-            System.out.println("A car hit you! You have " + A.getLives() + " more lives");
-          }
-          else if (A.isCrash(0, 1) == 1) {*/
-            A.movePlayer(0, 1);
-          //}
-        }
+        else if (A.isCrash(0, 1) == 1) {*/
+          A.movePlayer(0, 1);
+        //}
       }
     }
-    terminal.exitPrivateMode();
   }
+  terminal.exitPrivateMode();
+}
 
 }
