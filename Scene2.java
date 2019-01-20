@@ -26,7 +26,7 @@ public class Scene2 extends Scene{
     putString(0, 6, t, "  ");
     t.moveCursor (2,6);
     t.putCharacter ('\u2610');
-    putString(3, 6, t, "   / `  .   .  `  \\ ");
+    putString(3, 6, t, "    / `  .   .  `  \\ ");
     putString(0, 7, t, "      / .  `   ` .  .  \\");
 
     path[0] = "o";
