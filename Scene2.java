@@ -18,6 +18,8 @@ public class Scene2 extends Scene{
   public Scene2 (Terminal t) {
     path = new String[6];
     putString(0, 0, t, "------------------------");
+    t.applyBackgroundColor(Terminal.Color.BLUE);
+		t.applyForegroundColor(Terminal.Color.WHITE);
     putString(0, 1, t, "            /   .\\      ");
     putString(0, 2, t, "           / ` .  \\     ");
     putString(0, 3, t, "          / .   `  \\    ");
