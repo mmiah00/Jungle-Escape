@@ -23,7 +23,10 @@ public class Scene2 extends Scene{
     putString(0, 3, t, "          / .   `  \\    ");
     putString(0, 4, t, "         /.   `  `  \\   ");
     putString(0, 5, t, "        /  ` . `  . .\\  ");
-    putString(0, 6, t, "  []   / `  .   .  `  \\ ");
+    putString(0, 6, t, "  ");
+    t.moveCursor (2,6);
+    t.putCharacter ('\u2610');
+    putString(2, 6, t, "   / `  .   .  `  \\ ");
     putString(0, 7, t, "      / .  `   ` .  .  \\");
 
     path[0] = "o";
@@ -51,7 +54,7 @@ public class Scene2 extends Scene{
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          return -1; 
+          return -1;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
