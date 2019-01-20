@@ -24,12 +24,12 @@ public class Scene2 extends Scene{
     putString(10, 3, t, "/ .   `  \\");
     putString(9, 4, t, "/.   `  `  \\");
     putString(9, 5, t, "/  ` . `  . .\\");
-    t.applyBackgroundColor (Terminal.Color.DEFAULT); 
+    putString(4, 6, t, "/ `  .   .  `  \\");
+    putString(6, 7, t, "/ .  `   ` .  .  \\");
+    t.applyBackgroundColor (Terminal.Color.DEFAULT);
     putString(0, 6, t, "  ");
     t.moveCursor (2,6);
     t.putCharacter ('\u2610');
-    putString(3, 6, t, "    / `  .   .  `  \\ ");
-    putString(0, 7, t, "      / .  `   ` .  .  \\");
 
     path[0] = "o";
     for (int i = 1; i < 6; i++) {
