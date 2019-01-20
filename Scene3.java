@@ -60,12 +60,12 @@ public class Scene3 extends Scene{
     int counter = 0;
     while (counter != 100000) {
       counter++;
-      A.display(terminal); 
+      A.display(terminal);
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
-          counter = 100000;
+          counter = 50000;
           return -1;
         }
       }
