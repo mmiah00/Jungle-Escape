@@ -162,6 +162,21 @@ public class Frogger {
     }
 */
 
+public void moveCars() {
+  int counter = 0;
+  if (counter % 1500 == 0) {
+    A.moveCarsLeft(1);
+    A.moveCarsLeft(3);
+    A.moveCarsLeft(4);
+    A.moveCarsLeft(6);
+    A.moveCarsRight(2);
+    A.moveCarsRight(5);
+    A.moveCarsRight(7);
+    A.moveCarsRight(8);
+  }
+  counter++;
+}
+
 public static void main(String[] args) {
   Terminal terminal = TerminalFacade.createTextTerminal();
   terminal.enterPrivateMode();
@@ -172,50 +187,44 @@ public static void main(String[] args) {
   Frogger A = new Frogger();
   putString(0, 0, terminal, A.toString());
 
-  int counter = 0;
-
-  boolean gameNotDone = true;
-  while (gameNotDone) {
-    if (counter % 2000 == 0) {
-      A.moveCarsLeft(1);
-      A.moveCarsLeft(3);
-      A.moveCarsLeft(4);
-      A.moveCarsLeft(6);
-      A.moveCarsRight(2);
-      A.moveCarsRight(5);
-      A.moveCarsRight(7);
-      A.moveCarsRight(8);
+  while (A.getLives() > -1) {
+    if (A.isComplete()) {
+      terminal.exitPrivateMode();
+      A.setLives(-5);
     }
-    counter++;
-    
-    gameNotDone = !(A.isComplete());
-    putString(0,0, terminal, A.toString());
-/*
-    if (A.isRunOver()) {
-      if (A.getLives() == 0) {
-        gameNotDone = false;
-      }
-      else {
-        A.setLives(-1);
-        System.out.println("A car hit you! You have " + A.getLives() + " more lives");
-      }
-    }
-    putString(0, 0, terminal, A.toString());
-*/
-    Key key = terminal.readInput();
-    if (key != null){
-      if (key.getKind() == Key.Kind.Escape) {
-        terminal.exitPrivateMode();
-        gameNotDone = false;
-      }
-      if (key.getKind() == Key.Kind.ArrowUp) {
-        /*if (A.isCrash(0, 1) == -1) {
-          A.setLives(-1);
-          System.out.println("A car hit you! You have " + A.getLives() + " more lives");
+    else {
+      A.moveCars();
+      putString(0,0, terminal, A.toString());
+      if (A.isRunOver()) {
+        if (A.getLives() == 0) {
+          terminal.exitPrivateMode();
+          A.setLives(-5);
+          System.out.println("A car hit you! You have no more lives. Press ESC and restart game to try again.");
         }
-        else if (A.isCrash(0, 1) == 1) {*/
-          A.movePlayer(0, 1);
-        //}
+        else {
+          A.setLives(-1);
+          System.out.println("A car hit you! You have " + A.getLives() + " more lives.");
+        }
+      }
+      if (A.getLives() > -1) {
+        Key key = terminal.readInput();
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            A.setLives(-5);
+          }
+          if (key.getKind() == Key.Kind.ArrowUp) {
+            if (A.isCrash() == -1) {
+              A.setLives(-1);
+              if (A.getLives() > -1) {
+                A.movePlayer(0,1);
+              }
+            }
+            else {
+              A.movePlayer(0, 1);
+            }
+          }
+        }
       }
     }
   }
