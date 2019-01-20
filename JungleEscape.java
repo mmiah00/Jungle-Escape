@@ -39,7 +39,6 @@ public class JungleEscape {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           running = false;
-          return -1;
         }
       }
     }

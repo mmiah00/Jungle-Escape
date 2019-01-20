@@ -52,6 +52,7 @@ public class Scene1 extends Scene {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
+          return -1; 
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
