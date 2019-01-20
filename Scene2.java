@@ -16,7 +16,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 public class Scene2 extends Scene{
 
   public Scene2 (Terminal t) {
-    path = new String[20];
+    path = new String[6];
     putString(0, 0, t, "------------------------");
     putString(0, 1, t, "            /   .\\      ");
     putString(0, 2, t, "           / ` .  \\     ");
@@ -27,7 +27,7 @@ public class Scene2 extends Scene{
     putString(0, 7, t, "      / .  `   ` .  .  \\");
 
     path[0] = "o";
-    for (int i = 1; i < 20; i++) {
+    for (int i = 1; i < 6; i++) {
       path[i] = " ";
     }
     putString(0, 8, t, toString());
