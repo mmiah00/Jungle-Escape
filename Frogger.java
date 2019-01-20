@@ -188,6 +188,7 @@ public class Frogger {
       counter++;
 
       gameNotDone = !(A.isComplete());
+      putString(0, 0, terminal, A.toString());
 
       if (A.isRunOver()) {
         if (A.getLives() == 0) {
@@ -198,7 +199,6 @@ public class Frogger {
         }
       }
 
-      putString(0, 0, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
