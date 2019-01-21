@@ -69,15 +69,17 @@ public class Scene1 extends Scene {
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      putString(0,1,terminal, "Time: " + timer);
-      int minNum = 14 - (int)(timer/60000);
-      String minPassed = String.format("%02d", minNum);
-      int secNum = 60 - (int)(timer%60000/1000);
-      String secPassed = String.format("%02d", secNum);
+      A.setMinLeft(15 - (int)(timer/60000));
+      String minPassed = String.format("%02d", A.getMinLeft());
+      A.setSecLeft(60 - (int)(timer%60000/1000));
+      String secPassed = String.format("%02d", A.getSecLeft());
+      if (A.getSecLeft() == 0) {
+        secPassed = "00";
+      }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
-
     }
     terminal.clearScreen();
     return 1;
   }
+
 }

@@ -16,6 +16,8 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 public abstract class Scene {
   String[] path;
   int index = 0;
+  int minNum;
+  int secNum;
 
   public String toString() {
     String s = " ";
@@ -52,4 +54,19 @@ public abstract class Scene {
     }
   }
 
+  public int getMinLeft() {
+    return minNum;
+  }
+
+  public int getSecLeft() {
+    return secNum;
+  }
+
+  public void setMinLeft(int newNum) {
+    minNum = newNum;
+  }
+
+  public int setSecLeft(int newNum) {
+    secNum = newNum;
+  }
 }
