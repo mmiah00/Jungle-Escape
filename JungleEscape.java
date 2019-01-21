@@ -48,45 +48,43 @@ public class JungleEscape {
         terminal.exitPrivateMode();
         running = false;
       }
-      else {
-    
-        if (mode == 0) {
-          lastTime = currentTime;
-          currentTime = System.currentTimeMillis();
-          timer += (currentTime -lastTime);
-          putString(0,0,terminal, "Time: "+timer);
-
-          Scene1 A = new Scene1(terminal);
-          mode = A.playScene1(terminal);
-        }
-        if (mode == 1) {
-          Scene2 A = new Scene2(terminal);
-          mode = A.playScene2(terminal);
-        }
-        if (mode == 2) {
-          NumberPuzzle A = new NumberPuzzle();
-          mode = A.play2048(terminal);
-        }
-        if (mode == 3) {
-          Scene3 A = new Scene3(terminal);
-          mode = A.playScene3(terminal);
-        }
-        if (mode == 4) {
-          SecondPuzzle A = new SecondPuzzle();
-          mode = A.playFifteen(terminal);
-        }
-        if (mode == 5) {
-          Scene4 A = new Scene4(terminal);
-          mode = A.playScene4(terminal);
-        }
-        if (mode == 6) {
-          Frogger A = new Frogger();
-          mode = A.playFrogger(terminal);
-        }
-        if (mode == 7) {
-          Scene5 A = new Scene5(terminal);
-          mode = A.playScene5(terminal);
-        }
+      if (mode != -1) {
+        lastTime = currentTime;
+        currentTime = System.currentTimeMillis();
+        timer += (currentTime -lastTime);
+        putString(0,0,terminal, "Time: "+timer);
+      }
+      if (mode == 0) {
+        Scene1 A = new Scene1(terminal);
+        mode = A.playScene1(terminal);
+      }
+      if (mode == 1) {
+        Scene2 A = new Scene2(terminal);
+        mode = A.playScene2(terminal);
+      }
+      if (mode == 2) {
+        NumberPuzzle A = new NumberPuzzle();
+        mode = A.play2048(terminal);
+      }
+      if (mode == 3) {
+        Scene3 A = new Scene3(terminal);
+        mode = A.playScene3(terminal);
+      }
+      if (mode == 4) {
+        SecondPuzzle A = new SecondPuzzle();
+        mode = A.playFifteen(terminal);
+      }
+      if (mode == 5) {
+        Scene4 A = new Scene4(terminal);
+        mode = A.playScene4(terminal);
+      }
+      if (mode == 6) {
+        Frogger A = new Frogger();
+        mode = A.playFrogger(terminal);
+      }
+      if (mode == 7) {
+        Scene5 A = new Scene5(terminal);
+        mode = A.playScene5(terminal);
       }
     }
     terminal.exitPrivateMode();
