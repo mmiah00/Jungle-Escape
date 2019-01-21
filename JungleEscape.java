@@ -54,11 +54,11 @@ public class JungleEscape {
         nextSec = A.getSecLeft();
       }
       if (mode == 1) {
-        System.out.println(nextMin + " " + nextSec);
         Scene2 A = new Scene2(terminal);
         mode = A.playScene2(terminal, nextMin, nextSec);
         nextMin = A.getMinLeft();
         nextSec = A.getSecLeft();
+        putString(0, 1, terminal, nextMin + " " + nextSec);
       }
       if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
