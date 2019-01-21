@@ -76,16 +76,18 @@ public class Scene1 extends Scene {
       A.setSecLeft(60 - (int)(timer%60000/1000));
       String secPassed = String.format("%02d", A.getSecLeft());
       if (A.getSecLeft() == 60) {
+        A.setMinLeft(15 - (int)(timer/60000)-1);
+        minPassed = String.format("%02d", A.getMinLeft());
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
+      putString(0,1,terminal, ""+ A.getMinLeft());
 
       if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
         pathNotDone = false;
         return -1;
       }
-    }
-    A.setMinLeft(A.getMinLeft()); 
+
     terminal.clearScreen();
     return 1;
   }
