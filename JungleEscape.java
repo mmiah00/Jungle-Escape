@@ -31,31 +31,29 @@ public class JungleEscape {
     terminal.setCursorVisible(false);
 
     boolean running = true;
-    long tStart = System.currentTimeMillis();
-		long lastSecond = 0;
+    long lastTime =  System.currentTimeMillis();
+    long currentTime = lastTime;
+    long timer = 0;
     int mode = 0;
 
     while (running) {
-
-      long tEnd = System.currentTimeMillis();
-			long millis = tEnd - tStart;
-			if(millis/1000 > lastSecond){
-				lastSecond = millis / 1000;
-				putString(0,0,terminal,"Seconds since start of program: "+lastSecond);
-
-			}
-
-        Key key = terminal.readInput();
-        if (key != null){
-          if (key.getKind() == Key.Kind.Escape) {
-            terminal.exitPrivateMode();
-            running = false;
-          }
-        }
-        if (mode == -1) {
+      Key key = terminal.readInput();
+      if (key != null){
+        if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           running = false;
         }
+      }
+      if (mode == -1) {
+        terminal.exitPrivateMode();
+        running = false;
+      }
+      else {
+        lastTime = currentTime;
+        currentTime = System.currentTimeMillis();
+        timer += (currentTime -lastTime);
+        putString(0,0,terminal, "Time: "+timer);
+
         if (mode == 0) {
           Scene1 A = new Scene1(terminal);
           mode = A.playScene1(terminal);
@@ -88,7 +86,7 @@ public class JungleEscape {
           Scene5 A = new Scene5(terminal);
           mode = A.playScene5(terminal);
         }
-      //}
+      }    
     }
     terminal.exitPrivateMode();
   }
