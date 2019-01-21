@@ -41,8 +41,9 @@ public class Scene1 extends Scene {
     putString(0, 16, t, "| reach the end.                  |");
   }
 
-  public static int playScene1(Terminal terminal) {
+  public static int [] playScene1(Terminal terminal) {
     Scene1 A = new Scene1(terminal);
+    int [] returns = new int [3];
 
     boolean pathNotDone = true;
     long lastTime =  System.currentTimeMillis();
@@ -58,7 +59,8 @@ public class Scene1 extends Scene {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          return -1;
+          returns[0] = -1;
+          return returns;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
@@ -76,20 +78,23 @@ public class Scene1 extends Scene {
       A.setSecLeft(60 - (int)(timer%60000/1000));
       String secPassed = String.format("%02d", A.getSecLeft());
       if (A.getSecLeft() == 60) {
-        A.setMinLeft(15 - (int)(timer/60000)-1);
+        A.setMinLeft(14 - (int)(timer/60000));
         minPassed = String.format("%02d", A.getMinLeft());
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
-      putString(0,1,terminal, ""+ A.getMinLeft());
+      returns[1] = A.getMinLeft();
+      returns[2] = A.getSecLeft(); 
 
       if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
         pathNotDone = false;
-        return -1;
+        returns [0] = -1;
+        return returns;
       }
     }
     terminal.clearScreen();
-    return 1;
+    returns [0] = 1;
+    return returns;
   }
 
 }
