@@ -1,5 +1,8 @@
 # JungleEscape
 
+Directions: 
+JungleEscape is a game where you are trying to outrun zombies during a zombie apocolypse to save your life. Run bash play.sh to open JungleEscape. You reach a forest where you are safe (for now). Use the right arrow key to move right until the edge of the screen (if you hold on to the key too long it might run through the scene too quickly and skip it). While running through the forest, you get to a river and find a box with a puzzle (2048). Play 2048 by using the up, down, left, and right arrow keys to combine the numbers and reach 2048. This will open the box to find wood with numbers on the back. Sorting the numbers (15 Puzzle) will build the bridge to the river. Use the up, down, left, right keys here as well. Crossing the river, you continue running until you reach a highway and see a safe haven. To cross the highway, use your arrow keys and avoid the cars. 
+
 1/4/2019
 Vivien: We spent most of class talking in general about how to code for different parts of the games. I added a createbackground() to TerminalDemo to form the grid for 2048.
 Maisha: I spent most of my time trying to picture the background for 15 Puzzle and started writing code for it. I created a Tile class which is a part of the fifteenPuzzle class. 
