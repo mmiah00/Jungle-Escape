@@ -36,8 +36,8 @@ public class Scene1 extends Scene {
     putString(0, 11, t, toString());
 
     putString(0, 13, t, "| Attempting to escape the zombie |");
-    putString(0, 14, t, "| apocolype, you decide to start  |");
-    putString(0, 15, t, "| running and runing until you    |");
+    putString(0, 14, t, "| apocolypse, you decide to start |");
+    putString(0, 15, t, "| running and running until you   |");
     putString(0, 16, t, "| reach the end.                  |");
   }
 

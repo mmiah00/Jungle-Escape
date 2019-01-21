@@ -19,14 +19,14 @@ public class Scene5 extends Scene {
   }
 
   public void display(Terminal terminal) {
-    putString(0, 1, terminal, "           x");
-    putString(0, 2, terminal, ".-. _______|");
-    putString(0, 3, terminal, "|=|/     /  \\");
-    putString(0, 4, terminal, "| |_____|_\"\"_|");
-    putString(0, 5, terminal, "|_|_[X]_|____|");
-    putString(0, 7, terminal, "| Great Job! You are SAFE! |");
-    putString(0, 8, terminal, "| Your escape took time t  |");
-    putString(0, 9, terminal, "|                          |");
+    putString(0, 1, terminal,  "           x");
+    putString(0, 2, terminal,  ".-. _______|");
+    putString(0, 3, terminal,  "|=|/     /  \\");
+    putString(0, 4, terminal,  "| |_____|_\"\"_|");
+    putString(0, 5, terminal,  "|_|_[X]_|____|");
+    putString(0, 7, terminal,  "| Great Job! You are SAFE! |");
+    putString(0, 8, terminal,  "| Your escape took time t  |");
+    putString(0, 9, terminal,  "|                          |");
     putString(0, 10, terminal, "|  Press ESC to exit game  |");
   }
 
