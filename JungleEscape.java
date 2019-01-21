@@ -54,6 +54,7 @@ public class JungleEscape {
         nextSec = A.getSecLeft();
       }
       if (mode == 1) {
+        System.out.println(nextMin + " " + nextSec);
         Scene2 A = new Scene2(terminal);
         mode = A.playScene2(terminal, nextMin, nextSec);
         nextMin = A.getMinLeft();
