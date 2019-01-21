@@ -27,11 +27,11 @@ public class Scene3 extends Scene{
     putString(0, 5, t, " \"\"                ||      ");
     putString(0, 6, t, "                   --      ");
 
-    putString(0, 8, t, "|      You opened the box!     |");
-    putString(0, 8, t, "|  Now you can build a bridge! |");
-    putString(0, 10, t, "|     Put the planks in the    |");
-    putString(0, 11, t, "|  correct numerical order to  |");
-    putString(0, 12, t, "|       build your bridge.     |");
+    putString(0, 8, t,  "| You opened the box! There are |");
+    putString(0, 8, t,  "|   materials to make a bridge. |");
+    putString(0, 10, t, "|      Put the planks in the    |");
+    putString(0, 11, t, "|   correct numerical order to  |");
+    putString(0, 12, t, "|        build your bridge.     |");
   }
 
   public static int[] playScene3(Terminal terminal, int beginMin, int beginSec) {
