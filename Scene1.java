@@ -51,6 +51,11 @@ public class Scene1 extends Scene {
 
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
+      if (A.getMinLeft() == 0 && A.getSecLeft() == 0) {
+        pathNotDone = false;
+        return -1;
+      }
+
       putString(0, 11, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
@@ -66,6 +71,7 @@ public class Scene1 extends Scene {
           A.moveRight();
         }
       }
+
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
@@ -73,7 +79,7 @@ public class Scene1 extends Scene {
       String minPassed = String.format("%02d", A.getMinLeft());
       A.setSecLeft(60 - (int)(timer%60000/1000));
       String secPassed = String.format("%02d", A.getSecLeft());
-      if (A.getSecLeft() == 0) {
+      if (A.getSecLeft() == 60) {
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
