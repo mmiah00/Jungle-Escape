@@ -45,6 +45,10 @@ public class Scene1 extends Scene {
     Scene1 A = new Scene1(terminal);
 
     boolean pathNotDone = true;
+    long lastTime =  System.currentTimeMillis();
+    long currentTime = lastTime;
+    long timer = 0;
+    
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
       putString(0, 11, terminal, A.toString());
@@ -62,6 +66,10 @@ public class Scene1 extends Scene {
           A.moveRight();
         }
       }
+      lastTime = currentTime;
+      currentTime = System.currentTimeMillis();
+      timer += (currentTime -lastTime);
+      putString(0,0,terminal, "Time: "+timer);
     }
     terminal.clearScreen();
     return 1;

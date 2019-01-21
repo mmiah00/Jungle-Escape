@@ -31,9 +31,6 @@ public class JungleEscape {
     terminal.setCursorVisible(false);
 
     boolean running = true;
-    long lastTime =  System.currentTimeMillis();
-    long currentTime = lastTime;
-    long timer = 0;
     int mode = 0;
 
     while (running) {
@@ -47,12 +44,6 @@ public class JungleEscape {
       if (mode == -1) {
         terminal.exitPrivateMode();
         running = false;
-      }
-      if (mode != -1) {
-        lastTime = currentTime;
-        currentTime = System.currentTimeMillis();
-        timer += (currentTime -lastTime);
-        putString(0,0,terminal, "Time: "+timer);
       }
       if (mode == 0) {
         Scene1 A = new Scene1(terminal);
