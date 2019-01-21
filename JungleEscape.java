@@ -32,28 +32,18 @@ public class JungleEscape {
 
     boolean running = true;
     long tStart = System.currentTimeMillis();
-    long minLeft = 15;
-    long lastMin = 0;
-    long secLeft = 60;
-    long lastSec = 0;
+		long lastSecond = 0;
     int mode = 0;
 
     while (running) {
-      if (minLeft == 0 && secLeft ==0) {
-        running = false;
-      }
-      //else {
-        long tEnd = System.currentTimeMillis();
-  			long milli = tEnd - tStart;
-        if (milli/60000 > lastMin ) {
-          lastMin = milli/60000;
-          minLeft = 15 - lastMin;
-        }
-        if (milli % 60000 / 1000 > lastSec) {
-          lastSec = milli % 60000 / 1000;
-          secLeft = 60 - lastSec;
-        }
-  			putString(0, 0, terminal, "Time Left: " + minLeft + ":" + secLeft);
+
+      long tEnd = System.currentTimeMillis();
+			long millis = tEnd - tStart;
+			if(millis/1000 > lastSecond){
+				lastSecond = millis / 1000;
+				putString(0,0,terminal,"Seconds since start of program: "+lastSecond);
+
+			}
 
         Key key = terminal.readInput();
         if (key != null){
