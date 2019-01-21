@@ -168,6 +168,11 @@ public class Frogger {
 
     int counter = 0;
     boolean gameNotDone = true;
+    int [] returns = new int [3];
+		long lastTime =  System.currentTimeMillis();
+    long currentTime = lastTime;
+    long timer = 0;
+    boolean firstPass = true;
 
     while (gameNotDone) {
       gameNotDone = !(A.isComplete());
@@ -218,6 +223,7 @@ public class Frogger {
           }
         }
       }
+      
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
