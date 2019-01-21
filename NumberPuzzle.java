@@ -229,7 +229,7 @@ public class NumberPuzzle {
 		}
 	}
 
-	public static int play2048(Terminal terminal) {
+	public static int[] play2048(Terminal terminal, int beginMin, int beginSec) {
 		NumberPuzzle A = new NumberPuzzle();
 		putString(0, 1, terminal, A.toString());
 		putString(0, 12, terminal, "|Use the arrow keys |");
@@ -237,6 +237,12 @@ public class NumberPuzzle {
 		putString(0, 14, terminal, "|   and reach 256   |");
 
 		boolean gameNotDone = true;
+		int [] returns = new int [3];
+		long lastTime =  System.currentTimeMillis();
+    long currentTime = lastTime;
+    long timer = 0;
+    boolean firstPass = true;
+
 		while (gameNotDone) {
 			gameNotDone = (!(A.beatGame()));
 			if (!(A.isComplete())) {
@@ -265,8 +271,40 @@ public class NumberPuzzle {
 			else {
 				A.reset();
 			}
-		}
-		terminal.clearScreen();
-		return 3;
-	}
+
+			lastTime = currentTime;
+      currentTime = System.currentTimeMillis();
+      timer += (currentTime -lastTime);
+      int minLeft = beginMin - (int)(timer/60000);
+      String minPassed = String.format("%02d", minLeft);
+			int secLeft;
+      if ((int)(timer%60000/1000) > beginSec) {
+        firstPass = false;
+      }
+      if (firstPass) {
+        secLeft = beginSec -(int)(timer%60000/1000);
+      }
+      else {
+        secLeft = 60 - (int)(timer%60000/1000);
+      }
+      String secPassed = String.format("%02d", secLeft);
+      if (secLeft == 60) {
+        minLeft = beginMin - (int)(timer/60000);
+        minPassed = String.format("%02d", minLeft);
+        secPassed = "00";
+      }
+      putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
+      returns[1] = minLeft;
+      returns[2] = secLeft;
+
+      if (minLeft == 0 && secLeft == 1) {
+        gameNotDone = false;
+        returns [0] = -1;
+        return returns;
+      }
+    }
+    terminal.clearScreen();
+    returns [0] = 3;
+    return returns;
+  }
 }

@@ -30,10 +30,16 @@ public class Scene5 extends Scene {
     putString(0, 10, terminal, "|  Press ESC to exit game  |");
   }
 
-  public static int playScene5(Terminal terminal) {
+  public static int [] playScene5(Terminal terminal, int beginMin, int beginSec) {
     Scene5 A = new Scene5(terminal);
+    int [] returns = new int [3];
 
     boolean running = true;
+    long lastTime =  System.currentTimeMillis();
+    long currentTime = lastTime;
+    long timer = 0;
+    boolean firstPass = true;
+
     while (running) {
       A.display(terminal);
       Key key = terminal.readInput();
@@ -41,10 +47,43 @@ public class Scene5 extends Scene {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           running = false;
+          returns[0] = -1;
+          return returns;
         }
+      }
+
+      lastTime = currentTime;
+      currentTime = System.currentTimeMillis();
+      timer += (currentTime -lastTime);
+      A.setMinLeft(beginMin - (int)(timer/60000));
+      String minPassed = String.format("%02d", A.getMinLeft());
+      if ((int)(timer%60000/1000) > beginSec) {
+        firstPass = false;
+      }
+      if (firstPass) {
+        A.setSecLeft(beginSec -(int)(timer%60000/1000));
+      }
+      else {
+        A.setSecLeft(60 - (int)(timer%60000/1000));
+      }
+      String secPassed = String.format("%02d", A.getSecLeft());
+      if (A.getSecLeft() == 60) {
+        A.setMinLeft(beginMin - (int)(timer/60000));
+        minPassed = String.format("%02d", A.getMinLeft());
+        secPassed = "00";
+      }
+      putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
+      returns[1] = A.getMinLeft();
+      returns[2] = A.getSecLeft();
+
+      if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
+        running = false;
+        returns [0] = -1;
+        return returns;
       }
     }
     terminal.clearScreen();
-    return -1;
+    returns [0] = -1;
+    return returns;
   }
 }

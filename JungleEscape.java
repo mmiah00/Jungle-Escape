@@ -65,19 +65,31 @@ public class JungleEscape {
       }
       if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
-        mode = A.play2048(terminal);
+        results = A.play2048(terminal, nextMin, nextSec);
+        mode = results[0];
+        nextMin = results[1];
+        nextSec = results[2];
       }
       if (mode == 3) {
         Scene3 A = new Scene3(terminal);
-        mode = A.playScene3(terminal);
+        results = A.playScene3(terminal, nextMin, nextSec);
+        mode = results[0];
+        nextMin = results[1];
+        nextSec = results[2];
       }
       if (mode == 4) {
         SecondPuzzle A = new SecondPuzzle();
-        mode = A.playFifteen(terminal);
+        results = A.playFifteen(terminal, nextMin, nextSec);
+        mode = results[0];
+        nextMin = results[1];
+        nextSec = results[2];
       }
       if (mode == 5) {
         Scene4 A = new Scene4(terminal);
-        mode = A.playScene4(terminal);
+        results = A.playScene4(terminal, nextMin, nextSec);
+        mode = results[0];
+        nextMin = results[1];
+        nextSec = results[2];
       }
       if (mode == 6) {
         Frogger A = new Frogger();
@@ -85,7 +97,8 @@ public class JungleEscape {
       }
       if (mode == 7) {
         Scene5 A = new Scene5(terminal);
-        mode = A.playScene5(terminal);
+        results = A.playScene5(terminal, nextMin, nextSec);
+        mode = results[0];
       }
     }
     terminal.exitPrivateMode();
