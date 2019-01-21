@@ -47,10 +47,11 @@ public class Scene2 extends Scene{
     putString(7, 7, t, " .  `   ` .  .  ");
     t.applyBackgroundColor (Terminal.Color.GREEN);
     putString(0, 6, t, "  ");
-    t.applyForegroundColor (Terminal.Color.RED); 
+    t.applyForegroundColor (Terminal.Color.RED);
     t.moveCursor (2,6);
     t.putCharacter ('\u2610');
     t.applyBackgroundColor (Terminal.Color.DEFAULT);
+    t.applyForegroundColor (Terminal.Color.DEFAULT); 
 
     path[0] = "o";
     for (int i = 1; i < 6; i++) {
