@@ -15,11 +15,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Scene3 extends Scene{
 
-  public Scene3 (Terminal t) {
-    display(t);
-  }
-
-  public void display(Terminal t) {
+  public void Scene3(Terminal t) {
     putString(0, 1, t, "  ,                 _,-,   ");
     putString(0, 2, t, " /(  ___________   T_  |   ");
     putString(0, 3, t, "|  >:===========`  ||`-'   ");
@@ -46,7 +42,6 @@ public class Scene3 extends Scene{
     int counter = 0;
     while (counter != 10000) {
       counter++;
-      A.display(terminal);
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {

@@ -176,7 +176,7 @@ public class Frogger {
 
     while (gameNotDone) {
       gameNotDone = !(A.isComplete());
-      putString(0,0, terminal, A.toString());
+      putString(0,1, terminal, A.toString());
 
       A.moveCars(counter);
       counter++;
