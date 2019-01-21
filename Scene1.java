@@ -17,7 +17,6 @@ public class Scene1 extends Scene {
 
   public Scene1 (Terminal t) {
     path = new String[35];
-    t.applyBackgroundColor (126,192,238);
     t.applyForegroundColor (Terminal.Color.GREEN);
     putString(0, 0, t, "            ,@@@@@@@,              ");
     putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
@@ -29,7 +28,6 @@ public class Scene1 extends Scene {
     putString(0, 7, t, "    |o|        | |         | |     ");
     putString(0, 8, t, "    |.|        | |         | |     ");
     putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
-    t.applyBackgroundColor (Terminal.Color.DEFAULT);
     t.applyForegroundColor (Terminal.Color.DEFAULT);
     path[0] = "o";
     for (int i = 1; i < 35; i++) {

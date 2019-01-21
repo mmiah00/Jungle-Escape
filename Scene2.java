@@ -17,8 +17,6 @@ public class Scene2 extends Scene{
 
   public Scene2 (Terminal t) {
     path = new String[6];
-
-    t.applyBackgroundColor (Terminal.Color.GREEN);
     putString(0, 0, t, "-------------------------");
     putString (0,1,t, "            /");
     putString (0,2,t, "           /");
@@ -36,8 +34,6 @@ public class Scene2 extends Scene{
     putString (20,5,t, " \\   ");
     putString (21,6,t, " \\  ");
     putString (22,7,t, " \\ ");
-
-    t.applyBackgroundColor(Terminal.Color.BLUE);
     putString(13, 1, t, "   .");
     putString(12, 2, t, " ` .  ");
     putString(11, 3, t, " .   `  ");
@@ -45,14 +41,10 @@ public class Scene2 extends Scene{
     putString(9, 5, t, "  ` . `  . .");
     putString(8, 6, t, " `  .   .  `  ");
     putString(7, 7, t, " .  `   ` .  .  ");
-    t.applyBackgroundColor (Terminal.Color.GREEN);
     putString(0, 6, t, "  ");
-    t.applyForegroundColor (Terminal.Color.RED);
     t.moveCursor (2,6);
     t.putCharacter ('\u2610');
-    t.applyBackgroundColor (Terminal.Color.DEFAULT);
-    t.applyForegroundColor (Terminal.Color.DEFAULT); 
-
+    
     path[0] = "o";
     for (int i = 1; i < 6; i++) {
       path[i] = " ";
