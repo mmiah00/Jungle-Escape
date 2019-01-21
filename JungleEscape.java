@@ -32,6 +32,7 @@ public class JungleEscape {
 
     boolean running = true;
     int mode = 0;
+    int [] results;
     int nextMin = 15;
     int nextSec = 60;
 
@@ -49,7 +50,7 @@ public class JungleEscape {
       }
       if (mode == 0) {
         Scene1 A = new Scene1(terminal);
-        int [] results = A.playScene1(terminal);
+        results = A.playScene1(terminal);
         mode = results[0];
         //mode = A.playScene1(terminal);
         nextMin = results[1];
@@ -57,9 +58,10 @@ public class JungleEscape {
       }
       if (mode == 1) {
         Scene2 A = new Scene2(terminal);
-        mode = A.playScene2(terminal, nextMin);
-        nextMin = A.getMinLeft();
-        nextSec = A.getSecLeft();
+        results = A.playScene2(terminal, nextMin, nextSec);
+        mode = results[0];
+        nextMin = results[1];
+        nextSec = results[2];
       }
       if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
