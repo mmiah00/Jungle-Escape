@@ -70,14 +70,8 @@ public class Scene1 extends Scene {
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
       putString(0,1,terminal, "Time: " + timer);
-      long minPassed = 14 - timer/60000;
-      long secPassed;
-      if (timer/60000 == 0) {
-        secPassed = 60 - timer/1000;
-      }
-      else {
-        secPassed = 60 - timer%60000/1000;
-      }
+      int minPassed = 14 - (int)(timer/60000);
+      int secPassed = 60 - (int)(timer%60000/1000);
       putString(0,0,terminal, "Time: "+ minPassed + ":" + secPassed);
     }
     terminal.clearScreen();
