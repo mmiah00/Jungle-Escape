@@ -66,7 +66,7 @@ public abstract class Scene {
     minNum = newNum;
   }
 
-  public int setSecLeft(int newNum) {
+  public void setSecLeft(int newNum) {
     secNum = newNum;
   }
 }
