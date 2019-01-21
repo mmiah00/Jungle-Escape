@@ -51,7 +51,7 @@ public class Scene2 extends Scene{
     t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
 
-  public static int playScene2(Terminal terminal, int beginMin, int beginSec) {
+  public static int playScene2(Terminal terminal)//, int beginMin, int beginSec) {
     Scene2 A = new Scene2(terminal);
 
     boolean pathNotDone = true;
@@ -80,9 +80,9 @@ public class Scene2 extends Scene{
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      A.setMinLeft(beginMin - (int)(timer/60000));
+      A.setMinLeft(15 - (int)(timer/60000));
       String minPassed = String.format("%02d", A.getMinLeft());
-      A.setSecLeft(60 - (60-beginSec) - (int)(timer%60000/1000));
+      A.setSecLeft(60 - (int)(timer%60000/1000));
       String secPassed = String.format("%02d", A.getSecLeft());
       if (A.getSecLeft() == 60) {
         secPassed = "00";
