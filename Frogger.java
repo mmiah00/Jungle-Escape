@@ -196,7 +196,7 @@ public class Frogger {
             if (A.isCrash(0, 1) == -1) {
               A.restart();
             }
-            else {
+            else if (A.isCrash(0, 1) == 1) {
               A.movePlayer(0, 1);
             }
           }
@@ -204,7 +204,7 @@ public class Frogger {
             if (A.isCrash(0, -1) == -1) {
               A.restart();
             }
-            else {
+            else if (A.isCrash(0, -1) == 1) {
               A.movePlayer(0, -1);
             }
           }
@@ -212,7 +212,7 @@ public class Frogger {
             if (A.isCrash(-1, 0) == -1) {
               A.restart();
             }
-            else {
+            else if (A.isCrash(-1, 0) == 1) {
               A.movePlayer(-1, 0);
             }
           }
@@ -220,7 +220,7 @@ public class Frogger {
             if (A.isCrash(1, 0) == -1) {
               A.restart();
             }
-            else {
+            else if (A.isCrash(1, 0) == 1) {
               A.movePlayer(1, 0);
             }
           }
