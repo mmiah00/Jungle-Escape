@@ -53,8 +53,13 @@ public class JungleEscape {
         currentTime = System.currentTimeMillis();
         timer += (currentTime -lastTime);
         putString(0,0,terminal, "Time: "+timer);
-
+        
         if (mode == 0) {
+          lastTime = currentTime;
+          currentTime = System.currentTimeMillis();
+          timer += (currentTime -lastTime);
+          putString(0,0,terminal, "Time: "+timer);
+
           Scene1 A = new Scene1(terminal);
           mode = A.playScene1(terminal);
         }
@@ -86,7 +91,7 @@ public class JungleEscape {
           Scene5 A = new Scene5(terminal);
           mode = A.playScene5(terminal);
         }
-      }    
+      }
     }
     terminal.exitPrivateMode();
   }
