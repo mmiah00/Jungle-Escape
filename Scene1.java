@@ -80,12 +80,13 @@ public class Scene1 extends Scene {
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
 
-      if (A.getMinLeft() == 0 && A.getSecLeft() == 0) {
+      if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
         pathNotDone = false;
       }
     }
-    terminal.clearScreen();
-    return 1;
+    putString(0,0,terminal,"" + A.getMinLeft());
+    //terminal.clearScreen();
+    //return 1;
   }
 
 }
