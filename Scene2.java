@@ -59,6 +59,7 @@ public class Scene2 extends Scene{
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
+    boolean firstPass = true; 
 
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
@@ -84,7 +85,15 @@ public class Scene2 extends Scene{
       timer += (currentTime -lastTime);
       A.setMinLeft(beginMin - (int)(timer/60000));
       String minPassed = String.format("%02d", A.getMinLeft());
-      A.setSecLeft(60 - beginSec -(int)(timer%60000/1000));
+      if ((int)(timer%60000/1000) > beginSec) {
+        firstPass = false;
+      }
+      if (firstPass) {
+        A.setSecLeft(beginSec -(int)(timer%60000/1000));
+      }
+      else {
+        A.setSecLeft(60 - (int)(timer%60000/1000));
+      }
       String secPassed = String.format("%02d", A.getSecLeft());
       if (A.getSecLeft() == 60) {
         A.setMinLeft(beginMin - (int)(timer/60000));
