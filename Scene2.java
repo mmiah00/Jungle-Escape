@@ -51,7 +51,7 @@ public class Scene2 extends Scene{
     t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
 
-  public static int playScene2(Terminal terminal)//, int beginMin, int beginSec) {
+  public static int playScene2(Terminal terminal) {//, int beginMin, int beginSec) {
     Scene2 A = new Scene2(terminal);
 
     boolean pathNotDone = true;
