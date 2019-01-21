@@ -41,7 +41,7 @@ public class Scene1 extends Scene {
     putString(0, 16, t, "| reach the end.                  |");
   }
 
-  public static int playScene1(Terminal terminal, long timeBegin) {
+  public static int playScene1(Terminal terminal) {
     Scene1 A = new Scene1(terminal);
 
     boolean pathNotDone = true;
@@ -69,9 +69,9 @@ public class Scene1 extends Scene {
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      long minPassed = 15 - timer/60000; 
+      long minPassed = 15 - timer/60000;
       long secPassed= 60 - (timer%60000/1000);
-      putString(0,0,terminal, "Time: "+ minPased + ":" + secPassed);
+      putString(0,0,terminal, "Time: "+ minPassed + ":" + secPassed);
     }
     terminal.clearScreen();
     return 1;
