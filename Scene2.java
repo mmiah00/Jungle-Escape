@@ -35,7 +35,7 @@ public class Scene2 extends Scene{
     putString (20,5,t, " \\   ");
     putString (21,6,t, " \\  ");
     putString (22,7,t, " \\ ");
-    putString (23,8,t, " \\");
+
     t.applyBackgroundColor(Terminal.Color.BLUE);
     putString(13, 1, t, "   .\\");
     putString(12, 2, t, " ` .  \\");
