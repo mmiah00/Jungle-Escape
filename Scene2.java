@@ -51,8 +51,9 @@ public class Scene2 extends Scene{
     t.applyForegroundColor(Terminal.Color.DEFAULT);
   }
 
-  public static int playScene2(Terminal terminal, int beginMin) {//, int beginMin, int beginSec) {
+  public static int [] playScene2(Terminal terminal, int beginMin, int beginSec) {
     Scene2 A = new Scene2(terminal);
+    int [] returns = new int [3];
 
     boolean pathNotDone = true;
     long lastTime =  System.currentTimeMillis();
@@ -67,7 +68,8 @@ public class Scene2 extends Scene{
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          return -1;
+          returns[0] = -1; 
+          return returns;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
@@ -80,20 +82,27 @@ public class Scene2 extends Scene{
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      A.setMinLeft(beginMin - (int)(timer/60000));
+      A.setMinLeft(14 - beginMin - (int)(timer/60000));
       String minPassed = String.format("%02d", A.getMinLeft());
-      A.setSecLeft(60 - (int)(timer%60000/1000));
+      A.setSecLeft(60 - beginSec -(int)(timer%60000/1000));
       String secPassed = String.format("%02d", A.getSecLeft());
       if (A.getSecLeft() == 60) {
+        A.setMinLeft(15 - beginMin - (int)(timer/60000));
+        minPassed = String.format("%02d", A.getMinLeft());
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
+      returns[1] = A.getMinLeft();
+      returns[2] = A.getSecLeft();
 
       if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
         pathNotDone = false;
+        returns [0] = -1;
+        return returns;
       }
     }
     terminal.clearScreen();
-    return 2;
+    returns [0] = 2;
+    return returns;
   }
 }
