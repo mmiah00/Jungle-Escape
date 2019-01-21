@@ -106,7 +106,7 @@ public class Frogger {
   public int isCrash(int horizontal, int vertical) {
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
-    if (newRow != -1 && newRow != 8 && newCol != -1 && newCol != 8) {
+    if (newRow == -1 || newRow == 8 || newCol == -1 || newCol == 8) {
       return 0;
     }
     else if (world[newRow][newCol].equals("o-o")) {
