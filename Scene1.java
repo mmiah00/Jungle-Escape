@@ -71,7 +71,7 @@ public class Scene1 extends Scene {
       timer += (currentTime -lastTime);
       putString(0,1,terminal, "Time: " + timer);
       int minPassed = 14 - (int)(timer/60000);
-      int secPassed
+      int secPassed;
       if (timer%60000/1000 > 50) {
         secPassed = 60 - (int)(timer%60000/1000/10);
       }
