@@ -87,7 +87,7 @@ public class Scene1 extends Scene {
         pathNotDone = false;
         return -1;
       }
-
+    }
     terminal.clearScreen();
     return 1;
   }
