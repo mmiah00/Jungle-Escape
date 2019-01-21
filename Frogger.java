@@ -18,18 +18,8 @@ import java.util.*;
 
 public class Frogger {
   private String[][] world;
-  private int lives;
   private int currentRow; //ycor of player
   private int currentCol; //xcor of player
-  //u+1F697 car unicode
-
-  public int getLives() {
-    return lives;
-  }
-
-  public void setLives(int n) {
-    lives = lives + n;
-  }
 
   public Frogger() {
     world = new String[10][8];
@@ -46,7 +36,6 @@ public class Frogger {
     world[9][4] = "o**";
     currentRow = 9;
     currentCol = 4;
-    lives = 3;
   }
 
   public void addCars(int r) {
@@ -94,9 +83,13 @@ public class Frogger {
   public void movePlayer(int horizontal, int vertical) {
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
-    if (newRow == 0 || newRow == 9) {
+    if (horizontal == 0 && (newRow == 0 || newRow == 9)) {
       world[newRow][newCol] = "o**";
       world[currentRow][currentCol] = "   ";
+    }
+    else if (vertical == 0 && (newRow == 0 || newRow == 9)) {
+      world[newRow][newCol] = "o**";
+      world[currentRow][currentCol] = "***";
     }
     else if (currentRow == 9) {
       world[newRow][newCol] = "o  ";
@@ -163,12 +156,106 @@ public class Frogger {
     }
   }
 
-  public static int playFrogger(Terminal terminal) {
+  public void restart() {
+    world[9][4] = "o**";
+    currentRow = 9;
+    currentCol = 4;
+  }
+
+  public static int [] playFrogger(Terminal terminal, int beginMin, int beginSec) {
     Frogger A = new Frogger();
     putString(0, 0, terminal, A.toString());
 
     int counter = 0;
+    boolean gameNotDone = true;
 
+    while (gameNotDone) {
+      gameNotDone = !(A.isComplete());
+      A.moveCars(counter);
+      if (A.isRunOver()) {
+        A.restart();
+      }
+      else {
+        Key key = terminal.readInput();
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            gameNotDone = false;
+            returns [0] = -1;
+            return returns;
+          }
+          if (key.getKind() == Key.Kind.ArrowUp) {
+            if (A.isCrash(0, 1) == -1) {
+              A.restart();
+            }
+            else {
+              A.movePlayer(0, 1);
+            }
+          }
+          if (key.getKind() == Key.Kind.ArrowDown) {
+            if (A.isCrash(0, -1) == -1) {
+              A.restart();
+            }
+            else {
+              A.movePlayer(0, -1);
+            }
+          }
+          if (key.getKind() == Key.Kind.ArrowLeft) {
+            if (A.isCrash(-1, 0) == -1) {
+              A.restart();
+            }
+            else {
+              A.movePlayer(-1, 0);
+            }
+          }
+          if (key.getKind() == Key.Kind.ArrowRight) {
+            if (A.isCrash(1, 0) == -1) {
+              A.restart();
+            }
+            else {
+              A.movePlayer(1, 0);
+            }
+          }
+        }
+      }
+      lastTime = currentTime;
+      currentTime = System.currentTimeMillis();
+      timer += (currentTime -lastTime);
+      int minLeft = beginMin - (int)(timer/60000);
+      String minPassed = String.format("%02d", minLeft);
+			int secLeft;
+      if ((int)(timer%60000/1000) > beginSec) {
+        firstPass = false;
+      }
+      if (firstPass) {
+        secLeft = beginSec -(int)(timer%60000/1000);
+      }
+      else {
+        secLeft = 60 - (int)(timer%60000/1000);
+      }
+      String secPassed = String.format("%02d", secLeft);
+      if (secLeft == 60) {
+        minLeft = beginMin - (int)(timer/60000);
+        minPassed = String.format("%02d", minLeft);
+        secPassed = "00";
+      }
+      putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
+      returns[1] = minLeft;
+      returns[2] = secLeft;
+
+      if (minLeft == 0 && secLeft == 1) {
+        gameNotDone = false;
+        returns [0] = -1;
+        return returns;
+      }
+    }
+    terminal.clearScreen();
+    returns [0] = 7;
+    return returns;
+  }
+}
+
+/*
     while (A.getLives() > -1) {
       if (A.isComplete()) {
         terminal.exitPrivateMode();
@@ -250,7 +337,8 @@ public class Frogger {
       }
     }
     terminal.exitPrivateMode();
-    return 7; 
+    return 7;
   }
 
 }
+*/
