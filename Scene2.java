@@ -68,7 +68,7 @@ public class Scene2 extends Scene{
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          returns[0] = -1; 
+          returns[0] = -1;
           return returns;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
@@ -82,12 +82,12 @@ public class Scene2 extends Scene{
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      A.setMinLeft(14 - beginMin - (int)(timer/60000));
+      A.setMinLeft(beginMin - (int)(timer/60000));
       String minPassed = String.format("%02d", A.getMinLeft());
       A.setSecLeft(60 - beginSec -(int)(timer%60000/1000));
       String secPassed = String.format("%02d", A.getSecLeft());
       if (A.getSecLeft() == 60) {
-        A.setMinLeft(15 - beginMin - (int)(timer/60000));
+        A.setMinLeft(beginMin - (int)(timer/60000));
         minPassed = String.format("%02d", A.getMinLeft());
         secPassed = "00";
       }
