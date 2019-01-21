@@ -41,7 +41,7 @@ public class Scene1 extends Scene {
     putString(0, 16, t, "| reach the end.                  |");
   }
 
-  public static void playScene1(Terminal terminal) {
+  public static int playScene1(Terminal terminal) {
     Scene1 A = new Scene1(terminal);
 
     boolean pathNotDone = true;
@@ -58,7 +58,7 @@ public class Scene1 extends Scene {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          //return -1;
+          return -1;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
@@ -84,9 +84,8 @@ public class Scene1 extends Scene {
         pathNotDone = false;
       }
     }
-    putString(0,0,terminal,"" + A.getMinLeft());
-    //terminal.clearScreen();
-    //return 1;
+    terminal.clearScreen();
+    return 1;
   }
 
 }
