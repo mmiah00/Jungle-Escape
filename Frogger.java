@@ -164,7 +164,7 @@ public class Frogger {
 
   public static int [] playFrogger(Terminal terminal, int beginMin, int beginSec) {
     Frogger A = new Frogger();
-    putString(0, 0, terminal, A.toString());
+    putString(0, 1, terminal, A.toString());
 
     int counter = 0;
     boolean gameNotDone = true;
@@ -176,7 +176,10 @@ public class Frogger {
 
     while (gameNotDone) {
       gameNotDone = !(A.isComplete());
+      putString(0,0, terminal, A.toString());
+
       A.moveCars(counter);
+      counter++;
       if (A.isRunOver()) {
         A.restart();
       }
@@ -223,7 +226,7 @@ public class Frogger {
           }
         }
       }
-      
+
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
