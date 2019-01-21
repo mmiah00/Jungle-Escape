@@ -164,7 +164,7 @@ public class Frogger {
   }
 
   public static int playFrogger(Terminal terminal) {
-    Frogger A = new Frogger(Terminal terminal);
+    Frogger A = new Frogger();
     putString(0, 0, terminal, A.toString());
 
     int counter = 0;
@@ -250,6 +250,7 @@ public class Frogger {
       }
     }
     terminal.exitPrivateMode();
+    return 7; 
   }
 
 }

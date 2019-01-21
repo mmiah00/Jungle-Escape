@@ -44,7 +44,7 @@ public class JungleEscape {
         long tEnd = System.currentTimeMillis();
   			long timePassed = tEnd - tStart;
         minLeft = 15 - timePassed/60000;
-        secLeft = 60 - (milli % 60000 / 1000);
+        secLeft = 60 - (timePassed % 60000 / 1000);
   			putString(0, 0, terminal, "Time Left: " + minLeft + ":" + secLeft);
 
         Key key = terminal.readInput();
