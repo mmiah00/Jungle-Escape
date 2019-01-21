@@ -52,13 +52,14 @@ public class JungleEscape {
         mode = A.playScene1(terminal);
         nextMin = A.getMinLeft();
         nextSec = A.getSecLeft();
+        putString(0, 1, terminal, nextMin + " " + nextSec);
       }
       if (mode == 1) {
+        putString(0, 1, terminal, nextMin + " " + nextSec);
         Scene2 A = new Scene2(terminal);
         mode = A.playScene2(terminal, nextMin, nextSec);
         nextMin = A.getMinLeft();
         nextSec = A.getSecLeft();
-        putString(0, 1, terminal, nextMin + " " + nextSec);
       }
       if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
