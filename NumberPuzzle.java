@@ -252,7 +252,8 @@ public class NumberPuzzle {
 					if (key.getKind() == Key.Kind.Escape) {
 						terminal.exitPrivateMode();
 						gameNotDone = false;
-						return -1;
+						returns [0] = -1;
+		        return returns;
 					}
 					if (key.getKind() == Key.Kind.ArrowLeft) {
 						A.moveLeft();
