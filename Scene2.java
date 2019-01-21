@@ -37,8 +37,6 @@ public class Scene2 extends Scene{
     putString (21,6,t, " \\  ");
     putString (22,7,t, " \\ ");
 
-    putString (0,6,t, "  ");
-
     t.applyBackgroundColor(Terminal.Color.BLUE);
     putString(13, 1, t, "   .");
     putString(12, 2, t, " ` .  ");
@@ -47,8 +45,9 @@ public class Scene2 extends Scene{
     putString(9, 5, t, "  ` . `  . .");
     putString(8, 6, t, " `  .   .  `  ");
     putString(7, 7, t, " .  `   ` .  .  ");
-    t.applyBackgroundColor (Terminal.Color.DEFAULT);
+    t.applyBackgroundColor (Terminal.Color.GREEN);
     putString(0, 6, t, "  ");
+    t.applyBackgroundColor (Terminal.Color.DEFAULT); 
     t.moveCursor (2,6);
     t.putCharacter ('\u2610');
 
