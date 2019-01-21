@@ -17,6 +17,8 @@ public class Scene1 extends Scene {
 
   public Scene1 (Terminal t) {
     path = new String[35];
+    t.applyForegroundColor (Terminal.Color.GREEN);
+    t.applyBackgroundColor (126,192,238);
     putString(0, 0, t, "            ,@@@@@@@,              ");
     putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
     putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
@@ -27,7 +29,7 @@ public class Scene1 extends Scene {
     putString(0, 7, t, "    |o|        | |         | |     ");
     putString(0, 8, t, "    |.|        | |         | |     ");
     putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
-
+    t.applyBackgroundColor (Terminal.Color.DEFAULT);
     path[0] = "o";
     for (int i = 1; i < 35; i++) {
       path[i] = " ";
@@ -52,7 +54,7 @@ public class Scene1 extends Scene {
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          return -1; 
+          return -1;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
