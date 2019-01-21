@@ -69,7 +69,8 @@ public class Scene1 extends Scene {
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      long minPassed = 15 - timer/60000;
+      putString(0,1,terminal, "Time: " + timer); 
+      long minPassed = 14 - timer/60000;
       long secPassed= 60 - (timer%60000/1000);
       putString(0,0,terminal, "Time: "+ minPassed + ":" + secPassed);
     }
