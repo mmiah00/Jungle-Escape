@@ -41,14 +41,14 @@ public class Scene1 extends Scene {
     putString(0, 16, t, "| reach the end.                  |");
   }
 
-  public static int playScene1(Terminal terminal) {
+  public static int playScene1(Terminal terminal, long timeBegin) {
     Scene1 A = new Scene1(terminal);
 
     boolean pathNotDone = true;
     long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
-    
+
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
       putString(0, 11, terminal, A.toString());
@@ -69,7 +69,9 @@ public class Scene1 extends Scene {
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
       timer += (currentTime -lastTime);
-      putString(0,0,terminal, "Time: "+timer);
+      long minPassed = 15 - timer/60000; 
+      long secPassed= 60 - (timer%60000/1000);
+      putString(0,0,terminal, "Time: "+ minPased + ":" + secPassed);
     }
     terminal.clearScreen();
     return 1;
