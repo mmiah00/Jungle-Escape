@@ -22,6 +22,14 @@ public class JungleEscape {
     }
   }
 
+  public int changeMin(long milli) {
+    return 15 - milli/60000;
+  }
+
+  public int changeMin(long milli) {
+    return milli % 60000 / 1000; 
+  }
+
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -31,49 +39,67 @@ public class JungleEscape {
     terminal.setCursorVisible(false);
 
     boolean running = true;
+    long tStart = System.currentTimeMillis();
+    int minLeft = 15;
+    int secLeft = 60;
     int mode = 0;
+
     while (running) {
-      Key key = terminal.readInput();
-      if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
+      if (minLeft == 0 && secLeft ==0) {
+        running = false;
+      }
+      else {
+        long tEnd = System.currentTimeMillis();
+  			long timePassed = tEnd - tStart;
+        minLeft = changeMin(timePassed);
+        secLeft = changeSec(timePassed);
+  			putString(0, 0, terminal, "Time Left: " + minLeft + ":" + secLeft);
+
+        Key key = terminal.readInput();
+        if (key != null){
+          if (key.getKind() == Key.Kind.Escape) {
+            terminal.exitPrivateMode();
+            running = false;
+          }
+        }
+        if (mode == -1) {
           terminal.exitPrivateMode();
           running = false;
         }
-      }
-      if (mode == -1) {
-        terminal.exitPrivateMode();
-        running = false;
-      }
-      if (mode == 0) {
-        Scene1 A = new Scene1(terminal);
-        mode = A.playScene1(terminal);
-      }
-      if (mode == 1) {
-        Scene2 A = new Scene2(terminal);
-        mode = A.playScene2(terminal);
-      }
-      if (mode == 2) {
-        NumberPuzzle A = new NumberPuzzle();
-        mode = A.play2048(terminal);
-      }
-      if (mode == 3) {
-        Scene3 A = new Scene3(terminal);
-        mode = A.playScene3(terminal);
-      }
-      if (mode == 4) {
-        SecondPuzzle A = new SecondPuzzle();
-        mode = A.playFifteen(terminal);
-      }
-      if (mode == 5) {
-        Scene4 A = new Scene4(terminal);
-        mode = A.playScene4(terminal);
-      }
-      if (mode == 7) {
-        Scene5 A = new Scene5(terminal);
-        mode = A.playScene5(terminal);
+        if (mode == 0) {
+          Scene1 A = new Scene1(terminal);
+          mode = A.playScene1(terminal);
+        }
+        if (mode == 1) {
+          Scene2 A = new Scene2(terminal);
+          mode = A.playScene2(terminal);
+        }
+        if (mode == 2) {
+          NumberPuzzle A = new NumberPuzzle();
+          mode = A.play2048(terminal);
+        }
+        if (mode == 3) {
+          Scene3 A = new Scene3(terminal);
+          mode = A.playScene3(terminal);
+        }
+        if (mode == 4) {
+          SecondPuzzle A = new SecondPuzzle();
+          mode = A.playFifteen(terminal);
+        }
+        if (mode == 5) {
+          Scene4 A = new Scene4(terminal);
+          mode = A.playScene4(terminal);
+        }
+        if (mode == 6) {
+          Frogger A = new Frogger();
+          mode = A.playScene4(terminal);
+        }
+        if (mode == 7) {
+          Scene5 A = new Scene5(terminal);
+          mode = A.playScene5(terminal);
+        }
       }
     }
     terminal.exitPrivateMode();
-
   }
 }

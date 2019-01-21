@@ -17,27 +17,27 @@ public class Scene1 extends Scene {
 
   public Scene1 (Terminal t) {
     path = new String[35];
-    putString(0, 0, t, "            ,@@@@@@@,              ");
-    putString(0, 1, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
-    putString(0, 2, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
-    putString(0, 3, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
-    putString(0, 4, t, "%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’");
-    putString(0, 5, t, "%&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ ");
-    putString(0, 6, t, "‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ");
-    putString(0, 7, t, "    |o|        | |         | |     ");
-    putString(0, 8, t, "    |.|        | |         | |     ");
-    putString(0, 9, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
+    putString(0, 1, t, "            ,@@@@@@@,              ");
+    putString(0, 2, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
+    putString(0, 3, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
+    putString(0, 4, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
+    putString(0, 5, t, "%&&%&%&/%&&%@@\\@@/  /@@@88888\\88888’");
+    putString(0, 6, t, "%&&%/ %&%%&&@@\\ V /@@’ ’88\\8 ’/88’ ");
+    putString(0, 7, t, "‘&%\\ ‘ /%&’    |.|        \\ ‘|8’   ");
+    putString(0, 8, t, "    |o|        | |         | |     ");
+    putString(0, 9, t, "    |.|        | |         | |     ");
+    putString(0, 10, t, "_\\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//_");
 
     path[0] = "o";
     for (int i = 1; i < 35; i++) {
       path[i] = " ";
     }
-    putString(0, 10, t, toString());
+    putString(0, 11, t, toString());
 
-    putString(0, 12, t, "| Attempting to escape the zombie |");
-    putString(0, 13, t, "| apocolype, you decide to start  |");
-    putString(0, 14, t, "| running and runing until you    |");
-    putString(0, 15, t, "| reach the end.                  |");
+    putString(0, 13, t, "| Attempting to escape the zombie |");
+    putString(0, 14, t, "| apocolype, you decide to start  |");
+    putString(0, 15, t, "| running and runing until you    |");
+    putString(0, 16, t, "| reach the end.                  |");
   }
 
   public static int playScene1(Terminal terminal) {
@@ -46,13 +46,13 @@ public class Scene1 extends Scene {
     boolean pathNotDone = true;
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
-      putString(0, 10, terminal, A.toString());
+      putString(0, 11, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          return -1; 
+          return -1;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();

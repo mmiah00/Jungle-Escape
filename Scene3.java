@@ -20,18 +20,18 @@ public class Scene3 extends Scene{
   }
 
   public void display(Terminal t) {
-    putString(0, 0, t, "  ,                 _,-,   ");
-    putString(0, 1, t, " /(  ___________   T_  |   ");
-    putString(0, 2, t, "|  >:===========`  ||`-'   ");
-    putString(0, 3, t, " )(                ||      ");
-    putString(0, 4, t, " \"\"                ||      ");
-    putString(0, 5, t, "                   --      ");
+    putString(0, 1, t, "  ,                 _,-,   ");
+    putString(0, 2, t, " /(  ___________   T_  |   ");
+    putString(0, 3, t, "|  >:===========`  ||`-'   ");
+    putString(0, 4, t, " )(                ||      ");
+    putString(0, 5, t, " \"\"                ||      ");
+    putString(0, 6, t, "                   --      ");
 
-    putString(0, 7, t, "|      You opened the box!     |");
+    putString(0, 8, t, "|      You opened the box!     |");
     putString(0, 8, t, "|  Now you can build a bridge! |");
-    putString(0, 9, t, "|     Put the planks in the    |");
-    putString(0, 10, t, "|  correct numerical order to  |");
-    putString(0, 11, t, "|       build your bridge.     |");
+    putString(0, 10, t, "|     Put the planks in the    |");
+    putString(0, 11, t, "|  correct numerical order to  |");
+    putString(0, 12, t, "|       build your bridge.     |");
   }
 
   public static int playScene3(Terminal terminal) {

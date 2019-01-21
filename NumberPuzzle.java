@@ -231,16 +231,16 @@ public class NumberPuzzle {
 
 	public static int play2048(Terminal terminal) {
 		NumberPuzzle A = new NumberPuzzle();
-		putString(0, 0, terminal, A.toString());
-		putString(0, 11, terminal, "|Use the arrow keys |");
-		putString(0, 12, terminal, "|to combine numbers |");
-		putString(0, 13, terminal, "|   and reach 256   |");
+		putString(0, 1, terminal, A.toString());
+		putString(0, 12, terminal, "|Use the arrow keys |");
+		putString(0, 13, terminal, "|to combine numbers |");
+		putString(0, 14, terminal, "|   and reach 256   |");
 
 		boolean gameNotDone = true;
 		while (gameNotDone) {
 			gameNotDone = (!(A.beatGame()));
 			if (!(A.isComplete())) {
-				putString(0, 0, terminal, A.toString());
+				putString(0, 1, terminal, A.toString());
 				Key key = terminal.readInput();
 				if (key != null){
 					if (key.getKind() == Key.Kind.Escape) {

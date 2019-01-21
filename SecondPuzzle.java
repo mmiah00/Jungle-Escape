@@ -117,7 +117,7 @@ public class SecondPuzzle {
   }
 
 	public String toString() { //prints 2-d array grid with a grid around it to mimic game
-		String s = "|---------|\n";
+		String s = "|--------|\n";
 		for (int r = 0; r < 3; r++) {
 			for (int c = 0; c < 3; c++) {
 				if (c == 0) {
@@ -146,15 +146,15 @@ public class SecondPuzzle {
 
 	public static int playFifteen(Terminal terminal) {
 		SecondPuzzle A = new SecondPuzzle();
-		putString(0, 0, terminal, A.toString());
-		putString(0, 11, terminal, "|Use the arrow keys |");
-		putString(0, 12, terminal, "|to combine numbers |");
-		putString(0, 13, terminal, "|  and reach 2048   |");
+		putString(0, 1, terminal, A.toString());
+		putString(0, 10, terminal, "|  Use the arrow keys  |");
+		putString(0, 11, terminal, "| to place the numbers |");
+		putString(0, 12, terminal, "| in the correct order |");
 
 		boolean gameNotDone = true;
 		while (gameNotDone) {
 			gameNotDone = !(A.isComplete());
-			putString(0, 0, terminal, A.toString());
+			putString(0, 1, terminal, A.toString());
 			Key key = terminal.readInput();
 			if (key != null){
 				if (key.getKind() == Key.Kind.Escape) {

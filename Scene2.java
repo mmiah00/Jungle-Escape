@@ -17,26 +17,26 @@ public class Scene2 extends Scene{
 
   public Scene2 (Terminal t) {
     path = new String[6];
-    putString(0, 0, t, "------------------------");
-    putString(0, 1, t, "            /   .\\      ");
-    putString(0, 2, t, "           / ` .  \\     ");
-    putString(0, 3, t, "          / .   `  \\    ");
-    putString(0, 4, t, "         /.   `  `  \\   ");
-    putString(0, 5, t, "        /  ` . `  . .\\  ");
-    putString(0, 6, t, "  []   / `  .   .  `  \\ ");
-    putString(0, 7, t, "      / .  `   ` .  .  \\");
+    putString(0, 1, t, "------------------------");
+    putString(0, 2, t, "            /   .\\      ");
+    putString(0, 3, t, "           / ` .  \\     ");
+    putString(0, 4, t, "          / .   `  \\    ");
+    putString(0, 5, t, "         /.   `  `  \\   ");
+    putString(0, 6, t, "        /  ` . `  . .\\  ");
+    putString(0, 7, t, "  []   / `  .   .  `  \\ ");
+    putString(0, 8, t, "      / .  `   ` .  .  \\");
 
     path[0] = "o";
     for (int i = 1; i < 6; i++) {
       path[i] = " ";
     }
-    putString(0, 8, t, toString());
+    putString(0, 9, t, toString());
 
-    putString(0, 10, t, "|  Oh No! There's a river! |");
-    putString(0, 11, t, "|   Wait, there's a box!   |");
-    putString(0, 12, t, "| Solve the puzzle to open |");
-    putString(0, 13, t, "| the box and get materials|");
-    putString(0, 14, t, "|    to build a bridge.    |");
+    putString(0, 11, t, "|  Oh No! There's a river! |");
+    putString(0, 12, t, "|   Wait, there's a box!   |");
+    putString(0, 13, t, "| Solve the puzzle to open |");
+    putString(0, 14, t, "| the box and get materials|");
+    putString(0, 15, t, "|    to build a bridge.    |");
   }
 
   public static int playScene2(Terminal terminal) {
@@ -45,13 +45,13 @@ public class Scene2 extends Scene{
     boolean pathNotDone = true;
     while (pathNotDone) {
       pathNotDone = !(A.isLastSpot());
-      putString(0, 8, terminal, A.toString());
+      putString(0, 9, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
           pathNotDone = false;
-          return -1; 
+          return -1;
         }
         if (key.getKind() == Key.Kind.ArrowLeft) {
           A.moveLeft();
