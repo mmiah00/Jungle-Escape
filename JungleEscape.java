@@ -49,7 +49,7 @@ public class JungleEscape {
       }
       if (mode == 0) {
         Scene1 A = new Scene1(terminal);
-        mode = A.playScene1(terminal);
+        //mode = A.playScene1(terminal);
         nextMin = A.getMinLeft();
         nextSec = A.getSecLeft();
       }
