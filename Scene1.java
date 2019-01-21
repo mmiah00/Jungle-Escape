@@ -71,7 +71,7 @@ public class Scene1 extends Scene {
       timer += (currentTime -lastTime);
       putString(0,1,terminal, "Time: " + timer);
       long minPassed = 14 - timer/60000;
-      long secPassed= 60 - (timer%60000);
+      long secPassed= 60 - ((timer%60000)/1000);
       putString(0,0,terminal, "Time: "+ minPassed + ":" + secPassed);
     }
     terminal.clearScreen();
