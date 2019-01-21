@@ -149,125 +149,107 @@ public class Frogger {
       t.putCharacter(s.charAt(i));
     }
   }
-/*
-    public static void main (String args[]) {
-      Frogger A = new Frogger();
-      System.out.println(A.toString());
-      A.movePlayer(0, 1);
-      System.out.println(A.getLives());
-      A.setLives(-1);
-      System.out.println(A.getLives());
-      A.setLives(-1);
-      System.out.println(A.getLives());
-    }
-*/
 
-public void moveCars(int counter) {
-  if (counter % 2000 == 0) {
-    moveCarsLeft(1);
-    moveCarsLeft(3);
-    moveCarsLeft(4);
-    moveCarsLeft(6);
-    moveCarsRight(2);
-    moveCarsRight(5);
-    moveCarsRight(7);
-    moveCarsRight(8);
+  public void moveCars(int counter) {
+    if (counter % 2000 == 0) {
+      moveCarsLeft(1);
+      moveCarsLeft(3);
+      moveCarsLeft(4);
+      moveCarsLeft(6);
+      moveCarsRight(2);
+      moveCarsRight(5);
+      moveCarsRight(7);
+      moveCarsRight(8);
+    }
   }
-}
 
-public static void main(String[] args) {
-  Terminal terminal = TerminalFacade.createTextTerminal();
-  terminal.enterPrivateMode();
+  public static int playFrogger(Terminal terminal) {
+    Frogger A = new Frogger(Terminal terminal);
+    putString(0, 0, terminal, A.toString());
 
-  TerminalSize size = terminal.getTerminalSize();
-  terminal.setCursorVisible(false);
+    int counter = 0;
 
-  Frogger A = new Frogger();
-  putString(0, 0, terminal, A.toString());
-
-  int counter = 0;
-
-  while (A.getLives() > -1) {
-    if (A.isComplete()) {
-      terminal.exitPrivateMode();
-      A.setLives(-5);
-    }
-    else {
-      A.moveCars(counter);
-      counter++;
-
-      putString(0,0, terminal, A.toString());
-      if (A.isRunOver()) {
-        if (A.getLives() == 0) {
-          terminal.exitPrivateMode();
-          A.setLives(-5);
-          System.out.println("A car hit you! You have no more lives. Press ESC and restart game to try again.");
-        }
-        else {
-          A.setLives(-1);
-          System.out.println("A car hit you! You have " + A.getLives() + " more lives.");
-        }
+    while (A.getLives() > -1) {
+      if (A.isComplete()) {
+        terminal.exitPrivateMode();
+        A.setLives(-5);
       }
-      if (A.getLives() > -1) {
-        Key key = terminal.readInput();
-        if (key != null){
-          if (key.getKind() == Key.Kind.Escape) {
+      else {
+        A.moveCars(counter);
+        counter++;
+
+        putString(0,0, terminal, A.toString());
+        if (A.isRunOver()) {
+          if (A.getLives() == 0) {
             terminal.exitPrivateMode();
             A.setLives(-5);
+            System.out.println("A car hit you! You have no more lives. Press ESC and restart game to try again.");
           }
-          if (key.getKind() == Key.Kind.ArrowUp) {
-            if (A.isCrash(0, 1) == -1) {
-              A.setLives(-1);
-              if (A.getLives() > -1) {
+          else {
+            A.setLives(-1);
+            System.out.println("A car hit you! You have " + A.getLives() + " more lives.");
+          }
+        }
+        if (A.getLives() > -1) {
+          Key key = terminal.readInput();
+          if (key != null){
+            if (key.getKind() == Key.Kind.Escape) {
+              terminal.exitPrivateMode();
+              A.setLives(-5);
+            }
+            if (key.getKind() == Key.Kind.ArrowUp) {
+              if (A.isCrash(0, 1) == -1) {
+                A.setLives(-1);
+                if (A.getLives() > -1) {
+                  A.movePlayer(0, 1);
+                }
+              }
+              else {
                 A.movePlayer(0, 1);
               }
             }
-            else {
-              A.movePlayer(0, 1);
-            }
-          }
 
-          if (key.getKind() == Key.Kind.ArrowDown) {
-            if (A.isCrash(0, -1) == -1) {
-              A.setLives(-1);
-              if (A.getLives() > -1) {
+            if (key.getKind() == Key.Kind.ArrowDown) {
+              if (A.isCrash(0, -1) == -1) {
+                A.setLives(-1);
+                if (A.getLives() > -1) {
+                  A.movePlayer(0, -1);
+                }
+              }
+              else {
                 A.movePlayer(0, -1);
               }
             }
-            else {
-              A.movePlayer(0, -1);
-            }
-          }
 
-          if (key.getKind() == Key.Kind.ArrowLeft) {
-            if (A.isCrash(-1, 0) == -1) {
-              A.setLives(-1);
-              if (A.getLives() > -1) {
+            if (key.getKind() == Key.Kind.ArrowLeft) {
+              if (A.isCrash(-1, 0) == -1) {
+                A.setLives(-1);
+                if (A.getLives() > -1) {
+                  A.movePlayer(-1, 0);
+                }
+              }
+              else {
                 A.movePlayer(-1, 0);
               }
             }
-            else {
-              A.movePlayer(-1, 0);
-            }
-          }
 
-          if (key.getKind() == Key.Kind.ArrowRight) {
-            if (A.isCrash(1, 0) == -1) {
-              A.setLives(-1);
-              if (A.getLives() > -1) {
+            if (key.getKind() == Key.Kind.ArrowRight) {
+              if (A.isCrash(1, 0) == -1) {
+                A.setLives(-1);
+                if (A.getLives() > -1) {
+                  A.movePlayer(1, 0);
+                }
+              }
+              else {
                 A.movePlayer(1, 0);
               }
             }
-            else {
-              A.movePlayer(1, 0);
-            }
-          }
 
+          }
         }
       }
     }
+    terminal.exitPrivateMode();
   }
-  terminal.exitPrivateMode();
-}
 
 }
