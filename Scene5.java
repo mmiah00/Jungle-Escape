@@ -15,7 +15,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Scene5 extends Scene {
 
-  public void Scene5(Terminal terminal) {
+  public Scene5(Terminal terminal) {
     putString(0, 1, terminal,  "           x");
     putString(0, 2, terminal,  ".-. _______|");
     putString(0, 3, terminal,  "|=|/     /  \\");
@@ -31,6 +31,7 @@ public class Scene5 extends Scene {
     putString(0, 10, terminal, "|  Press ESC to exit game  |");
 
     int [] returns = new int [3];
+    boolean running = true; 
 
     while (running) {
       Key key = terminal.readInput();

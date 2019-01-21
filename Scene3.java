@@ -15,7 +15,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public class Scene3 extends Scene{
 
-  public void Scene3(Terminal t) {
+  public Scene3(Terminal t) {
     putString(0, 1, t, "  ,                 _,-,   ");
     putString(0, 2, t, " /(  ___________   T_  |   ");
     putString(0, 3, t, "|  >:===========`  ||`-'   ");
