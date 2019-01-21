@@ -93,7 +93,10 @@ public class JungleEscape {
       }
       if (mode == 6) {
         Frogger A = new Frogger();
-        mode = A.playFrogger(terminal);
+        results = A.playFrogger(terminal, nextMin, nextSec);
+        mode = results[0];
+        nextMin = results[1];
+        nextSec = results[2];
       }
       if (mode == 7) {
         Scene5 A = new Scene5(terminal);
