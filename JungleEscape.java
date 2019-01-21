@@ -42,7 +42,7 @@ public class JungleEscape {
       if (minLeft == 0 && secLeft ==0) {
         running = false;
       }
-      else {
+      //else {
         long tEnd = System.currentTimeMillis();
   			long milli = tEnd - tStart;
         if (milli/60000 > lastMin ) {
@@ -98,7 +98,7 @@ public class JungleEscape {
           Scene5 A = new Scene5(terminal);
           mode = A.playScene5(terminal);
         }
-      }
+      //}
     }
     terminal.exitPrivateMode();
   }
