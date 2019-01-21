@@ -32,6 +32,8 @@ public class JungleEscape {
 
     boolean running = true;
     int mode = 0;
+    int nextMin;
+    int nextSec;
 
     while (running) {
       Key key = terminal.readInput();
@@ -48,10 +50,14 @@ public class JungleEscape {
       if (mode == 0) {
         Scene1 A = new Scene1(terminal);
         mode = A.playScene1(terminal);
+        nextMin = A.getMinLeft();
+        nextSec = A.getSecLeft();
       }
       if (mode == 1) {
         Scene2 A = new Scene2(terminal);
-        mode = A.playScene2(terminal);
+        mode = A.playScene2(terminal, nextMin, nextSec);
+        nextMin = A.getMinLeft();
+        nextSec = A.getSecLeft();
       }
       if (mode == 2) {
         NumberPuzzle A = new NumberPuzzle();
