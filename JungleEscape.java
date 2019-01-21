@@ -32,8 +32,8 @@ public class JungleEscape {
 
     boolean running = true;
     int mode = 0;
-    int nextMin;
-    int nextSec;
+    int nextMin = 0;
+    int nextSec = 0;
 
     while (running) {
       Key key = terminal.readInput();

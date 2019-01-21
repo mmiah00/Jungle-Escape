@@ -82,7 +82,6 @@ public class Scene1 extends Scene {
 
       if (A.getMinLeft() == 0 && A.getSecLeft() == 0) {
         pathNotDone = false;
-        return -1;
       }
     }
     terminal.clearScreen();
