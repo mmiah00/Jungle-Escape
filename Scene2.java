@@ -39,6 +39,18 @@ public class Scene2 extends Scene{
     putString(0, 15, t, "|    to build a bridge.    |");
   }
 
+  public static void putString(int r, int c,Terminal t, String s, Terminal.Color forg, Terminal.Color back ){
+    t.moveCursor(r,c);
+    t.applyBackgroundColor(forg);
+    t.applyForegroundColor(Terminal.Color.BLACK);
+
+    for(int i = 0; i < s.length();i++){
+      t.putCharacter(s.charAt(i));
+    }
+    t.applyBackgroundColor(Terminal.Color.DEFAULT);
+    t.applyForegroundColor(Terminal.Color.DEFAULT);
+  }
+
   public static int playScene2(Terminal terminal) {
     Scene2 A = new Scene2(terminal);
 
