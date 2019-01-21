@@ -22,14 +22,6 @@ public class JungleEscape {
     }
   }
 
-  public int changeMin(long milli) {
-    return 15 - milli/60000;
-  }
-
-  public int changeMin(long milli) {
-    return milli % 60000 / 1000; 
-  }
-
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -40,8 +32,8 @@ public class JungleEscape {
 
     boolean running = true;
     long tStart = System.currentTimeMillis();
-    int minLeft = 15;
-    int secLeft = 60;
+    long minLeft = 15;
+    long secLeft = 60;
     int mode = 0;
 
     while (running) {
@@ -51,8 +43,8 @@ public class JungleEscape {
       else {
         long tEnd = System.currentTimeMillis();
   			long timePassed = tEnd - tStart;
-        minLeft = changeMin(timePassed);
-        secLeft = changeSec(timePassed);
+        minLeft = 15 - timePassed/60000;
+        secLeft = 60 - (milli % 60000 / 1000);
   			putString(0, 0, terminal, "Time Left: " + minLeft + ":" + secLeft);
 
         Key key = terminal.readInput();
@@ -92,7 +84,7 @@ public class JungleEscape {
         }
         if (mode == 6) {
           Frogger A = new Frogger();
-          mode = A.playScene4(terminal);
+          mode = A.playFrogger(terminal);
         }
         if (mode == 7) {
           Scene5 A = new Scene5(terminal);
