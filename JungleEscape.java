@@ -49,11 +49,7 @@ public class JungleEscape {
         running = false;
       }
       else {
-        lastTime = currentTime;
-        currentTime = System.currentTimeMillis();
-        timer += (currentTime -lastTime);
-        putString(0,0,terminal, "Time: "+timer);
-        
+    
         if (mode == 0) {
           lastTime = currentTime;
           currentTime = System.currentTimeMillis();
