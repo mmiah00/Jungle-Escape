@@ -73,7 +73,7 @@ public class Scene1 extends Scene {
       int minPassed = 14 - (int)(timer/60000);
       int secPassed;
       if (timer%60000/1000 > 50) {
-        secPassed = (int)(timer%60000/1000%10);
+        secPassed = (int)(timer%60000/1000);
       }
       else {
         secPassed = 60 - (int)(timer%60000/1000);
