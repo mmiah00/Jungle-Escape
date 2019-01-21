@@ -28,14 +28,14 @@ public class Scene2 extends Scene{
     putString (0,7,t, "      /");
     putString (0,8,t, "     /");
 
-    putString (16,1,t, "\\       ");
-    putString (17,2,t, "\\      ");
-    putString (18,3,t, "\\     ");
-    putString (19,4,t, "\\    ");
-    putString (20,5,t, "\\   ");
-    putString (21,6,t, "\\  ");
-    putString (22,7,t, "\\ ");
-    putString (23,8,t, "\\");
+    putString (16,1,t, " \\       ");
+    putString (17,2,t, " \\      ");
+    putString (18,3,t, " \\     ");
+    putString (19,4,t, " \\    ");
+    putString (20,5,t, " \\   ");
+    putString (21,6,t, " \\  ");
+    putString (22,7,t, " \\ ");
+    putString (23,8,t, " \\");
     t.applyBackgroundColor(Terminal.Color.BLUE);
     putString(13, 1, t, "   .\\");
     putString(12, 2, t, " ` .  \\");
