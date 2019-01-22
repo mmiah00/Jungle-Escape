@@ -22,6 +22,28 @@ public class JungleEscape {
     }
   }
 
+  public static int timeRanOut(Terminal terminal) {
+    putString(0, 0, terminal, "|              FAIL               |");
+    putString(0, 1, terminal, "| You didn't reach the safehouse  |");
+    putString(0, 2, terminal, "|in time and the zombies ate you. |");
+    putString(0, 3, terminal, "|   Please press ESC to exit.     |");
+    putString(0, 4, terminal, "|Run program again, to play again.|");
+
+    boolean running = true;
+    while (running) {
+      Key key = terminal.readInput();
+      if (key != null){
+        if (key.getKind() == Key.Kind.Escape) {
+          terminal.exitPrivateMode();
+          running = false;
+          return -1;
+        }
+      }
+    }
+    terminal.clearScreen();
+    return -1;
+  }
+
   public static void main(String[] args) {
 
     Terminal terminal = TerminalFacade.createTextTerminal();
@@ -47,6 +69,9 @@ public class JungleEscape {
       if (mode == -1) {
         terminal.exitPrivateMode();
         running = false;
+      }
+      if (mode == -2) {
+        mode = timeRanOut(terminal);
       }
       if (mode == 0) {
         Scene1 A = new Scene1(terminal);

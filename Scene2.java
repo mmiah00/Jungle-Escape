@@ -106,7 +106,7 @@ public class Scene2 extends Scene{
 
       if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
         pathNotDone = false;
-        returns [0] = -1;
+        returns [0] = -2;
         return returns;
       }
     }

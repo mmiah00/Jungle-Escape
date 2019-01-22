@@ -300,7 +300,7 @@ public class NumberPuzzle {
 
       if (minLeft == 0 && secLeft == 1) {
         gameNotDone = false;
-        returns [0] = -1;
+        returns [0] = -2;
         return returns;
       }
     }
