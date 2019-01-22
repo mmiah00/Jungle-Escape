@@ -33,9 +33,9 @@ public class Scene2 extends Scene{
     putString(0, 9, t, toString());
 
     putString(0, 11, t, "|  Oh no! There's a river! |");
-    putString(0, 12, t, "|   Wait, there's a box!   |");
-    putString(0, 13, t, "|  You see a puzzle on the |");
-    putString(0, 14, t, "|  box that gets materials |");
+    putString(0, 12, t, "| Maybe that box can help. |");
+    putString(0, 13, t, "|  Solve the puzzle on the |");
+    putString(0, 14, t, "|   box to get materials   |");
     putString(0, 15, t, "|    to build a bridge.    |");
   }
 

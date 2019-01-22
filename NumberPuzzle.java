@@ -232,8 +232,8 @@ public class NumberPuzzle {
 	public static int[] play2048(Terminal terminal, int beginMin, int beginSec) {
 		NumberPuzzle A = new NumberPuzzle();
 		putString(0, 1, terminal, A.toString());
-		putString(0, 12, terminal, "|Use the arrow keys |");
-		putString(0, 13, terminal, "|to combine numbers |");
+		putString(0, 12, terminal, "| Use the arrow keys |");
+		putString(0, 13, terminal, "| to combine numbers |");
 		putString(0, 14, terminal, "|   and reach 256   |");
 
 		boolean gameNotDone = true;

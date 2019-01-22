@@ -34,11 +34,12 @@ public class Scene4 extends Scene {
     }
     putString(0, 11, t, toString());
 
-    putString(0, 13, t, "|    Keep running, you've almost    |");
-    putString(0, 14, t, "|       reached the safehouse.      |");
-    putString(0, 15, t, "|  What's that up ahead? A highway? |");
-    putString(0, 16, t, "|  Quick! Cross the highway without |");
-    putString(0, 17, t, "|getting hit by a zombie-driven car!|");
+    putString(0, 13, t, "| Great! You crossed the river. Keep|");
+    putString(0, 14, t, "|   running, you've almost reached  |");
+    putString(0, 15, t, "|            the safehouse.         |");
+    putString(0, 16, t, "|  What's that up ahead? A highway? |");
+    putString(0, 17, t, "|  Quick! Cross the highway without |");
+    putString(0, 18, t, "|getting hit by a zombie-driven car!|");
 
   }
 
