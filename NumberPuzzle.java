@@ -245,11 +245,10 @@ public class NumberPuzzle {
 
 		while (gameNotDone) {
 			gameNotDone = (!(A.beatGame())); //player has not beaten game
-			if (A.isComplete() && !gameNotDone) {
+			if (A.isComplete() && !gameNotDone) { //if board is filled but 512 not on board, reset
 				A.reset();
 			}
-			//if (!(A.isComplete())) {
-			else {
+			else { //moves are still possible
 				putString(0, 1, terminal, A.toString());
 				Key key = terminal.readInput();
 				if (key != null){
@@ -273,9 +272,6 @@ public class NumberPuzzle {
 					}
 				}
 			}
-			//else {
-			//	A.reset(); //if board is filled but 512 not on board, reset
-			//}
 
 			lastTime = currentTime;
       currentTime = System.currentTimeMillis();
