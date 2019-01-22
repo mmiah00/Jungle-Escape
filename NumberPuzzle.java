@@ -23,7 +23,7 @@ public class NumberPuzzle {
 		reset();
 	}
 
-	public void reset() { //clears board and places two random twos on the board
+	private void reset() { //clears board and places two random twos on the board
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
 				grid[r][c] = "   "; //4 spaces for 4 possible digits
@@ -57,7 +57,7 @@ public class NumberPuzzle {
 		grid[randRow][randCol] = "  2"; //place second "2"
 	}
 
-	public String addSpaces(String s) { //adds spaces to account for the 4 spaces that should be in each position
+	private String addSpaces(String s) { //adds spaces to account for the 4 spaces that should be in each position
 		String spaces = "";
 		int length = 3 - s.length();
 		for (int i = 0; i < length; i++) {
@@ -66,7 +66,7 @@ public class NumberPuzzle {
 		return spaces;
 	}
 
-	public void moveLeft() {
+	private void moveLeft() {
 		for (int r = 0; r < 4; r++) { //for every row
 			for (int c = 1; c < 4; c++) { //starting from the second col
 				int orig = c;
@@ -93,7 +93,7 @@ public class NumberPuzzle {
 		inputNewNum();
 	}
 
-	public void moveRight() {
+	private void moveRight() {
 		for (int r = 0; r < 4; r++) { //for every row
 			for (int c = 2; c > -1; c--) { //starting from the third col
 				int orig = c;
@@ -120,7 +120,7 @@ public class NumberPuzzle {
 		inputNewNum();
 	}
 
-	public void moveUp() {
+	private void moveUp() {
 		for (int c = 0; c < 4; c++) { //for every column
 			for (int r = 1; r < 4; r++) { //starting with second row
 				int orig = r;
@@ -147,7 +147,7 @@ public class NumberPuzzle {
 		inputNewNum();
 	}
 
-  public void moveDown() {
+  private void moveDown() {
 		for (int c = 0; c < 4; c++) { //for every column
 			for (int r = 2; r > -1; r--) { //starting with third row
 				int orig = r;
@@ -174,7 +174,7 @@ public class NumberPuzzle {
 		inputNewNum();
 	}
 
-	public boolean isComplete() { //checks if there are anymore possible moves
+	private boolean isComplete() { //checks if there are anymore possible moves
     boolean complete = true;
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
@@ -190,7 +190,7 @@ public class NumberPuzzle {
     return complete;
   }
 
-	public boolean beatGame() { //if player reachs 256 they can move on
+	private boolean beatGame() { //if player reachs 256 they can move on
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
 				if (grid[r][c].equals("512")) {
@@ -201,7 +201,7 @@ public class NumberPuzzle {
 		return false;
 	}
 
-	public String toString() { //prints 2-d array grid with a grid around it to mimic game
+	private String toString() { //prints 2-d array grid with a grid around it to mimic game
 		String s = "|---------------|\n";
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
@@ -222,14 +222,14 @@ public class NumberPuzzle {
 		return s;
 	}
 
-	public static void putString(int r, int c,Terminal t, String s){ //displays String on terminal
+	private static void putString(int r, int c,Terminal t, String s){ //displays String on terminal
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
 		}
 	}
 
-	public static int[] play2048(Terminal terminal, int beginMin, int beginSec) {
+	private static int[] play2048(Terminal terminal, int beginMin, int beginSec) {
 		NumberPuzzle A = new NumberPuzzle();
 		putString(0, 1, terminal, A.toString());
 		putString(0, 12, terminal, "| Use the arrow keys |");
