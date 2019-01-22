@@ -234,7 +234,7 @@ public class NumberPuzzle {
 		putString(0, 1, terminal, A.toString());
 		putString(0, 12, terminal, "| Use the arrow keys |");
 		putString(0, 13, terminal, "| to combine numbers |");
-		putString(0, 14, terminal, "|   and reach 512   |");
+		putString(0, 14, terminal, "|   and reach 512.   |");
 
 		boolean gameNotDone = true;
 		int [] returns = new int [3];
@@ -245,7 +245,11 @@ public class NumberPuzzle {
 
 		while (gameNotDone) {
 			gameNotDone = (!(A.beatGame())); //player has not beaten game
-			if (!(A.isComplete())) {
+			if (A.isComplete() && !gameNotDone) {
+				A.reset();
+			}
+			//if (!(A.isComplete())) {
+			else {
 				putString(0, 1, terminal, A.toString());
 				Key key = terminal.readInput();
 				if (key != null){
@@ -269,9 +273,9 @@ public class NumberPuzzle {
 					}
 				}
 			}
-			else {
-				A.reset(); //if board is filled but 256 not on board, reset
-			}
+			//else {
+			//	A.reset(); //if board is filled but 512 not on board, reset
+			//}
 
 			lastTime = currentTime;
       currentTime = System.currentTimeMillis();
