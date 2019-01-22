@@ -40,13 +40,13 @@ public class Scene3 extends Scene{
     boolean firstPass = true;
 
     int counter = 0;
-    while (counter != 50000) {
+    while (counter != 100000) {
       counter++;
       Key key = terminal.readInput();
       if (key != null){
         if (key.getKind() == Key.Kind.Escape) {
           terminal.exitPrivateMode();
-          counter = 50000;
+          counter = 100000;
           returns[0] = -1;
           return returns;
         }
@@ -77,7 +77,7 @@ public class Scene3 extends Scene{
       returns[2] = A.getSecLeft();
 
       if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
-        counter = 50000;
+        counter = 100000;
         returns [0] = -2;
         return returns;
       }
