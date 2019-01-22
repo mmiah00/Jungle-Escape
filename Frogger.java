@@ -40,7 +40,7 @@ public class Frogger {
     currentCol = 4;
   }
 
-  public void addCars(int r) { //adds 3 cars to random location in particular row
+  private void addCars(int r) { //adds 3 cars to random location in particular row
     Random randgen = new Random();
     for (int i = 0; i < 3; i++) {
       int randCol = randgen.nextInt(8);
@@ -48,7 +48,7 @@ public class Frogger {
     }
   }
 
-  public void moveCarsLeft(int r) { //moves cars to left
+  private void moveCarsLeft(int r) { //moves cars to left
     int max = 8;
     for (int c = 0; c < max; c++) {
       if (world[r][c].equals("o-o")) {
@@ -65,7 +65,7 @@ public class Frogger {
     }
   }
 
-  public void moveCarsRight(int r) { //moves cars to right
+  private void moveCarsRight(int r) { //moves cars to right
     int min = -1;
     for (int c = 7; c > min; c--) {
       if (world[r][c].equals("o-o")) {
@@ -82,7 +82,7 @@ public class Frogger {
     }
   }
 
-  public void movePlayer(int horizontal, int vertical) { //moves player
+  private void movePlayer(int horizontal, int vertical) { //moves player
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
     if (horizontal == 0 && (newRow == 0 || newRow == 9)) { //special cases that involve start and end lines
@@ -105,7 +105,7 @@ public class Frogger {
     currentCol = newCol;
   }
 
-  public int isCrash(int horizontal, int vertical) {
+  private int isCrash(int horizontal, int vertical) {
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
     if (newRow == -1 || newRow == 10 || newCol == -1 || newCol == 8) { //out of bounds
@@ -130,22 +130,22 @@ public class Frogger {
     return s;
   }
 
-  public boolean isComplete() { //reaches end
+  private boolean isComplete() { //reaches end
     return (currentRow == 0);
   }
 
-  public boolean isRunOver() { //while player is on spot, does a car move into their position
+  private boolean isRunOver() { //while player is on spot, does a car move into their position
     return (world[currentRow][currentCol].equals("o-o"));
   }
 
-  public static void putString(int r, int c,Terminal t, String s){
+  private static void putString(int r, int c,Terminal t, String s){
     t.moveCursor(r,c);
     for(int i = 0; i < s.length();i++){
       t.putCharacter(s.charAt(i));
     }
   }
 
-  public void moveCars(int counter) { //move cars at particular speed
+  private void moveCars(int counter) { //move cars at particular speed
     if (counter % 1300 == 0) {
       moveCarsRight(1);
       moveCarsLeft(3);
@@ -156,7 +156,7 @@ public class Frogger {
     }
   }
 
-  public void restart() { //goes back to start line
+  private void restart() { //goes back to start line
     world[9][4] = "o**";
     currentRow = 9;
     currentCol = 4;

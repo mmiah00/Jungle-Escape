@@ -28,7 +28,7 @@ public class SecondPuzzle {
 		scramble(); //mixes board
 	}
 
-  public void fillGrid() {
+  private void fillGrid() {
     for (int r = 0; r < 3; r++) {
       for (int c = 0; c < 3; c++) {
         grid[r][c] = addSpaces("" + (3*r+c+1)) + (3*r+c+1); //adds in numbers 1-8
@@ -37,7 +37,7 @@ public class SecondPuzzle {
     grid[2][2] = "  ";
   }
 
-  public void scramble() {
+  private void scramble() {
     Random randgen = new Random();
     for (int i = 0; i < 40; i++) {
       int direction = randgen.nextInt(4); //scrambles randomly
@@ -56,7 +56,7 @@ public class SecondPuzzle {
     }
   }
 
-	public String addSpaces(String s) { //adds spaces to account for the 2 spaces that should be in each position
+	private String addSpaces(String s) { //adds spaces to account for the 2 spaces that should be in each position
 		String spaces = "";
 		int length = 2 - s.length();
 		for (int i = 0; i < length; i++) {
@@ -65,7 +65,7 @@ public class SecondPuzzle {
 		return spaces;
 	}
 
-	public void moveLeft() { //moves number to right of space over
+	private void moveLeft() { //moves number to right of space over
 		if (col != 2) {
       String newNum = grid[row][col+1].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
@@ -74,7 +74,7 @@ public class SecondPuzzle {
     }
 	}
 
-	public void moveRight() { //moves number to left of space over
+	private void moveRight() { //moves number to left of space over
 		if (col != 0) {
       String newNum = grid[row][col-1].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
@@ -83,7 +83,7 @@ public class SecondPuzzle {
     }
 	}
 
-	public void moveUp() { //moves number below space up
+	private void moveUp() { //moves number below space up
     if (row != 2) {
       String newNum = grid[row+1][col].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
@@ -92,7 +92,7 @@ public class SecondPuzzle {
     }
 	}
 
-  public void moveDown() { //moves number above space down
+  private void moveDown() { //moves number above space down
     if (row != 0) {
       String newNum = grid[row-1][col].trim();
       grid[row][col] = addSpaces(newNum) + newNum;
@@ -101,7 +101,7 @@ public class SecondPuzzle {
     }
 	}
 
-	public boolean isComplete() { //checks if numbers are in order
+	private boolean isComplete() { //checks if numbers are in order
     boolean complete = true;
     for (int r = 0; r < 3; r++) {
       for (int c = 0; c < 3; c++) {
@@ -137,7 +137,7 @@ public class SecondPuzzle {
 		return s;
 	}
 
-	public static void putString(int r, int c,Terminal t, String s){ //displays String on terminal
+	private static void putString(int r, int c,Terminal t, String s){ //displays String on terminal
 		t.moveCursor(r,c);
 		for(int i = 0; i < s.length();i++){
 			t.putCharacter(s.charAt(i));
