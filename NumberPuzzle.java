@@ -201,7 +201,7 @@ public class NumberPuzzle {
 		return false;
 	}
 
-	private String toString() { //prints 2-d array grid with a grid around it to mimic game
+	public String toString() { //prints 2-d array grid with a grid around it to mimic game
 		String s = "|---------------|\n";
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
@@ -229,7 +229,7 @@ public class NumberPuzzle {
 		}
 	}
 
-	private static int[] play2048(Terminal terminal, int beginMin, int beginSec) {
+	public static int[] play2048(Terminal terminal, int beginMin, int beginSec) {
 		NumberPuzzle A = new NumberPuzzle();
 		putString(0, 1, terminal, A.toString());
 		putString(0, 12, terminal, "| Use the arrow keys |");
