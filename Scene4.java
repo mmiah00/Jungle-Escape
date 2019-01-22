@@ -16,8 +16,8 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 public class Scene4 extends Scene {
 
   public Scene4 (Terminal t) {
-    path = new String[35];
-    putString(0, 1, t, "            ,@@@@@@@,              ");
+    path = new String[35]; //path player walks on
+    putString(0, 1, t, "            ,@@@@@@@,              "); //background
     putString(0, 2, t, "    ,,,,   ,@@@@@@/@@,  .oo8888o.  ");
     putString(0, 3, t, " ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o ");
     putString(0, 4, t, ",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88’");
@@ -45,7 +45,7 @@ public class Scene4 extends Scene {
 
   public static int [] playScene4(Terminal terminal, int beginMin, int beginSec) {
     Scene4 A = new Scene4(terminal);
-    int [] returns = new int [3];
+    int [] returns = new int [3]; //returns 3 values(mode, remaining min, remaining sec)
 
     boolean pathNotDone = true;
     long lastTime =  System.currentTimeMillis();
@@ -54,30 +54,30 @@ public class Scene4 extends Scene {
     boolean firstPass = true;
 
     while (pathNotDone) {
-      pathNotDone = !(A.isLastSpot());
+      pathNotDone = !(A.isLastSpot()); //not at end of path
       putString(0, 11, terminal, A.toString());
       Key key = terminal.readInput();
       if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
+        if (key.getKind() == Key.Kind.Escape) { //exits game
           terminal.exitPrivateMode();
           pathNotDone = false;
           returns[0] = -1;
           return returns;
         }
-        if (key.getKind() == Key.Kind.ArrowLeft) {
+        if (key.getKind() == Key.Kind.ArrowLeft) { //moves player left
           A.moveLeft();
         }
-        if (key.getKind() == Key.Kind.ArrowRight) {
+        if (key.getKind() == Key.Kind.ArrowRight) { //moves player right
           A.moveRight();
         }
       }
 
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
-      timer += (currentTime -lastTime);
-      A.setMinLeft(beginMin - (int)(timer/60000));
+      timer += (currentTime -lastTime); //changes timer
+      A.setMinLeft(beginMin - (int)(timer/60000)); //changes min
       String minPassed = String.format("%02d", A.getMinLeft());
-      if ((int)(timer%60000/1000) > beginSec) {
+      if ((int)(timer%60000/1000) > beginSec) {//changes sec
         firstPass = false;
       }
       if (firstPass) {
@@ -87,23 +87,23 @@ public class Scene4 extends Scene {
         A.setSecLeft(60 - (int)(timer%60000/1000));
       }
       String secPassed = String.format("%02d", A.getSecLeft());
-      if (A.getSecLeft() == 60) {
+      if (A.getSecLeft() == 60) { //special case
         A.setMinLeft(beginMin - (int)(timer/60000));
         minPassed = String.format("%02d", A.getMinLeft());
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
-      returns[1] = A.getMinLeft();
-      returns[2] = A.getSecLeft();
+      returns[1] = A.getMinLeft(); //passes on min left
+      returns[2] = A.getSecLeft(); //passes on sec left
 
-      if (A.getMinLeft() == 0 && A.getSecLeft() == 1) {
+      if (A.getMinLeft() == 0 && A.getSecLeft() == 1) { //run out of time
         pathNotDone = false;
-        returns [0] = -2;
+        returns [0] = -2; //fail message
         return returns;
       }
     }
     terminal.clearScreen();
-    returns [0] = 6;
+    returns [0] = 6; //next mode
     return returns;
   }
 }

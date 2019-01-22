@@ -15,9 +15,9 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 
 public abstract class Scene {
   String[] path;
-  int index = 0;
-  int minNum;
-  int secNum;
+  int index = 0; //where player is on the path
+  int minNum; //number of remaining minutes
+  int secNum; //number of remaining seconds
 
   public String toString() {
     String s = " ";
@@ -27,7 +27,7 @@ public abstract class Scene {
     return s;
   }
 
-  public void moveLeft() {
+  public void moveLeft() { //moves player left
     if (index != 0) {
       path[index-1] = "o";
       path[index] = " ";
@@ -35,7 +35,7 @@ public abstract class Scene {
     }
   }
 
-  public void moveRight() {
+  public void moveRight() { //move player right
     if (index != path.length-1) {
       path[index+1] = "o";
       path[index] = " ";
@@ -43,7 +43,7 @@ public abstract class Scene {
     }
   }
 
-  public boolean isLastSpot() {
+  public boolean isLastSpot() { //checks if player is at end of path
     return index == path.length-1;
   }
 
@@ -63,10 +63,10 @@ public abstract class Scene {
   }
 
   public void setMinLeft(int newNum) {
-    minNum = newNum;
+    minNum = newNum; //change min left
   }
 
   public void setSecLeft(int newNum) {
-    secNum = newNum;
+    secNum = newNum; //change sec left
   }
 }

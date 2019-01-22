@@ -23,7 +23,7 @@ public class NumberPuzzle {
 		reset();
 	}
 
-	public void reset() {
+	public void reset() { //clears board and places two random twos on the board
 		for (int r = 0; r < 4; r++) {
 			for (int c = 0; c < 4; c++) {
 				grid[r][c] = "   "; //4 spaces for 4 possible digits
@@ -190,10 +190,10 @@ public class NumberPuzzle {
     return complete;
   }
 
-	public boolean beatGame() {
+	public boolean beatGame() { //if player reachs 256 they can move on
     for (int r = 0; r < 4; r++) {
       for (int c = 0; c < 4; c++) {
-				if (grid[r][c].equals(" 16")) {
+				if (grid[r][c].equals("512")) {
 					return true;
 				}
 			}
@@ -234,7 +234,7 @@ public class NumberPuzzle {
 		putString(0, 1, terminal, A.toString());
 		putString(0, 12, terminal, "| Use the arrow keys |");
 		putString(0, 13, terminal, "| to combine numbers |");
-		putString(0, 14, terminal, "|   and reach 256   |");
+		putString(0, 14, terminal, "|   and reach 512   |");
 
 		boolean gameNotDone = true;
 		int [] returns = new int [3];
@@ -244,12 +244,12 @@ public class NumberPuzzle {
     boolean firstPass = true;
 
 		while (gameNotDone) {
-			gameNotDone = (!(A.beatGame()));
+			gameNotDone = (!(A.beatGame())); //player has not beaten game
 			if (!(A.isComplete())) {
 				putString(0, 1, terminal, A.toString());
 				Key key = terminal.readInput();
 				if (key != null){
-					if (key.getKind() == Key.Kind.Escape) {
+					if (key.getKind() == Key.Kind.Escape) { //exits game
 						terminal.exitPrivateMode();
 						gameNotDone = false;
 						returns [0] = -1;
@@ -270,15 +270,15 @@ public class NumberPuzzle {
 				}
 			}
 			else {
-				A.reset();
+				A.reset(); //if board is filled but 256 not on board, reset
 			}
 
 			lastTime = currentTime;
       currentTime = System.currentTimeMillis();
-      timer += (currentTime -lastTime);
-      int minLeft = beginMin - (int)(timer/60000);
+      timer += (currentTime -lastTime); //changes time
+      int minLeft = beginMin - (int)(timer/60000); //changes min left
       String minPassed = String.format("%02d", minLeft);
-			int secLeft;
+			int secLeft; //changes sec left
       if ((int)(timer%60000/1000) > beginSec) {
         firstPass = false;
       }
@@ -288,24 +288,24 @@ public class NumberPuzzle {
       else {
         secLeft = 60 - (int)(timer%60000/1000);
       }
-      String secPassed = String.format("%02d", secLeft);
+      String secPassed = String.format("%02d", secLeft); //special case
       if (secLeft == 60) {
         minLeft = beginMin - (int)(timer/60000);
         minPassed = String.format("%02d", minLeft);
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
-      returns[1] = minLeft;
-      returns[2] = secLeft;
+      returns[1] = minLeft; //passes on min left at end
+      returns[2] = secLeft; //passes on sec left at end
 
-      if (minLeft == 0 && secLeft == 1) {
+      if (minLeft == 0 && secLeft == 1) { //if time runs out
         gameNotDone = false;
-        returns [0] = -2;
+        returns [0] = -2; //fail message
         return returns;
       }
     }
     terminal.clearScreen();
-    returns [0] = 3;
+    returns [0] = 3; //next mode
     return returns;
   }
 }

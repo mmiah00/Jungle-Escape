@@ -24,23 +24,23 @@ public class Frogger {
   public Frogger() {
     world = new String[10][8];
     for (int c = 0; c < 8; c++) {
-      world[0][c] = "***";
-      world[9][c] = "***";
+      world[0][c] = "***"; //end
+      world[9][c] = "***"; //start
     }
     for (int r = 1; r < 9; r++) {
       for (int c = 0; c < 8; c++) {
         world[r][c] = "   ";
       }
       if (r != 2 && r!= 6) {
-        addCars(r);
+        addCars(r); //adds cars except of 2 rows (to make it do-able)
       }
     }
-    world[9][4] = "o**";
-    currentRow = 9;
+    world[9][4] = "o**"; //player
+    currentRow = 9; //player location
     currentCol = 4;
   }
 
-  public void addCars(int r) {
+  public void addCars(int r) { //adds 3 cars to random location in particular row
     Random randgen = new Random();
     for (int i = 0; i < 3; i++) {
       int randCol = randgen.nextInt(8);
@@ -48,7 +48,7 @@ public class Frogger {
     }
   }
 
-  public void moveCarsLeft(int r) {
+  public void moveCarsLeft(int r) { //moves cars to left
     int max = 8;
     for (int c = 0; c < max; c++) {
       if (world[r][c].equals("o-o")) {
@@ -65,7 +65,7 @@ public class Frogger {
     }
   }
 
-  public void moveCarsRight(int r) {
+  public void moveCarsRight(int r) { //moves cars to right
     int min = -1;
     for (int c = 7; c > min; c--) {
       if (world[r][c].equals("o-o")) {
@@ -82,10 +82,10 @@ public class Frogger {
     }
   }
 
-  public void movePlayer(int horizontal, int vertical) {
+  public void movePlayer(int horizontal, int vertical) { //moves player
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
-    if (horizontal == 0 && (newRow == 0 || newRow == 9)) {
+    if (horizontal == 0 && (newRow == 0 || newRow == 9)) { //special cases that involve start and end lines
       world[newRow][newCol] = "o**";
       world[currentRow][currentCol] = "   ";
     }
@@ -101,20 +101,20 @@ public class Frogger {
       world[newRow][newCol] = "o  ";
       world[currentRow][currentCol] = "   ";
     }
-    currentRow = newRow;
+    currentRow = newRow; //change player location
     currentCol = newCol;
   }
 
   public int isCrash(int horizontal, int vertical) {
     int newRow = currentRow - vertical;
     int newCol = currentCol + horizontal;
-    if (newRow == -1 || newRow == 10 || newCol == -1 || newCol == 8) {
+    if (newRow == -1 || newRow == 10 || newCol == -1 || newCol == 8) { //out of bounds
       return 0;
     }
-    else if (world[newRow][newCol].equals("o-o")) {
+    else if (world[newRow][newCol].equals("o-o")) { //crashes
       return -1;
     }
-    else {
+    else { //empty space (can move forward)
       return 1;
     }
   }
@@ -130,11 +130,11 @@ public class Frogger {
     return s;
   }
 
-  public boolean isComplete() {
+  public boolean isComplete() { //reaches end
     return (currentRow == 0);
   }
 
-  public boolean isRunOver() {
+  public boolean isRunOver() { //while player is on spot, does a car move into their position
     return (world[currentRow][currentCol].equals("o-o"));
   }
 
@@ -145,8 +145,8 @@ public class Frogger {
     }
   }
 
-  public void moveCars(int counter) {
-    if (counter % 1500 == 0) {
+  public void moveCars(int counter) { //move cars at particular speed
+    if (counter % 1300 == 0) {
       moveCarsRight(1);
       moveCarsLeft(3);
       moveCarsRight(4);
@@ -156,7 +156,7 @@ public class Frogger {
     }
   }
 
-  public void restart() {
+  public void restart() { //goes back to start line
     world[9][4] = "o**";
     currentRow = 9;
     currentCol = 4;
@@ -168,63 +168,63 @@ public class Frogger {
     putString(0, 12, terminal, "| Run across as fast as you can |");
     putString(0, 13, terminal, "|  without being hit by a car.  |");
     putString(0, 14, terminal, "|  If you're hit, you have to   |");
-    putString(0, 15, terminal, "|   restart on the other side.  |"); 
+    putString(0, 15, terminal, "|   restart on the other side.  |");
 
     int counter = 0;
     boolean gameNotDone = true;
-    int [] returns = new int [3];
+    int [] returns = new int [3]; //return 3 ints
 		long lastTime =  System.currentTimeMillis();
     long currentTime = lastTime;
     long timer = 0;
     boolean firstPass = true;
 
-    while (gameNotDone) {
+    while (gameNotDone) { //game is not done
       gameNotDone = !(A.isComplete());
       putString(0,1, terminal, A.toString());
 
-      A.moveCars(counter);
+      A.moveCars(counter); //move cars
       counter++;
-      if (A.isRunOver()) {
+      if (A.isRunOver()) { //if player is runover restart
         A.restart();
       }
       else {
         Key key = terminal.readInput();
         if (key != null){
-          if (key.getKind() == Key.Kind.Escape) {
+          if (key.getKind() == Key.Kind.Escape) { //ecits game
             terminal.exitPrivateMode();
             gameNotDone = false;
             returns [0] = -1;
             return returns;
           }
           if (key.getKind() == Key.Kind.ArrowUp) {
-            if (A.isCrash(0, 1) == -1) {
+            if (A.isCrash(0, 1) == -1) { //checks of crash
               A.restart();
             }
-            else if (A.isCrash(0, 1) == 1) {
+            else if (A.isCrash(0, 1) == 1) { //if not move player
               A.movePlayer(0, 1);
             }
           }
           if (key.getKind() == Key.Kind.ArrowDown) {
-            if (A.isCrash(0, -1) == -1) {
+            if (A.isCrash(0, -1) == -1) { //checks if crash
               A.restart();
             }
-            else if (A.isCrash(0, -1) == 1) {
+            else if (A.isCrash(0, -1) == 1) { //if not move player
               A.movePlayer(0, -1);
             }
           }
           if (key.getKind() == Key.Kind.ArrowLeft) {
-            if (A.isCrash(-1, 0) == -1) {
+            if (A.isCrash(-1, 0) == -1) { //checks if crash
               A.restart();
             }
-            else if (A.isCrash(-1, 0) == 1) {
+            else if (A.isCrash(-1, 0) == 1) {//if not move player
               A.movePlayer(-1, 0);
             }
           }
           if (key.getKind() == Key.Kind.ArrowRight) {
-            if (A.isCrash(1, 0) == -1) {
+            if (A.isCrash(1, 0) == -1) {//checks if crash
               A.restart();
             }
-            else if (A.isCrash(1, 0) == 1) {
+            else if (A.isCrash(1, 0) == 1) {//if not move player
               A.movePlayer(1, 0);
             }
           }
@@ -233,10 +233,10 @@ public class Frogger {
 
       lastTime = currentTime;
       currentTime = System.currentTimeMillis();
-      timer += (currentTime -lastTime);
-      int minLeft = beginMin - (int)(timer/60000);
+      timer += (currentTime -lastTime); //changes time
+      int minLeft = beginMin - (int)(timer/60000); //changes min left
       String minPassed = String.format("%02d", minLeft);
-			int secLeft;
+			int secLeft; //changes sec left
       if ((int)(timer%60000/1000) > beginSec) {
         firstPass = false;
       }
@@ -246,24 +246,24 @@ public class Frogger {
       else {
         secLeft = 60 - (int)(timer%60000/1000);
       }
-      String secPassed = String.format("%02d", secLeft);
+      String secPassed = String.format("%02d", secLeft); //special case
       if (secLeft == 60) {
         minLeft = beginMin - (int)(timer/60000);
         minPassed = String.format("%02d", minLeft);
         secPassed = "00";
       }
       putString(0,0,terminal, "Time Left: "+ minPassed + ":" + secPassed);
-      returns[1] = minLeft;
-      returns[2] = secLeft;
+      returns[1] = minLeft; //passes on min left at end
+      returns[2] = secLeft; //passes on sec left at end
 
-      if (minLeft == 0 && secLeft == 1) {
+      if (minLeft == 0 && secLeft == 1) { //if time runs out
         gameNotDone = false;
-        returns [0] = -1;
+        returns [0] = -2; //fail message
         return returns;
       }
     }
     terminal.clearScreen();
-    returns [0] = 7;
+    returns [0] = 7; //next mode
     return returns;
   }
 }

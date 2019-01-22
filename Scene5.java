@@ -16,7 +16,7 @@ import com.googlecode.lanterna.input.KeyMappingProfile;
 public class Scene5 extends Scene {
 
   public Scene5(Terminal terminal) {
-    putString(0, 1, terminal,  "           x");
+    putString(0, 1, terminal,  "           x"); //safehouse
     putString(0, 2, terminal,  ".-. _______|");
     putString(0, 3, terminal,  "|=|/     /  \\");
     putString(0, 4, terminal,  "| |_____|_\"\"_|");
@@ -36,10 +36,10 @@ public class Scene5 extends Scene {
     while (running) {
       Key key = terminal.readInput();
       if (key != null){
-        if (key.getKind() == Key.Kind.Escape) {
+        if (key.getKind() == Key.Kind.Escape) { //keeps display until player exits game
           terminal.exitPrivateMode();
           running = false;
-          returns[0] = -2;
+          returns[0] = -1;
           return returns;
         }
       }
